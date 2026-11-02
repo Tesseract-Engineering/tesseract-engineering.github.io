@@ -391,9 +391,19 @@ h1.ph, h2.ph, h3.ph { font-size: clamp(1.5rem, 1rem + 1.6vw, 2.4rem); line-heigh
 .cta-row .btn { max-width: 100%; }
 .hero-copy { min-width: 0; }
 
+/* hero without the graph: set data-graph="on" on .hero to bring the graph back */
+@media (min-width: 901px) { .hero[data-graph="on"] .hero-copy { max-width: min(620px, 46vw); } }
+.hero[data-graph="on"] h1 { font-size: clamp(2.4rem, 1rem + 3.2vw, 4.1rem); }
+.hero[data-graph="off"] { min-height: min(100svh, 860px); }
+.hero[data-graph="off"] .hero-stage { display: none; }
+.hero[data-graph="off"] .hero-copy { max-width: 900px; margin-inline: auto; text-align: center; justify-items: center; }
+.hero[data-graph="off"] .lede { margin-inline: auto; }
+.hero[data-graph="off"] .cta-row { justify-content: center; }
+@media (max-width: 900px) { .hero[data-graph="off"] { min-height: 0; } .hero[data-graph="off"] .hero-copy { padding-block: 132px 64px; } }
+
 /* why us: subsections for the interview quotes and the team */
 .why-more { display: grid; gap: clamp(56px, 8vw, 104px); padding-block: clamp(48px, 6vw, 88px) 0; }
-.why-more > div > h3 { font-size: clamp(1.4rem, 1rem + 1.4vw, 2.1rem); margin-bottom: clamp(28px, 4vw, 44px); }
+.why-more > div > h2 { font-size: clamp(2rem, 1.2rem + 3vw, 3.6rem); margin-bottom: clamp(40px, 6vw, 72px); }
 
 /* closing call, inside the footer */
 .final { border-top: 0; padding-block: clamp(64px, 8vw, 112px) clamp(40px, 5vw, 64px); }
@@ -456,7 +466,7 @@ footer.foot { padding-block: 0 26px; }
 .int-copy h3 { font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.1rem); }
 .int-copy p { color: var(--muted); line-height: 1.6; }
 .win {
-  border: 1px solid var(--line-2); border-radius: 18px; background: var(--panel); overflow: hidden; min-height: 440px;
+  border: 1px solid var(--line-2); border-radius: 18px; background: var(--panel); overflow: hidden;
   display: flex; flex-direction: column; box-shadow: 0 50px 100px -50px rgba(0, 0, 0, 0.8);
 }
 .win-bar { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--line); background: var(--bg-2); font: 500 0.75rem/1.3 var(--f-mono); color: var(--muted); min-width: 0; }
@@ -506,7 +516,9 @@ footer.foot { padding-block: 0 26px; }
 .acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .acts > span:last-child { font: 400 0.6875rem/1.4 var(--f-mono); color: var(--muted); margin-left: 4px; }
 .int .demo-foot, .int + .demo-foot { margin-top: 18px; }
-@media (max-width: 900px) { .int-panel { grid-template-columns: minmax(0, 1fr); } .win { min-height: 0; } }
+@media (max-width: 900px) { .int-panel { grid-template-columns: minmax(0, 1fr); } }
+#integrations { padding-bottom: clamp(32px, 4vw, 56px); }
+#why { padding-top: clamp(32px, 4vw, 56px); }
 @media (max-width: 620px) {
   .doc, .desk { grid-template-columns: minmax(0, 1fr); }
   .side { border-left: 0; border-top: 1px solid var(--line); }
@@ -514,6 +526,20 @@ footer.foot { padding-block: 0 26px; }
   .lockline, .msg ~ .ctx { padding-left: 0; }
   .tx { grid-template-columns: minmax(0, 1fr); gap: 2px; }
 }
+
+/* schedule a call */
+.call-dlg { width: min(440px, calc(100vw - 32px)); padding: 0; border: 1px solid var(--line-2); border-radius: 20px; background: var(--panel); color: var(--ink); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9); }
+.call-dlg::backdrop { background: rgba(0, 0, 0, 0.6); }
+.call-in { position: relative; display: grid; gap: 16px; padding: 28px; }
+.call-in h2 { font-size: 1.75rem; }
+.call-in p { color: var(--muted); }
+.call-addr { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2); font: 500 0.875rem/1.4 var(--f-mono); }
+.call-addr span { overflow-wrap: anywhere; }
+button.mini { cursor: pointer; background: transparent; flex: none; }
+.call-opts { display: grid; gap: 10px; }
+.call-opts .btn { justify-content: center; }
+.call-x { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line-2); background: transparent; color: var(--ink); font-size: 1.125rem; line-height: 1; cursor: pointer; }
+.call-x:hover { background: var(--panel-2); }
 </style>
 <!-- body -->
 <header class="pill-nav" id="nav">
@@ -525,25 +551,25 @@ footer.foot { padding-block: 0 26px; }
     Tesseract
   </a>
   <nav aria-label="Sections">
-    <a href="#how">How it works</a><a href="#integrations">Integrations</a><a href="#why">Why us</a>
+    <a href="#integrations">Integrations</a><a href="#why">Why us</a>
   </nav>
   <a class="btn btn-primary call" href="mailto:ishan.tesseract@gmail.com?subject=Call%20with%20Tesseract&amp;body=Hi%20Tesseract%20team%2C%0A%0AWe%27d%20like%20to%20schedule%20a%20call.%20Here%20are%20a%20few%20times%20that%20work%20for%20us%3A%0A%0A">Schedule a call <span class="arr" aria-hidden="true">&rarr;</span></a>
 </header>
 
 <main id="top">
   <!-- 1. Hero -->
-  <section class="hero" aria-label="Introduction">
+  <section class="hero" aria-label="Introduction" data-graph="on">
     <div class="hero-stage" id="heroStage">
       <canvas id="heroGraph" role="img" aria-label="An interactive knowledge graph of a sample company: teams, services, people, tickets, documents and customers, connected."></canvas>
     </div>
     <div class="tip" id="heroTip" hidden></div>
     <div class="wrap">
       <div class="hero-copy" id="heroCopy">
-        <h1>Your company&rsquo;s brain, built into the tools you already use.</h1>
+        <h1>Enterprise knowledge infrastructure tuned to your company&rsquo;s needs.</h1>
         <p class="lede">AI agents map your company into a knowledge graph in your own cloud, then bring it into Slack, Docs, meetings and support.</p>
         <div class="cta-row">
           <a class="btn btn-primary call" href="mailto:ishan.tesseract@gmail.com?subject=Call%20with%20Tesseract&amp;body=Hi%20Tesseract%20team%2C%0A%0AWe%27d%20like%20to%20schedule%20a%20call.%20Here%20are%20a%20few%20times%20that%20work%20for%20us%3A%0A%0A">Schedule a call <span class="arr" aria-hidden="true">&rarr;</span></a>
-          <a class="btn" href="#how">See how it works</a>
+          <a class="btn" href="#integrations">See it in action</a>
         </div>
       </div>
     </div>
@@ -562,7 +588,9 @@ footer.foot { padding-block: 0 26px; }
   </div>
 
   <!-- 2. How it works -->
-  <section id="how">
+  <!-- Switched off for now. To bring it back: delete `hidden` below, and restore the nav link
+       <a href="#how">How it works</a> and the hero's second button (href="#how", "See how it works"). -->
+  <section id="how" hidden>
     <div class="swarm-pin" id="swarmPin">
       <div class="wrap swarm-grid">
         <div class="swarm-copy">
@@ -588,7 +616,7 @@ footer.foot { padding-block: 0 26px; }
           </div>
           <div class="tools" id="toolsLayer" aria-hidden="true">
             <svg class="wires" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 50L26 24"></path><path d="M50 50L74 24"></path><path d="M50 50L26 76"></path><path d="M50 50L74 76"></path></svg>
-            <div class="tool t1"><b>Slack</b><p>Who owns billing-service?</p><span>Platform team &middot; Nathan Wu</span></div>
+            <div class="tool t1"><b>Slack</b><p>Who owns billing-service?</p><span>Platform team &middot; Ishan Sinha</span></div>
             <div class="tool t2"><b>Google Docs</b><p>This contradicts a decision in SBX-14</p><span>3 notes, all cited</span></div>
             <div class="tool t3"><b>Meetings</b><p>Export limits were raised once, then rolled back</p><span>INC-12 &middot; on screen</span></div>
             <div class="tool t4"><b>Support</b><p>Seen before in TD-087. Reply drafted</p><span>Waiting for approval</span></div>
@@ -608,24 +636,24 @@ footer.foot { padding-block: 0 26px; }
       </div>
       <div class="int" id="int">
         <div class="int-tabs" role="tablist" aria-label="Integrations">
-          <button type="button" role="tab" id="tab-slack" aria-controls="p-slack" aria-selected="true">Slack</button>
-          <button type="button" role="tab" id="tab-docs" aria-controls="p-docs" aria-selected="false" tabindex="-1">Google Docs</button>
+          <button type="button" role="tab" id="tab-slack" aria-controls="p-slack" aria-selected="true">Messages</button>
+          <button type="button" role="tab" id="tab-docs" aria-controls="p-docs" aria-selected="false" tabindex="-1">Documents</button>
           <button type="button" role="tab" id="tab-meet" aria-controls="p-meet" aria-selected="false" tabindex="-1">Meetings</button>
           <button type="button" role="tab" id="tab-desk" aria-controls="p-desk" aria-selected="false" tabindex="-1">Support</button>
         </div>
 
         <div class="int-panel" role="tabpanel" id="p-slack" aria-labelledby="tab-slack">
           <div class="int-copy">
-            <h3>Ask in Slack. Get an answer as you.</h3>
+            <h3>Ask anything. Get a cited answer.</h3>
             <p>Cited answers in any channel or DM, using only what you can access.</p>
           </div>
           <div class="win" role="img" aria-label="Mock-up: Tesseract answering a question in a Slack channel, with quoted sources and a request-access button for locked documents.">
             <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span># platform</span></div>
             <div class="win-body">
-              <div class="msg in"><span class="av">KM</span><div><p class="who">Kai Moreno <time>2:14 PM</time></p><p>@Tesseract why does billing-service still go through the auth shim?</p></div></div>
+              <div class="msg in"><span class="av">KV</span><div><p class="who">Karthik Valluri <time>2:14 PM</time></p><p>@Tesseract why does billing-service still go through the auth shim?</p></div></div>
               <div class="msg in"><span class="av bot">T</span><div><p class="who">Tesseract <span class="tag">App</span> <time>2:14 PM</time></p>
                 <p><b>billing-service still reads tenant_id from the old claim, so auth-service rewrites it for billing webhooks until billing verifies tokens itself.</b></p>
-                <blockquote>&ldquo;Keep the compat shim until billing-service reads namespaced claims.&rdquo;<cite>SBX-10 &middot; Jira &middot; Priya Sharma</cite></blockquote>
+                <blockquote>&ldquo;Keep the compat shim until billing-service reads namespaced claims.&rdquo;<cite>SBX-10 &middot; Jira &middot; Dhruv Pendharkar</cite></blockquote>
               </div></div>
               <p class="lockline in"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"></rect><path d="M5.5 7V5a2.5 2.5 0 015 0v2"></path></svg> 2 related docs are owned by Legal. <span class="mini">Request access</span></p>
             </div>
@@ -648,7 +676,7 @@ footer.foot { padding-block: 0 26px; }
               <div class="side">
                 <p class="side-h">Tesseract <span class="mini primary">Check</span></p>
                 <div class="note warn in"><b>Contradicts</b><p>The exports webhook still reads the old claim, so removing the shim breaks it.</p><cite>SBX-14 &middot; Jira</cite></div>
-                <div class="note in"><b>Talk to</b><p>Priya Sharma owns the shim. Nathan Wu wrote it.</p><cite>auth-service &middot; CODEOWNERS</cite></div>
+                <div class="note in"><b>Talk to</b><p>Dhruv Pendharkar owns the shim. Ishan Sinha wrote it.</p><cite>auth-service &middot; CODEOWNERS</cite></div>
               </div>
             </div>
           </div>
@@ -692,8 +720,7 @@ footer.foot { padding-block: 0 26px; }
           </div>
         </div>
       </div>
-      <div class="demo-foot"><span>Mock-ups of our working prototypes &middot; sample data</span></div>
-    </div>
+          </div>
   </section>
 
   <!-- 4. Why us: the comparison, what we heard, who we are -->
@@ -727,7 +754,7 @@ footer.foot { padding-block: 0 26px; }
     </div>
         <div class="wrap why-more">
       <div id="team">
-        <h3>Built by engineers from</h3>
+        <h2>Built by engineers from</h2>
         <div class="exp-grid">
         <div class="exp"><b>Amazon</b><span>ML platforms</span></div>
         <div class="exp"><b>Tesla</b><span>Machine learning</span></div>
@@ -754,6 +781,21 @@ footer.foot { padding-block: 0 26px; }
   </div>
   <div class="wrap foot-in"><span>Tesseract</span><span>&copy; 2026 &middot; Ishan, Karthik, Hamilton and Dhruv</span></div>
 </footer>
+
+<!-- Schedule a call: mailto: does nothing without a mail app, so offer webmail, the app, and the address to copy -->
+<dialog class="call-dlg" id="callDlg" aria-labelledby="callTitle">
+  <form method="dialog" class="call-in">
+    <button class="call-x" value="close" aria-label="Close">&times;</button>
+    <h2 id="callTitle">Schedule a call</h2>
+    <p>Email us and we&rsquo;ll find a time that works.</p>
+    <div class="call-addr"><span id="callAddr"></span><button type="button" class="mini" id="callCopy">Copy</button></div>
+    <div class="call-opts">
+      <a class="btn btn-primary" id="callGmail" target="_blank" rel="noopener">Open in Gmail</a>
+      <a class="btn" id="callOutlook" target="_blank" rel="noopener">Open in Outlook</a>
+      <a class="btn" id="callApp">Use my mail app</a>
+    </div>
+  </form>
+</dialog>
 
 <script>
 (function () {
@@ -821,6 +863,7 @@ footer.foot { padding-block: 0 26px; }
 
   /* ---------------- hero: a living knowledge graph ---------------- */
   (function hero() {
+    if (document.querySelector(".hero").dataset.graph === "off") return;
     var canvas = document.getElementById("heroGraph"), tip = document.getElementById("heroTip");
     var TYPE = {
       team: { tok: "--n-team", label: "Team", r: 6.5 }, service: { tok: "--n-service", label: "Service", r: 5.5 },
@@ -836,11 +879,11 @@ footer.foot { padding-block: 0 26px; }
       ["search", "service", "search", "GitHub, Jira"], ["notify", "service", "notifications", "GitHub, Slack"],
       ["acme", "customer", "ACME Corp", "Zendesk, Outlook, Teams, SharePoint"], ["northwind", "customer", "Northwind", "Zendesk, Jira"],
       ["globex", "customer", "Globex", "Zendesk"], ["initech", "customer", "Initech", "Zendesk, Outlook"],
-      ["nathan", "person", "Nathan Wu", "GitHub, Jira, Slack"], ["emma", "person", "Emma Watson", "Outlook, Teams, Slack"],
-      ["priya", "person", "Priya Sharma", "SharePoint, Outlook"], ["diego", "person", "Diego Torres", "Slack, GitHub"],
+      ["nathan", "person", "Ishan Sinha", "GitHub, Jira, Slack"], ["emma", "person", "Hamilton Park", "Outlook, Teams, Slack"],
+      ["priya", "person", "Dhruv Pendharkar", "SharePoint, Outlook"], ["diego", "person", "Diego Torres", "Slack, GitHub"],
       ["lena", "person", "Lena Park", "Jira, GitHub"], ["omar", "person", "Omar Haddad", "Zendesk, Slack"],
       ["ravi", "person", "Ravi Menon", "GitHub, Slack"], ["ana", "person", "Ana Costa", "Jira, design docs"],
-      ["kai", "person", "Kai Moreno", "GitHub, Jira"], ["sara", "person", "Sara Lind", "Slack, Teams"],
+      ["kai", "person", "Karthik Valluri", "GitHub, Jira"], ["sara", "person", "Sara Lind", "Slack, Teams"],
       ["t3251", "ticket", "NEXE-3251", "Jira"], ["t218", "ticket", "PLAT-218", "Jira"], ["t77", "ticket", "PAY-77", "Jira"],
       ["t412", "ticket", "DATA-412", "Jira"], ["t530", "ticket", "SRCH-530", "Jira"], ["z4821", "ticket", "Support #4821", "Zendesk"],
       ["z4903", "ticket", "Support #4903", "Zendesk"], ["z5011", "ticket", "Support #5011", "Zendesk"],
@@ -981,15 +1024,18 @@ footer.foot { padding-block: 0 26px; }
   })();
 
   /* ---------------- how it works: the swarm ---------------- */
+  // the how-it-works section can be switched off with `hidden`; then nothing below sets it up
+  var howOn = !document.getElementById("how").hidden;
   var swarmCtl = (function swarm() {
+    if (!howOn) return { set: function () {} };
     var canvas = document.getElementById("swarm");
     var SRC = [["github", "GitHub"], ["jira", "Jira"], ["slack", "Slack"], ["docs", "Docs"], ["email", "Outlook"], ["teams", "Teams"]];
     var TT = { service: "--n-service", team: "--n-team", person: "--n-person", customer: "--n-customer", ticket: "--n-ticket", doc: "--n-doc" };
     var ENT = [
       ["billing", "service", "billing-service", ["github", "jira", "slack", "docs"]], ["gateway", "service", "api-gateway", ["github", "jira", "docs"]],
       ["export", "service", "legacy-exporter", ["github", "docs", "slack"]], ["platform", "team", "Platform team", ["jira", "slack", "docs"]],
-      ["legal", "team", "Legal", ["docs", "email"]], ["nathan", "person", "Nathan Wu", ["github", "jira", "slack"]],
-      ["emma", "person", "Emma Watson", ["email", "teams", "slack"]], ["priya", "person", "Priya Sharma", ["email", "docs"]],
+      ["legal", "team", "Legal", ["docs", "email"]], ["nathan", "person", "Ishan Sinha", ["github", "jira", "slack"]],
+      ["emma", "person", "Hamilton Park", ["email", "teams", "slack"]], ["priya", "person", "Dhruv Pendharkar", ["email", "docs"]],
       ["acme", "customer", "ACME Corp", ["email", "teams", "jira"]], ["ticket", "ticket", "NEXE-3251", ["jira", "slack", "github"]],
       ["contract", "doc", "Contract addendum", ["docs", "email"]], ["renewal", "doc", "Renewal prep", ["teams"]]
     ];
@@ -1150,13 +1196,15 @@ footer.foot { padding-block: 0 26px; }
         return h <= room ? "center " + (72 + room / 2) + "px" : "top 64px";
       };
     }
-    var swarmST = ST.create({
-      trigger: "#swarmPin", start: centredStart("#swarmPin"), end: "+=260%", pin: true, scrub: true, invalidateOnRefresh: true,
-      onUpdate: function (self) { var raw = self.progress * 4.4; story(clamp(raw, 0, 4), raw, 4.4); }
-    });
-    caps.forEach(function (c, i) {
-      c.addEventListener("click", function () { scrollTo(swarmST.start + (swarmST.end - swarmST.start) * Math.min(0.99, (i + 0.85) / 4.4)); });
-    });
+    if (howOn) {
+      var swarmST = ST.create({
+        trigger: "#swarmPin", start: centredStart("#swarmPin"), end: "+=260%", pin: true, scrub: true, invalidateOnRefresh: true,
+        onUpdate: function (self) { var raw = self.progress * 4.4; story(clamp(raw, 0, 4), raw, 4.4); }
+      });
+      caps.forEach(function (c, i) {
+        c.addEventListener("click", function () { scrollTo(swarmST.start + (swarmST.end - swarmST.start) * Math.min(0.99, (i + 0.85) / 4.4)); });
+      });
+    }
     // integrations: the panel rises and settles to full size
     gsap.fromTo("#int", { scale: 0.9, y: 60, opacity: 0.6 }, { scale: 1, y: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: "#int", start: "top 95%", end: "top 35%", scrub: true } });
     gsap.utils.toArray(".quote").forEach(function (q) {
@@ -1180,6 +1228,28 @@ footer.foot { padding-block: 0 26px; }
       requestAnimationFrame(tick);
     })(performance.now());
   }
+
+  /* ---------------- schedule a call ---------------- */
+  (function call() {
+    var dlg = document.getElementById("callDlg");
+    if (!dlg || typeof dlg.showModal !== "function") return;   // old browsers keep the plain mailto: link
+    var TO = "ishan.tesseract@gmail.com", SUBJECT = "Call with Tesseract",
+        BODY = "Hi Tesseract team,\n\nWe'd like to schedule a call. Here are a few times that work for us:\n\n";
+    var q = encodeURIComponent;
+    document.getElementById("callAddr").textContent = TO;
+    document.getElementById("callGmail").href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + q(TO) + "&su=" + q(SUBJECT) + "&body=" + q(BODY);
+    document.getElementById("callOutlook").href = "https://outlook.office.com/mail/deeplink/compose?to=" + q(TO) + "&subject=" + q(SUBJECT) + "&body=" + q(BODY);
+    document.getElementById("callApp").href = "mailto:" + TO + "?subject=" + q(SUBJECT) + "&body=" + q(BODY);
+    var copy = document.getElementById("callCopy");
+    copy.addEventListener("click", function () {
+      function done() { copy.textContent = "Copied"; setTimeout(function () { copy.textContent = "Copy"; }, 1600); }
+      if (navigator.clipboard) navigator.clipboard.writeText(TO).then(done, function () {});
+    });
+    dlg.addEventListener("click", function (ev) { if (ev.target === dlg) dlg.close(); });   // click outside the box closes it
+    document.querySelectorAll("a.call").forEach(function (a) {
+      a.addEventListener("click", function (ev) { ev.preventDefault(); dlg.showModal(); });
+    });
+  })();
 
   /* ---------------- integrations: tabs over the mock-ups ---------------- */
   (function integrations() {
