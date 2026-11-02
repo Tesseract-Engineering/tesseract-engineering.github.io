@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tesseract</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Tesseract connects every tool your team uses into one living map, answers with the evidence behind every line, and acts only with your permission.">
+<meta name="description" content="Enterprise knowledge infrastructure tuned to your company. Tesseract maps your people, projects and decisions into a knowledge graph in your own cloud, then builds it into Slack, Docs, meetings and support.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -283,51 +283,18 @@ p { margin: 0; }
 .demo-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; color: var(--muted); font: 400 0.6875rem/1.5 var(--f-mono); }
 .demo-foot .btn { padding: 10px 15px; font-size: 0.8125rem; }
 
-/* why: a row of cards you swipe or step through sideways; the page never stops scrolling */
-.why-sec { overflow: hidden; }
-.why-pin { display: grid; grid-template-columns: minmax(0, 1fr); padding-block: clamp(32px, 4vw, 56px); }
-.why-head { margin-bottom: 36px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
-.why-nav { display: flex; gap: 10px; flex: none; }
-.why-nav button {
-  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
-  border: 1px solid var(--line-2); background: transparent; color: var(--ink); font: 400 1.125rem/1 var(--f-body);
-  transition: background-color 0.2s ease, opacity 0.2s ease;
-}
-.why-nav button:hover:not(:disabled) { background: var(--panel-2); }
-.why-nav button:disabled { opacity: 0.3; cursor: default; }
-.track {
-  display: flex; gap: 20px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
-  padding-left: max(20px, calc((100vw - 1240px) / 2 + 20px)); padding-right: 20px;
-  scroll-padding-left: max(20px, calc((100vw - 1240px) / 2 + 20px));
-}
-.track::-webkit-scrollbar { display: none; }
-.track::after { content: ""; flex: none; width: 1px; }
+/* why us: six principles in a grid */
+.why-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .card {
-  scroll-snap-align: start;
-  flex: none; width: min(340px, 80vw); min-height: 280px; border: 1px solid var(--line); border-radius: 22px;
-  background: var(--panel); padding: 30px; display: flex; flex-direction: column; gap: 18px;
-  position: relative; overflow: hidden;
+  border: 1px solid var(--line); border-radius: 22px; background: var(--panel); padding: 28px;
+  display: flex; flex-direction: column; gap: 14px; min-width: 0;
 }
-
 .card .ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: transparent; border: 1px solid var(--line-2); color: var(--ink); }
 .card .ico svg { width: 22px; height: 22px; }
-.card h3 { font-size: 1.5rem; font-weight: 500; letter-spacing: -0.015em; line-height: 1.12; }
-.card p { color: var(--muted); }
-.vs { margin: auto 0 0; display: grid; gap: 8px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 0.875rem; }
-.vs div { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 10px; }
-.vs dt { font: 500 0.625rem/1.6 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.vs dd { margin: 0; color: var(--muted); }
-.vs .us dt { color: var(--glow); }
-.vs .us dd { color: var(--ink); }
-/* the lead card says who it's for, so it reads differently from the comparison cards */
-.card-lead { width: min(440px, 84vw); background: var(--panel-2); border-color: var(--line-2); }
-.card-lead .kicker { font: 500 0.625rem/1 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-.card-lead .vs div { grid-template-columns: 116px minmax(0, 1fr); }
-@media (max-width: 900px) {
-  .track { padding-left: 20px; scroll-padding-left: 20px; }
-  .card { min-height: 0; }
-  .why-nav { display: none; }
-}
+.card h3 { font-size: 1.375rem; font-weight: 500; letter-spacing: -0.015em; line-height: 1.15; }
+.card p { color: var(--muted); font-size: 0.9688rem; line-height: 1.55; }
+@media (max-width: 1000px) { .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .why-grid { grid-template-columns: minmax(0, 1fr); } .card { padding: 22px; } }
 
 /* heard */
 .quotes { display: grid; gap: clamp(48px, 7vw, 96px); }
@@ -439,6 +406,119 @@ h1.ph, h2.ph, h3.ph { font-size: clamp(1.5rem, 1rem + 1.6vw, 2.4rem); line-heigh
 .final h2.ph { font-size: clamp(1.5rem, 1rem + 1.6vw, 2.4rem); max-width: 26ch; line-height: 1.2; }
 footer.foot { padding-block: 0 26px; }
 .foot-in { border-top: 1px solid var(--line); padding-top: 26px; }
+
+/* how it works, steps 3 and 4: the Forge prompt and the tools, layered over the graph */
+.swarm-frame canvas { transform-origin: 50% 50%; }
+.forge {
+  position: absolute; left: 50%; top: 50%; width: min(86%, 420px); transform: translate(-50%, -50%);
+  border: 1px solid var(--line-2); border-radius: 16px; background: rgba(15, 16, 18, 0.94); padding: 16px;
+  display: grid; gap: 12px; opacity: 0; pointer-events: none; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+}
+.forge-h { font: 500 0.6875rem/1 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--glow); display: flex; align-items: center; gap: 8px; }
+.forge-h::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--glow); }
+.forge-ask { background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: 0.875rem; line-height: 1.5; min-height: 4.1em; }
+.caret { display: inline-block; width: 1px; height: 1em; background: var(--ink); vertical-align: -2px; margin-left: 1px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.forge-out { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.forge-out li {
+  display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 0 10px; font-size: 0.8125rem; line-height: 1.4;
+  opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.forge-out li::before { content: "\2713"; color: var(--ok); grid-row: span 2; }
+.forge-out li span { color: var(--muted); }
+.forge-out li.on { opacity: 1; transform: none; }
+.tools { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.wires { position: absolute; inset: 0; width: 100%; height: 100%; }
+.wires path { fill: none; stroke: var(--glow); stroke-opacity: 0.45; stroke-width: 1; stroke-dasharray: 3 4; vector-effect: non-scaling-stroke; animation: flow 1.2s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -14; } }
+.tool {
+  position: absolute; width: 41%; border: 1px solid var(--line-2); border-radius: 12px; background: var(--panel);
+  padding: 10px 12px; display: grid; gap: 4px; font-size: 0.8125rem; line-height: 1.35;
+}
+.tool b { font: 500 0.625rem/1.3 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--glow); }
+.tool span { font: 400 0.6875rem/1.4 var(--f-mono); color: var(--muted); }
+.t1 { left: 5%; top: 6%; } .t2 { right: 5%; top: 6%; } .t3 { left: 5%; bottom: 10%; } .t4 { right: 5%; bottom: 10%; }
+@media (max-width: 900px) {
+  .forge { padding: 12px; gap: 8px; }
+  .forge-ask { font-size: 0.8125rem; min-height: 0; }
+  .forge-out li span { display: none; }
+  .forge-out li::before { grid-row: auto; }
+  .tool { padding: 8px 9px; font-size: 0.75rem; }
+  .tool span { display: none; }
+}
+
+/* integrations: tabs over mock-ups of the working prototypes */
+.int-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(24px, 3vw, 36px); }
+.int-tabs button {
+  font: 500 0.875rem/1 var(--f-body); color: var(--muted); background: transparent; cursor: pointer;
+  border: 1px solid var(--line-2); border-radius: 999px; padding: 11px 16px;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.int-tabs button:hover { color: var(--ink); }
+.int-tabs button[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.int-panel { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.int-copy { display: grid; gap: 16px; align-content: start; }
+.int-copy h3 { font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.1rem); }
+.int-copy p { color: var(--muted); line-height: 1.6; }
+.win {
+  border: 1px solid var(--line-2); border-radius: 18px; background: var(--panel); overflow: hidden; min-height: 440px;
+  display: flex; flex-direction: column; box-shadow: 0 50px 100px -50px rgba(0, 0, 0, 0.8);
+}
+.win-bar { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--line); background: var(--bg-2); font: 500 0.75rem/1.3 var(--f-mono); color: var(--muted); min-width: 0; }
+.win-bar > span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.win-body { padding: clamp(16px, 2.4vw, 26px); display: grid; gap: 14px; align-content: start; flex: 1; font-size: 0.9375rem; line-height: 1.5; min-width: 0; }
+.win blockquote { margin: 0; padding: 2px 0 2px 12px; border-left: 2px solid var(--line-2); }
+.win cite { display: block; margin-top: 4px; font: 400 0.6875rem/1.5 var(--f-mono); font-style: normal; color: var(--glow); }
+.in { transition: opacity 0.45s ease, transform 0.45s ease; }
+.in.pending { opacity: 0; transform: translateY(8px); }
+.msg { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; }
+.msg > div { display: grid; gap: 8px; min-width: 0; }
+.av { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; background: var(--panel-2); border: 1px solid var(--line-2); font: 600 0.75rem/1 var(--f-body); }
+.av.bot { background: var(--ink); border-color: var(--ink); color: var(--bg); font-family: var(--f-display); font-size: 1rem; }
+.who { font-weight: 600; font-size: 0.875rem; }
+.who time { margin-left: 6px; color: var(--muted); font-weight: 400; font-size: 0.75rem; }
+.tag { margin-left: 4px; padding: 3px 5px; border-radius: 4px; background: var(--panel-2); color: var(--muted); font: 500 0.5625rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 2px; }
+.lockline { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; color: var(--muted); font-size: 0.875rem; padding-left: 46px; }
+.lockline svg { width: 14px; height: 14px; }
+.mini { display: inline-flex; align-items: center; padding: 7px 11px; border-radius: 8px; border: 1px solid var(--line-2); font: 600 0.75rem/1 var(--f-body); color: var(--ink); }
+.mini.primary { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.ctx { font: 400 0.6875rem/1.5 var(--f-mono); color: var(--muted); }
+.msg ~ .ctx { padding-left: 46px; }
+.doc { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0; padding: 0; }
+.page { padding: clamp(16px, 2.4vw, 26px); display: grid; gap: 12px; align-content: start; }
+.doc-h { font: 500 1.125rem/1.3 var(--f-display); }
+.page mark { background: rgba(138, 148, 255, 0.22); color: var(--ink); border-radius: 3px; padding: 1px 2px; }
+.bar { display: block; height: 8px; border-radius: 4px; background: var(--panel-2); }
+.bar.short { width: 60%; }
+.side { border-left: 1px solid var(--line); background: var(--bg-2); padding: 16px; display: grid; gap: 10px; align-content: start; }
+.side-h { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 0.875rem; }
+.note { border: 1px solid var(--line); border-radius: 12px; padding: 11px 12px; background: var(--panel); display: grid; gap: 4px; font-size: 0.8125rem; line-height: 1.45; }
+.note b { font: 500 0.625rem/1.4 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.note.warn b { color: var(--signal); }
+.live { display: inline-flex; align-items: center; gap: 8px; font: 500 0.6875rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--signal); }
+.live i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: blink 1.6s ease-in-out infinite; }
+.tx { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 12px; }
+.tx b { font: 500 0.75rem/1.9 var(--f-mono); color: var(--muted); font-weight: 500; }
+.askbox { justify-self: end; max-width: 85%; background: var(--panel-2); border: 1px solid var(--line); border-radius: 14px 14px 4px 14px; padding: 10px 14px; font-weight: 500; }
+.ans { border: 1px solid var(--line-2); border-radius: 12px; padding: 14px; display: grid; gap: 6px; background: var(--bg-2); }
+.desk { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr); gap: 0; padding: 0; }
+.tlist { list-style: none; margin: 0; padding: 10px; border-right: 1px solid var(--line); background: var(--bg-2); display: grid; gap: 4px; align-content: start; }
+.tlist li { padding: 10px; border-radius: 10px; font-size: 0.8125rem; color: var(--muted); line-height: 1.4; }
+.tlist li b { display: block; font: 500 0.6875rem/1.5 var(--f-mono); }
+.tlist li.on { background: var(--panel-2); color: var(--ink); }
+.tdetail { padding: clamp(16px, 2.4vw, 22px); display: grid; gap: 14px; align-content: start; min-width: 0; }
+.draft { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 6px; background: var(--panel-2); }
+.acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.acts > span:last-child { font: 400 0.6875rem/1.4 var(--f-mono); color: var(--muted); margin-left: 4px; }
+.int .demo-foot, .int + .demo-foot { margin-top: 18px; }
+@media (max-width: 900px) { .int-panel { grid-template-columns: minmax(0, 1fr); } .win { min-height: 0; } }
+@media (max-width: 620px) {
+  .doc, .desk { grid-template-columns: minmax(0, 1fr); }
+  .side { border-left: 0; border-top: 1px solid var(--line); }
+  .tlist { display: none; }
+  .lockline, .msg ~ .ctx { padding-left: 0; }
+  .tx { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
 </style>
 </head>
 <body>
@@ -451,7 +531,7 @@ footer.foot { padding-block: 0 26px; }
     Tesseract
   </a>
   <nav aria-label="Sections">
-    <a href="#how">How it works</a><a href="#product">Product</a><a href="#why">Why us</a>
+    <a href="#how">How it works</a><a href="#integrations">Integrations</a><a href="#why">Why us</a>
   </nav>
   <a class="btn btn-primary" href="#access">Request a demo <span class="arr" aria-hidden="true">&rarr;</span></a>
 </header>
@@ -465,11 +545,11 @@ footer.foot { padding-block: 0 26px; }
     <div class="tip" id="heroTip" hidden></div>
     <div class="wrap">
       <div class="hero-copy" id="heroCopy">
-        <h1>Your company already knows the answer.</h1>
-        <p class="lede">One living map of everything your company knows. Cited answers, and actions that run only with your approval.</p>
+        <h1>Your company&rsquo;s brain, built into the tools you already use.</h1>
+        <p class="lede">Tesseract sends AI agents through your tools to build a knowledge graph of your people, projects and decisions, in your own cloud. Then it works where your team does: Slack, Docs, meetings and support.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#access">Request a demo <span class="arr" aria-hidden="true">&rarr;</span></a>
-          <a class="btn" href="#product">Watch it answer</a>
+          <a class="btn" href="#how">See how it works</a>
         </div>
       </div>
     </div>
@@ -492,106 +572,179 @@ footer.foot { padding-block: 0 26px; }
     <div class="swarm-pin" id="swarmPin">
       <div class="wrap swarm-grid">
         <div class="swarm-copy">
-          <h2>Agents read everything. One map connects it.</h2>
+          <h2>Agents map your company. Forge puts it to work.</h2>
           <ol class="caps" id="caps">
-            <li><button class="cap on" type="button" data-step="0"><span class="n">01</span><strong>Agents fan out</strong><span class="d">Agents read every tool your team already uses.</span></button></li>
-            <li><button class="cap" type="button" data-step="1"><span class="n">02</span><strong>Islands of knowledge</strong><span class="d">Each source becomes an island of facts: owners, decisions, dependencies.</span></button></li>
-            <li><button class="cap" type="button" data-step="2"><span class="n">03</span><strong>The linking layer</strong><span class="d">The same thing in a PR, a Slack thread and a doc gets stitched together.</span></button></li>
-            <li><button class="cap" type="button" data-step="3"><span class="n">04</span><strong>One living map</strong><span class="d">One map of your company. Every link traceable to its source.</span></button></li>
+            <li><button class="cap on" type="button" data-step="0"><span class="n">01</span><strong>Agents fan out</strong><span class="d">Agents search the tools your teams authorize, inside containers that keep your data in.</span></button></li>
+            <li><button class="cap" type="button" data-step="1"><span class="n">02</span><strong>The graph builds itself</strong><span class="d">Every person, ticket, PR, thread and doc becomes a node, every link between them an edge, each traced to its source and permissions.</span></button></li>
+            <li><button class="cap" type="button" data-step="2"><span class="n">03</span><strong>Tell Forge where you work</strong><span class="d">Name the tools your team lives in. Forge builds the integrations on top of the graph.</span></button></li>
+            <li><button class="cap" type="button" data-step="3"><span class="n">04</span><strong>Tesseract, inside your tools</strong><span class="d">Answers show up in Slack, Docs, meetings and support, with everyone&rsquo;s access intact.</span></button></li>
           </ol>
         </div>
         <figure class="swarm-frame">
-          <canvas id="swarm" role="img" aria-label="Animation: agents fan out to GitHub, Jira, Slack, docs, Outlook and Teams, build islands of knowledge, and a linking layer merges them into one map."></canvas>
+          <canvas id="swarm" role="img" aria-label="Animation: agents fan out to GitHub, Jira, Slack, docs, Outlook and Teams and build one knowledge graph; a team asks Forge to build Tesseract into Slack, Google Docs, Zoom and Zendesk; the graph then answers inside each of those tools."></canvas>
+          <div class="forge" id="forgeCard" aria-hidden="true">
+            <p class="forge-h">Forge</p>
+            <p class="forge-ask"><span id="forgeType"></span><i class="caret"></i></p>
+            <ul class="forge-out">
+              <li><b>Slack bot</b><span>Answers in DMs and channels</span></li>
+              <li><b>Google Docs add-in</b><span>Checks design docs before review</span></li>
+              <li><b>Meeting assistant</b><span>Context during live calls</span></li>
+              <li><b>Support desk</b><span>Cited replies, sent on approval</span></li>
+            </ul>
+          </div>
+          <div class="tools" id="toolsLayer" aria-hidden="true">
+            <svg class="wires" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 50L26 24"></path><path d="M50 50L74 24"></path><path d="M50 50L26 76"></path><path d="M50 50L74 76"></path></svg>
+            <div class="tool t1"><b>Slack</b><p>Who owns billing-service?</p><span>Platform team &middot; Nathan Wu</span></div>
+            <div class="tool t2"><b>Google Docs</b><p>This contradicts a decision in SBX-14</p><span>3 notes, all cited</span></div>
+            <div class="tool t3"><b>Meetings</b><p>Export limits were raised once, then rolled back</p><span>INC-12 &middot; on screen</span></div>
+            <div class="tool t4"><b>Support</b><p>Seen before in TD-087. Reply drafted</p><span>Waiting for approval</span></div>
+          </div>
           <div class="swarm-bar" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- 3. Product -->
-  <section class="chapter" id="product">
+  <!-- 3. Integrations -->
+  <section class="chapter" id="integrations">
     <div class="wrap">
       <div class="chapter-head">
-        <h2>Ask a question. Get a decision you can check.</h2>
-        <p>Switch between Engineer and Customer success to see the same question answered with each person&rsquo;s access.</p>
+        <h2>Built into the tools your team already uses.</h2>
+        <p>Forge, our integration platform, turns the graph into the tools your employees actually want. Integrations share the same patterns, so they ship quickly and your own engineers can extend them without outside contractors.</p>
       </div>
-      <div class="demo" id="demo">
-        <div class="demo-bar">
-          <div class="who"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="avatar" id="demoAvatar">KM</span><span id="demoWho">Kai Moreno · Engineering</span></div>
-          <div class="seg" role="group" aria-label="Signed in as">
-            <button type="button" data-viewer="eng" aria-pressed="true">Engineer</button>
-            <button type="button" data-viewer="csm" aria-pressed="false">Customer success</button>
+      <div class="int" id="int">
+        <div class="int-tabs" role="tablist" aria-label="Integrations">
+          <button type="button" role="tab" id="tab-slack" aria-controls="p-slack" aria-selected="true">Slack</button>
+          <button type="button" role="tab" id="tab-docs" aria-controls="p-docs" aria-selected="false" tabindex="-1">Google Docs</button>
+          <button type="button" role="tab" id="tab-meet" aria-controls="p-meet" aria-selected="false" tabindex="-1">Meetings</button>
+          <button type="button" role="tab" id="tab-desk" aria-controls="p-desk" aria-selected="false" tabindex="-1">Support</button>
+        </div>
+
+        <div class="int-panel" role="tabpanel" id="p-slack" aria-labelledby="tab-slack">
+          <div class="int-copy">
+            <h3>Ask in Slack. Get an answer as you.</h3>
+            <p>DM Tesseract or @mention it in a channel. It answers from the graph with your access, quotes its sources word for word, and names the owner of anything you can&rsquo;t open.</p>
+          </div>
+          <div class="win" role="img" aria-label="Mock-up: Tesseract answering a question in a Slack channel, with quoted sources and a request-access button for locked documents.">
+            <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span># platform</span></div>
+            <div class="win-body">
+              <div class="msg in"><span class="av">KM</span><div><p class="who">Kai Moreno <time>2:14 PM</time></p><p>@Tesseract why does billing-service still go through the auth shim?</p></div></div>
+              <div class="msg in"><span class="av bot">T</span><div><p class="who">Tesseract <span class="tag">App</span> <time>2:14 PM</time></p>
+                <p><b>billing-service still reads tenant_id from the old claim, so auth-service rewrites it for billing webhooks until billing verifies tokens itself.</b></p>
+                <blockquote>&ldquo;Keep the compat shim until billing-service reads namespaced claims.&rdquo;<cite>SBX-10 &middot; Jira &middot; Priya Sharma</cite></blockquote>
+                <blockquote>&ldquo;Rewrite tenant_id for the billing-webhooks audience only.&rdquo;<cite>PR #214 &middot; auth-service &middot; Nathan Wu</cite></blockquote>
+              </div></div>
+              <p class="lockline in"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"></rect><path d="M5.5 7V5a2.5 2.5 0 015 0v2"></path></svg> 2 related docs are owned by Legal. <span class="mini">Request access</span></p>
+              <p class="ctx in">Answered with Kai&rsquo;s access &middot; nothing he can&rsquo;t open is quoted</p>
+            </div>
           </div>
         </div>
-        <div class="demo-body">
-          <div class="demo-main">
-            <div class="ask"><p id="demoQ">I want to work on a continuous retraining pipeline. Can you help me architect this system?</p></div>
-            <div class="verdict-row"><span class="pill good" id="demoVerdict">Already built here: reuse it</span><span class="access" id="demoAccess">Using Kai's access</span></div>
-            <ul class="lines" id="demoLines"></ul>
-            <div id="demoArch"></div>
-            <div><p class="block-label">Who to talk to</p><ul class="people" id="demoPeople"></ul></div>
-            <section class="approvals" aria-label="Needs your approval">
-              <header>Needs your approval <span id="demoPending">3 pending</span></header>
-              <div id="demoActs"></div>
-            </section>
+
+        <div class="int-panel" role="tabpanel" id="p-docs" aria-labelledby="tab-docs" hidden>
+          <div class="int-copy">
+            <h3>Check a design doc before review.</h3>
+            <p>Select a passage in Google Docs and press Check. Tesseract shows what it contradicts, what went wrong last time, what was already decided and who to talk to, every claim cited.</p>
           </div>
-          <aside class="demo-rail" aria-label="Sources">
-            <p class="block-label">Sources</p>
-            <div id="demoSources" style="display:grid;gap:10px"></div>
-          </aside>
+          <div class="win" role="img" aria-label="Mock-up: a Google Docs design document with a highlighted passage and the Tesseract sidebar listing a contradiction, a past incident and who to talk to.">
+            <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span>Design: billing-service verifies OIDC tokens directly</span></div>
+            <div class="win-body doc">
+              <div class="page">
+                <p class="doc-h">2. Proposal</p>
+                <p>billing-service will verify OIDC ID tokens itself and read the namespaced claims. <mark>Once it ships, we delete the compatibility shim in auth-service.</mark> Rollout is a single release.</p>
+                <span class="bar"></span><span class="bar"></span><span class="bar short"></span>
+              </div>
+              <div class="side">
+                <p class="side-h">Tesseract <span class="mini primary">Check</span></p>
+                <div class="note warn in"><b>Contradicts</b><p>The exports webhook still reads the old claim, so removing the shim breaks it.</p><cite>SBX-14 &middot; Jira</cite></div>
+                <div class="note in"><b>Last time</b><p>A claim rename in March took billing webhooks down for 40 minutes.</p><cite>INC-7 &middot; postmortem</cite></div>
+                <div class="note in"><b>Talk to</b><p>Priya Sharma owns the shim. Nathan Wu wrote it.</p><cite>auth-service &middot; CODEOWNERS</cite></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="int-panel" role="tabpanel" id="p-meet" aria-labelledby="tab-meet" hidden>
+          <div class="int-copy">
+            <h3>Context in the meeting, while it&rsquo;s happening.</h3>
+            <p>Once the host confirms everyone on the call knows, Tesseract follows along. Ask about what was just said and the answer appears on screen, quoting only what everyone on the call is allowed to read.</p>
+          </div>
+          <div class="win" role="img" aria-label="Mock-up: a live call transcript, a question asked to Tesseract, and a cited answer shown to everyone on the call.">
+            <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span>Platform sync &middot; live</span></div>
+            <div class="win-body">
+              <p class="live in"><i></i>Transcribing &middot; everyone on the call was told</p>
+              <div class="tx in"><b>Hamilton</b><p>Can we just raise the export limit for Initech this week?</p></div>
+              <div class="tx in"><b>Priya</b><p>I think we tried that before. Not sure how it went.</p></div>
+              <p class="askbox in">What happened last time we raised export limits?</p>
+              <div class="ans in"><p><b>Raised for ACME in August, rolled back two days later: legacy-exporter ran out of memory on large tenants.</b></p><cite>INC-12 &middot; postmortem &middot; Platform team</cite><p class="ctx">On the shared screen, so it quotes only what everyone here can read</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="int-panel" role="tabpanel" id="p-desk" aria-labelledby="tab-desk" hidden>
+          <div class="int-copy">
+            <h3>Support replies that know the history.</h3>
+            <p>For each ticket, an agent finds the earlier ticket, incident or thread with the same symptom, the fix and who owns it, then drafts a cited reply. Nothing is sent until a person approves it.</p>
+          </div>
+          <div class="win" role="img" aria-label="Mock-up: a support inbox where Tesseract recognises a repeat ticket, cites the earlier fix and drafts a reply waiting for approval.">
+            <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span>Support &middot; inbox</span></div>
+            <div class="win-body desk">
+              <ul class="tlist">
+                <li class="on"><b>TD-104</b>Soylent &middot; 429s on the public API</li>
+                <li><b>TD-113</b>Initech &middot; SSO login loops</li>
+                <li><b>TD-101</b>ACME &middot; export times out</li>
+              </ul>
+              <div class="tdetail">
+                <p class="in"><span class="pill good">Seen before: TD-087</span></p>
+                <p class="in">Same symptom as TD-087: the per-tenant rate limit on api-gateway. Fixed in PR #31 by raising the burst for batch clients. Owner: Nathan Wu.</p>
+                <div class="draft in"><p class="block-label">Draft reply</p><p>Hi Soylent team, this matches a known limit on batch traffic. The fix from PR #31 applies to your workspace, and retries should succeed once it&rsquo;s rolled out.</p></div>
+                <div class="acts in"><span class="mini primary">Approve</span><span class="mini">Edit</span><span>Nothing is sent until you approve</span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="demo-foot">
-        <span>Sample company · synthetic data · a mock-up of the real interface</span>
-        <button class="btn" type="button" id="demoReplay">Replay the question</button>
-      </div>
+      <div class="demo-foot"><span>Sample company &middot; synthetic data &middot; mock-ups of our working prototypes</span></div>
     </div>
   </section>
 
   <!-- 4. Why us: the comparison, what we heard, who we are -->
-  <section class="why-sec" id="why">
-    <div class="why-pin" id="whyPin">
-      <div class="wrap why-head">
-        <div class="chapter-head" style="margin-bottom:0">
-          <h2>Others give you context. We give you a verdict.</h2>
-        </div>
-        <div class="why-nav">
-          <button type="button" id="whyPrev" aria-label="Previous">&larr;</button>
-          <button type="button" id="whyNext" aria-label="Next">&rarr;</button>
-        </div>
+  <section class="chapter why-sec" id="why">
+    <div class="wrap">
+      <div class="chapter-head">
+        <h2>Secure by design. Yours to extend.</h2>
+        <p>Tesseract runs where your data already lives, works with the models you already pay for, and never shows anyone more than they could already open.</p>
       </div>
-      <div class="track" id="track">
-        <article class="card card-lead">
-          <span class="kicker">Who it's for</span>
-          <h3>Every team. Especially the ones without engineers.</h3>
-          <p>Engineers can dig through code and tickets. Legal, compliance and operations teams can&rsquo;t, so they wait on someone who can.</p>
-          <dl class="vs"><div><dt>Technical</dt><dd>Find what&rsquo;s already been built</dd></div><div class="us"><dt>Non-technical</dt><dd>The same answers, in plain language</dd></div></dl>
-        </article>
-        <article class="card">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12l5 5L20 6"></path></svg></span>
-          <h3>A verdict, not a pile of documents</h3>
-          <dl class="vs"><div><dt>Others</dt><dd>A list of documents to read</dd></div><div class="us"><dt>Tesseract</dt><dd>A decision you can act on</dd></div></dl>
-        </article>
-        <article class="card">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 7h10M7 12h10M7 17h6"></path><rect x="3" y="3" width="18" height="18" rx="3"></rect></svg></span>
-          <h3>Every line has a source</h3>
-          <dl class="vs"><div><dt>Others</dt><dd>Often unclear where it came from</dd></div><div class="us"><dt>Tesseract</dt><dd>Cited, line by line</dd></div></dl>
-        </article>
-        <article class="card">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 018 0v3"></path></svg></span>
-          <h3>It tells you what you can&rsquo;t see</h3>
-          <dl class="vs"><div><dt>Others</dt><dd>Hidden, or at risk of leaking</dd></div><div class="us"><dt>Tesseract</dt><dd>Named, with its owner</dd></div></dl>
-        </article>
-        <article class="card">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5M9 9l4 4M13 9l-4 4"></path></svg></span>
-          <h3>It says when it doesn&rsquo;t know</h3>
-          <dl class="vs"><div><dt>Others</dt><dd>May guess</dd></div><div class="us"><dt>Tesseract</dt><dd>Says so, and shows its search</dd></div></dl>
-        </article>
-        <article class="card">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 13V5.5a1.5 1.5 0 013 0V11m0-1.5a1.5 1.5 0 013 0V11m0-.5a1.5 1.5 0 013 0V15a6 6 0 01-6 6h-1a6 6 0 01-5-2.7L3.6 15a1.5 1.5 0 012.4-1.8L8 15"></path></svg></span>
-          <h3>Hands, with your approval</h3>
-          <dl class="vs"><div><dt>Others</dt><dd>Up to you, or no review</dd></div><div class="us"><dt>Tesseract</dt><dd>Approved, executed, receipted</dd></div></dl>
-        </article>
+      <div class="why-grid">
+          <article class="card">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 18h10a4 4 0 00.6-7.95A6 6 0 006.3 9.2 4.4 4.4 0 007 18z"></path></svg></span>
+            <h3>Runs in your own cloud</h3>
+            <p>The graph lives in your cloud, not ours. Your company data is never exposed to our platform.</p>
+          </article>
+          <article class="card">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"></rect><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"></path></svg></span>
+            <h3>Any model you choose</h3>
+            <p>Anthropic, OpenAI, or any model through OpenRouter. Use what you already pay for, with no lock-in.</p>
+          </article>
+          <article class="card">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"></path></svg></span>
+            <h3>Only what you authorize</h3>
+            <p>Agents read only the sources your teams approve, inside containers that block leaks.</p>
+          </article>
+          <article class="card">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 018 0v3"></path></svg></span>
+            <h3>Permissions, at every step</h3>
+            <p>Every answer is built from what the person asking can already open. Anything locked is named with its owner, never shown.</p>
+          </article>
+          <article class="card">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 7h10M7 12h10M7 17h6"></path><rect x="3" y="3" width="18" height="18" rx="3"></rect></svg></span>
+            <h3>Every claim has a source</h3>
+            <p>Every node and edge traces back to where it came from, so every answer can be checked.</p>
+          </article>
+          <article class="card">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 13V5.5a1.5 1.5 0 013 0V11m0-1.5a1.5 1.5 0 013 0V11m0-.5a1.5 1.5 0 013 0V15a6 6 0 01-6 6h-1a6 6 0 01-5-2.7L3.6 15a1.5 1.5 0 012.4-1.8L8 15"></path></svg></span>
+            <h3>Nothing happens without approval</h3>
+            <p>Replies, posts, tickets and pull requests wait for a person to approve them.</p>
+          </article>
       </div>
     </div>
     <div class="wrap why-more">
@@ -606,77 +759,31 @@ footer.foot { padding-block: 0 26px; }
       <div id="team">
         <h3>Built by engineers from</h3>
         <div class="exp-grid">
+        <div class="exp"><b>Amazon</b><span>ML platforms</span></div>
         <div class="exp"><b>Tesla</b><span>Machine learning</span></div>
-        <div class="exp"><b>Amazon</b><span>Software engineering</span></div>
         <div class="exp"><b>Applied Materials</b><span>Data engineering</span></div>
-        <div class="exp"><b>Sephora</b><span>Machine learning</span></div>
-        <div class="exp"><b>OpenMind</b><span>Growth engineering</span></div>
+        <div class="exp"><b>Sephora</b><span>Recommender systems</span></div>
+        <div class="exp"><b>OpenMind</b><span>Product and growth</span></div>
         <div class="exp"><b>Berkeley AI Research</b><span>Research</span></div>
       </div>
-        <p class="exp-foot">Four founders studying data science, computer science, statistics and math at UC Berkeley.</p>
+        <p class="exp-foot">Four friends who met freshman year in a Berkeley data science club, now building Tesseract full time.</p>
       </div>
     </div>
   </section>
 
-  <!-- Founder cards, switched off for now. To bring them back, delete this comment wrapper
-       (the CSS and the hover script are still in the page).
-  <section class="chapter" id="team" style="padding-top:0">
-    <div class="wrap">
-      <div class="chapter-head">
-        <p class="eyebrow">Founders</p>
-        <h2>The team.</h2>
-      </div>
-      <div class="team" id="team-grid">
-        <article class="founder" data-who="ishan" tabindex="0">
-          <div class="face" aria-hidden="true">IS</div>
-          <div><h3>Ishan Sinha</h3><p class="role">Co-founder</p></div>
-          <div class="school"><b>UC Berkeley</b><span>Data Science and Statistics · Junior</span></div>
-        </article>
-        <article class="founder" data-who="karthik" tabindex="0">
-          <div class="face" aria-hidden="true">KV</div>
-          <div><h3>Karthik Valluri</h3><p class="role">Co-founder</p></div>
-          <div class="school"><b>UC Berkeley</b><span>Data Science and Computer Science · Junior</span></div>
-        </article>
-        <article class="founder" data-who="hamilton" tabindex="0">
-          <div class="face" aria-hidden="true">HP</div>
-          <div><h3>Hamilton Park</h3><p class="role">Co-founder</p></div>
-          <div class="school"><b>UC Berkeley</b><span>Data Science · Senior</span></div>
-        </article>
-        <article class="founder" data-who="dhruv" tabindex="0">
-          <div class="face" aria-hidden="true">DP</div>
-          <div><h3>Dhruv Pendharkar</h3><p class="role">Co-founder</p></div>
-          <div class="school"><b>UC Berkeley</b><span>Data Science and Mathematics · Senior</span></div>
-        </article>
-      </div>
-      <div class="built">
-        <p>Before Tesseract, we built at</p>
-        <div class="orgs" id="orgs">
-          <button type="button" class="org" data-who="karthik">Tesla</button>
-          <button type="button" class="org" data-who="karthik dhruv">Amazon</button>
-          <button type="button" class="org" data-who="ishan">Applied Materials</button>
-          <button type="button" class="org" data-who="dhruv">Sephora</button>
-          <button type="button" class="org" data-who="hamilton">OpenMind</button>
-          <button type="button" class="org" data-who="dhruv">Berkeley AI Research</button>
-        </div>
-        <small>Hover to see who worked where.</small>
-      </div>
-    </div>
-  </section>
-  -->
 </main>
 
 <footer class="foot">
   <div class="final" id="access">
     <div class="wrap">
-      <h2>Bring us your hardest question.</h2>
-      <p>Now piloting with teams in banking, compliance and law.</p>
+      <h2>See Tesseract on your own stack.</h2>
+      <p>We&rsquo;re starting demos with our first teams now.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#access" id="bookDemo">Request a demo <span class="arr" aria-hidden="true">&rarr;</span></a>
       </div>
-      <span class="mail">or email hello@yourdomain.com</span>
     </div>
   </div>
-  <div class="wrap foot-in"><span>Tesseract &middot; working name</span><span>&copy; 2026 &middot; Ishan, Karthik, Hamilton and Dhruv</span></div>
+  <div class="wrap foot-in"><span>Tesseract</span><span>&copy; 2026 &middot; Ishan, Karthik, Hamilton and Dhruv</span></div>
 </footer>
 
 <script>
@@ -1013,15 +1120,32 @@ footer.foot { padding-block: 0 26px; }
   // Captions and the progress bar follow the stage; the stage follows scroll when pinned, or a timer otherwise.
   var caps = Array.prototype.slice.call(document.querySelectorAll(".cap"));
   var bars = Array.prototype.slice.call(document.querySelectorAll(".swarm-bar b"));
-  // raw runs past 3 while the last stage holds; end is where raw stops, so the fourth bar is full exactly then
+  // Four steps over one value v in [0, 4]: 0-1 agents fan out, 1-2 the graph builds (the canvas runs its stages 0-3),
+  // 2-3 the Forge prompt types over the dimmed graph, 3-4 the graph shrinks to the centre, wired to the tools.
+  // raw runs past 4 while the last step holds; end is where raw stops, so the fourth bar is full exactly then.
   function showStage(val, raw, end) {
-    if (raw === undefined) { raw = val; end = 3; }
-    var stage = Math.min(3, Math.floor(val + 0.25));
+    if (raw === undefined) { raw = val; end = 4; }
+    var stage = Math.min(3, Math.floor(val));
     caps.forEach(function (c, i) {
       c.classList.toggle("on", i === stage); c.classList.toggle("done", i < stage);
       if (i === stage) c.setAttribute("aria-current", "step"); else c.removeAttribute("aria-current");
     });
-    bars.forEach(function (b, i) { b.style.transform = "scaleX(" + (i < 3 ? clamp(raw - i + 0.25) : clamp((raw - 2.75) / (end - 2.75))) + ")"; });
+    bars.forEach(function (b, i) { b.style.transform = "scaleX(" + (i < 3 ? clamp(raw - i) : clamp((raw - 3) / (end - 3))) + ")"; });
+  }
+  var forgeEl = document.getElementById("forgeCard"), typeEl = document.getElementById("forgeType"), toolsEl = document.getElementById("toolsLayer");
+  var outs = Array.prototype.slice.call(forgeEl.querySelectorAll("li")), swarmCanvas = document.getElementById("swarm");
+  var ASK = "We work in Slack, Google Docs, Zoom and Zendesk. Build Tesseract into them.";
+  function story(v, raw, end) {
+    swarmCtl.set(v <= 1 ? v : 1 + (v - 1) * 2);
+    var fa = clamp((v - 2.02) / 0.25) * (1 - clamp((v - 3.02) / 0.2)), ta = clamp((v - 3.1) / 0.3);
+    forgeEl.style.opacity = fa;
+    forgeEl.style.transform = "translate(-50%, calc(-50% + " + ((1 - fa) * 12).toFixed(1) + "px))";
+    typeEl.textContent = ASK.slice(0, Math.round(ASK.length * clamp((v - 2.08) / 0.32)));
+    outs.forEach(function (li, i) { li.classList.toggle("on", v >= 2.45 + i * 0.08); });
+    toolsEl.style.opacity = ta;
+    swarmCanvas.style.opacity = (1 - 0.75 * fa).toFixed(3);
+    swarmCanvas.style.transform = "scale(" + (1 - 0.5 * ease(ta)).toFixed(3) + ")";
+    showStage(v, raw, end);
   }
 
   /* ---------------- scroll choreography ---------------- */
@@ -1058,180 +1182,61 @@ footer.foot { padding-block: 0 26px; }
       };
     }
     var swarmST = ST.create({
-      trigger: "#swarmPin", start: centredStart("#swarmPin"), end: "+=130%", pin: true, scrub: true, invalidateOnRefresh: true,
-      onUpdate: function (self) { var raw = self.progress * 3.35, val = clamp(raw, 0, 3); swarmCtl.set(val); showStage(val, raw, 3.35); }
+      trigger: "#swarmPin", start: centredStart("#swarmPin"), end: "+=260%", pin: true, scrub: true, invalidateOnRefresh: true,
+      onUpdate: function (self) { var raw = self.progress * 4.4; story(clamp(raw, 0, 4), raw, 4.4); }
     });
     caps.forEach(function (c, i) {
-      c.addEventListener("click", function () { scrollTo(swarmST.start + (swarmST.end - swarmST.start) * Math.min(0.99, (i + 0.05) / 3.35)); });
+      c.addEventListener("click", function () { scrollTo(swarmST.start + (swarmST.end - swarmST.start) * Math.min(0.99, (i + 0.85) / 4.4)); });
     });
-    // product: the panel rises and settles to full size
-    gsap.fromTo("#demo", { scale: 0.9, y: 60, opacity: 0.6 }, { scale: 1, y: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: "#demo", start: "top 95%", end: "top 35%", scrub: true } });
+    // integrations: the panel rises and settles to full size
+    gsap.fromTo("#int", { scale: 0.9, y: 60, opacity: 0.6 }, { scale: 1, y: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: "#int", start: "top 95%", end: "top 35%", scrub: true } });
     gsap.utils.toArray(".quote").forEach(function (q) {
       gsap.fromTo(q, { opacity: 0.25, y: 50 }, { opacity: 1, y: 0, ease: "none", scrollTrigger: { trigger: q, start: "top 92%", end: "top 55%", scrub: true } });
     });
     window.addEventListener("load", function () { ST.refresh(); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
   } else {
-    // No scroll choreography (reduced motion, or the libraries didn't load): the swarm plays on a timer and the captions are clickable.
-    var target = reduce ? 3 : 0, cur = target, held = 0, last = performance.now(), auto = !reduce, swarmVisible = false;
-    swarmCtl.set(cur); showStage(cur);
-    caps.forEach(function (c, i) { c.addEventListener("click", function () { target = i; held = 0; auto = false; if (reduce) { cur = i; swarmCtl.set(cur); showStage(cur); } }); });
+    // No scroll choreography (reduced motion, or the libraries didn't load): the steps play on a timer and the captions are clickable.
+    var target = reduce ? 3.9 : 0.9, cur = reduce ? 3.9 : 0, held = 0, last = performance.now(), auto = !reduce, swarmVisible = false;
+    story(cur);
+    caps.forEach(function (c, i) { c.addEventListener("click", function () { target = i + 0.9; held = 0; auto = false; if (reduce) { cur = target; story(cur); } }); });
     watch(document.getElementById("swarm"), function (vis) { swarmVisible = vis; });
     if (!reduce) (function tick(now) {
       var dt = Math.min(0.05, (now - last) / 1000); last = now;
       if (swarmVisible) {
         var diff = target - cur; cur += Math.sign(diff) * Math.min(Math.abs(diff), dt * 0.9);
-        if (Math.abs(diff) < 0.001 && auto) { held += dt; if (held > 3.4) { held = 0; target = target < 3 ? target + 1 : 0; if (target === 0) cur = 0; } }
-        swarmCtl.set(cur); showStage(cur);
+        if (Math.abs(diff) < 0.001 && auto) { held += dt; if (held > 3.4) { held = 0; if (target < 3) target += 1; else { target = 0.9; cur = 0; } } }
+        story(cur);
       }
       requestAnimationFrame(tick);
     })(performance.now());
   }
 
-  /* ---------------- product mock-up ---------------- */
-  (function demo() {
-    var LOCK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"></rect><path d="M5.5 7V5a2.5 2.5 0 015 0v2"></path></svg>';
-    var VIEW = {
-      eng: {
-        who: "Kai Moreno · Engineering", initials: "KM", access: "Using Kai's access",
-        q: "I want to work on a continuous retraining pipeline. Can you help me architect this system?",
-        verdict: "Already built here: reuse it", verdictClass: "pill good",
-        lines: [
-          ["Someone has already built this. The ML Platform team runs a continuous retraining pipeline for the recommendations model, live since March.", [1, 2]],
-          ["It retrains when data drift crosses a threshold, and only promotes a model that beats production offline and in a shadow test.", [2, 3]],
-          ["Reusing it covers most of what you need. The one missing piece for your use case is a backfill job for the new label types.", [4]],
-          ["The GPU budget for the training cluster is in a restricted Finance document. Request access before you plan compute.", [5]]
-        ],
-        arch: {
-          title: "Suggested architecture", basis: "based on ml-platform/retrain [1] and ADR-014 [2]",
-          stages: [
-            ["Event stream and warehouse", "Kafka events, nightly warehouse snapshots", "reuse"],
-            ["Feature store", "Point-in-time correct training features", "reuse"],
-            ["Label backfill job", "Adds the new label types to history", "new"],
-            ["Drift monitor", "Triggers a retrain when drift crosses a threshold", "reuse"],
-            ["Training job", "Airflow DAG on the shared GPU cluster", "reuse"],
-            ["Evaluation gate", "Offline metrics, then a shadow test", "reuse"],
-            ["Model registry", "Versioned models with lineage", "reuse"],
-            ["Canary deploy", "Gradual rollout, automatic rollback", "reuse"]
-          ],
-          foot: ["<b>7 of 8</b> stages already exist", "<b>1</b> to build", "Monitoring loops back to stage 04"]
-        },
-        sources: [
-          { n: 1, sys: "GitHub", title: "ml-platform/pipelines/retrain · README", quote: "Drift-triggered retraining with a shadow evaluation gate. Used by recommendations since March.", meta: "Updated Sep 30 · ML Platform" },
-          { n: 2, sys: "Docs", title: "ADR-014: Continuous retraining for recommendations", quote: "Promote only when the candidate beats production offline and in a 48-hour shadow test.", meta: "Mar 4 · Ravi Menon" },
-          { n: 3, sys: "Jira", title: "AIML-412: Add shadow evaluation gate", quote: "Done. The gate caught a regression on Jul 3 before it reached users.", meta: "Jul 8 · Lena Park" },
-          { n: 4, sys: "Slack", title: "#ml-platform · reusing retrain for new models", quote: "Most teams just plug in. The only gap we keep hitting is backfilling labels that didn't exist before.", meta: "Oct 2 · Ravi Menon" },
-          { n: 5, sys: "SharePoint", locked: "Restricted · owner: Finance" },
-          { n: 6, sys: "Docs", title: "Postmortem: model rollback, Jul 3", quote: "Canary deploy rolled back automatically within 9 minutes.", meta: "Jul 5 · ML Platform" }
-        ],
-        people: [["RM", "Ravi Menon", "built the retraining pipeline"], ["ML", "ML Platform team", "owns ml-platform/retrain"], ["LP", "Lena Park", "built the evaluation gate"]],
-        acts: [["Start from the existing pipeline", "Creates your project from the ml-platform/retrain template."], ["Book a design review with ML Platform", "Invites Ravi Menon with this answer attached."], ["Request the GPU budget document", "Asks Finance for access, citing your project."]]
-      },
-      csm: {
-        who: "Emma Watson · Customer Success", initials: "EW", access: "Using Emma's access",
-        q: "Can we shut down /v1/legacy/export next sprint?",
-        verdict: "Don't retire it yet", verdictClass: "pill",
-        lines: [
-          ["Engineering plans to remove it in the sprint starting Oct 13.", [1, 2, 6]],
-          ["The customer's contract requires 180 days' written notice, and the notice period ends Mar 14, 2027.", [3, 4]],
-          ["The customer still depends on it: their finance close runs on the nightly export.", [5]],
-          ["Legal and the account owner must sign off before anything changes.", [3]]
-        ],
-        sources: [
-          { n: 1, sys: "Jira", title: "NEXE-3251: Remove legacy CSV export endpoint", quote: "Approved in #eng-platform. Ship it next sprint.", meta: "Oct 5 · Marcus Rodriguez" },
-          { n: 2, sys: "Slack", title: "#eng-platform · Removing the legacy export", quote: "It has been deprecated for nine months and it is not in the docs.", meta: "Oct 5 · Marcus Rodriguez" },
-          { n: 3, sys: "SharePoint", title: "Customer addendum, Section C", quote: "Except on 180 days' prior written notice to Customer's designated contact.", meta: "Nov 20, 2025", access: "Restricted · you have access through Legal" },
-          { n: 4, sys: "Outlook", title: "Formal notice: planned retirement of /v1/legacy/export", quote: "Per Section C, the earliest permitted shutdown is 2027-03-14.", meta: "Sep 15", access: "Private · in your mailbox" },
-          { n: 5, sys: "Teams", title: "Customer renewal prep", quote: "Their whole finance close runs on that nightly CSV.", meta: "Sep 22 · Emma Watson" },
-          { n: 6, sys: "Code", title: "api-gateway/src/routes.py", quote: "# TODO(marcus.chen): remove /v1/legacy/export", meta: "Oct 10" }
-        ],
-        people: [["NW", "Nathan Wu", "engineer on NEXE-3251"], ["PS", "Priya Sharma", "contract signatory"], ["TP", "team-platform-core", "owns the service"], ["EW", "Emma Watson", "account owner (you)"]],
-        acts: [["Block NEXE-3251", "Pauses the ticket and cites the contract on it."], ["Open a change review", "Needs Legal and account-owner sign-off."], ["Draft an email to the engineering lead", "Explains the notice period and who must sign off."]]
+  /* ---------------- integrations: tabs over the mock-ups ---------------- */
+  (function integrations() {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('#int [role="tab"]')), timers = [], played = false;
+    function panel(t) { return document.getElementById(t.getAttribute("aria-controls")); }
+    function show(i, focus) {
+      played = true; timers.forEach(clearTimeout); timers = [];
+      tabs.forEach(function (t, j) {
+        var on = j === i; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; panel(t).hidden = !on;
+      });
+      var items = Array.prototype.slice.call(panel(tabs[i]).querySelectorAll(".in"));
+      if (!reduce) {
+        items.forEach(function (el) { el.classList.add("pending"); });
+        items.forEach(function (el, k) { timers.push(setTimeout(function () { el.classList.remove("pending"); }, 150 + k * 260)); });
       }
-    };
-    var viewer = "eng", typing = 0;
-    var qEl = document.getElementById("demoQ"), linesEl = document.getElementById("demoLines"), peopleEl = document.getElementById("demoPeople"),
-        actsEl = document.getElementById("demoActs"), srcEl = document.getElementById("demoSources"), pendingEl = document.getElementById("demoPending"),
-        archEl = document.getElementById("demoArch"), verdictEl = document.getElementById("demoVerdict");
-    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
-    function hl(n, on) { var s = srcEl.querySelector('[data-n="' + n + '"]'); if (s) s.classList.toggle("hl", on); }
-    function cite(n) {
-      var c = el("button", "cite", String(n)); c.type = "button"; c.setAttribute("aria-label", "Source " + n);
-      c.addEventListener("mouseenter", function () { hl(n, true); }); c.addEventListener("mouseleave", function () { hl(n, false); });
-      c.addEventListener("focus", function () { hl(n, true); }); c.addEventListener("blur", function () { hl(n, false); });
-      c.addEventListener("click", function () { hl(n, true); setTimeout(function () { hl(n, false); }, 1400); });
-      return c;
+      if (focus) tabs[i].focus();
     }
-    function render(pending) {
-      var v = VIEW[viewer];
-      document.getElementById("demoWho").textContent = v.who; document.getElementById("demoAvatar").textContent = v.initials; document.getElementById("demoAccess").textContent = v.access;
-      verdictEl.textContent = v.verdict; verdictEl.className = v.verdictClass;
-      linesEl.replaceChildren();
-      v.lines.forEach(function (ln) {
-        var li = el("li", pending ? "pending" : ""); li.append(document.createTextNode(ln[0]));
-        ln[1].forEach(function (n) { li.append(cite(n)); });
-        linesEl.append(li);
-      });
-      archEl.replaceChildren();
-      if (v.arch) {
-        var box = el("section", "arch" + (pending ? " pending" : "")); box.setAttribute("aria-label", v.arch.title);
-        var head = el("div", "arch-head"); head.append(el("p", "block-label", v.arch.title), el("span", "", v.arch.basis));
-        var flow = el("ol", "flow");
-        v.arch.stages.forEach(function (st) {
-          var li = el("li", st[2] === "new" ? "new" : ""); li.append(el("b", "", st[0]), el("small", "", st[1]), el("span", "tag", st[2] === "new" ? "Build" : "Reuse"));
-          flow.append(li);
-        });
-        var foot = el("p", "arch-foot"); foot.innerHTML = v.arch.foot.map(function (f) { return "<span>" + f + "</span>"; }).join("");
-        box.append(head, flow, foot); archEl.append(box);
-      }
-      peopleEl.replaceChildren();
-      v.people.forEach(function (p) { var li = el("li"); li.append(el("span", "avatar", p[0])); var t = el("span"); t.append(el("strong", "", p[1]), document.createTextNode(", "), el("span", "role", p[2])); li.append(t); peopleEl.append(li); });
-      actsEl.replaceChildren(); pendingEl.textContent = v.acts.length + " pending";
-      v.acts.forEach(function (a) {
-        var row = el("div", "act"); row.append(el("b", "", a[0]));
-        // a static label: the mock-up shows the approval step without letting visitors "approve" anything
-        row.append(el("span", "approve", "Approve"), el("small", "", a[1])); actsEl.append(row);
-      });
-      srcEl.replaceChildren();
-      v.sources.forEach(function (s) {
-        var card = el("article", "src" + (s.locked ? " locked" : "")); card.dataset.n = s.n;
-        var top = el("div", "src-top"); top.append(el("span", "src-n", String(s.n)), el("span", "src-sys", s.sys)); if (!s.locked) top.append(el("span", "src-title", s.title)); card.append(top);
-        if (s.locked) {
-          var line = el("div", "lockline"); line.innerHTML = LOCK; line.append(el("span", "", s.locked + " · "));
-          var req = el("button", "reqbtn", "Request access"); req.type = "button"; req.addEventListener("click", function () { req.replaceWith(el("span", "", "Access request drafted")); });
-          line.append(req); card.append(line);
-        } else {
-          card.append(el("q", "", s.quote), el("span", "src-meta", s.meta));
-          if (s.access) { var open = el("div", "lockline open"); open.innerHTML = LOCK; open.append(el("span", "", s.access)); card.append(open); }
-        }
-        srcEl.append(card);
-      });
-    }
-    function reveal() {
-      var items = Array.prototype.slice.call(linesEl.children);
-      items.forEach(function (li, i) { setTimeout(function () { li.classList.remove("pending"); }, 250 + i * 420); });
-      var box = archEl.querySelector(".arch");
-      if (box) setTimeout(function () { box.classList.remove("pending"); }, 250 + items.length * 420);
-    }
-    function replay() {
-      clearInterval(typing);
-      var Q = VIEW[viewer].q;
-      if (reduce) { qEl.textContent = Q; render(false); return; }
-      render(true); qEl.textContent = "";
-      var caret = el("span", "caret"), i = 0, text = document.createTextNode(""); caret.setAttribute("aria-hidden", "true"); qEl.append(text, caret);
-      typing = setInterval(function () { i += 1; text.data = Q.slice(0, i); if (i >= Q.length) { clearInterval(typing); caret.remove(); reveal(); } }, 28);
-    }
-    Array.prototype.forEach.call(document.querySelectorAll(".seg button"), function (b) {
-      b.addEventListener("click", function () {
-        viewer = b.dataset.viewer;
-        Array.prototype.forEach.call(document.querySelectorAll(".seg button"), function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-        replay();
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { show(i); });
+      t.addEventListener("keydown", function (ev) {
+        var d = ev.key === "ArrowRight" ? 1 : ev.key === "ArrowLeft" ? -1 : 0;
+        if (d) { ev.preventDefault(); show((i + d + tabs.length) % tabs.length, true); }
       });
     });
-    document.getElementById("demoReplay").addEventListener("click", replay);
-    render(false);
-    // Play the question once, the first time the panel comes into view.
-    var played = false; watch(document.getElementById("demo"), function (vis) { if (vis && !played) { played = true; setTimeout(replay, 350); } });
+    if (!reduce) panel(tabs[0]).querySelectorAll(".in").forEach(function (el) { el.classList.add("pending"); });
+    watch(document.getElementById("int"), function (vis) { if (vis && !played) show(0); });
   })();
 
   (function team() {
@@ -1254,21 +1259,6 @@ footer.foot { padding-block: 0 26px; }
       ["mouseenter", "focus"].forEach(function (ev) { c.addEventListener(ev, function () { light([c.dataset.who]); }); });
       ["mouseleave", "blur"].forEach(function (ev) { c.addEventListener(ev, clear); });
     });
-  })();
-
-  // why: arrow buttons step the card row one card at a time and grey out at either end
-  (function whyRow() {
-    var track = document.getElementById("track"), prev = document.getElementById("whyPrev"), next = document.getElementById("whyNext");
-    function step() { var c = track.querySelector(".card"); return c ? c.offsetWidth + 20 : 360; }
-    function sync() {
-      prev.disabled = track.scrollLeft <= 4;
-      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-    }
-    prev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: "smooth" }); });
-    next.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); });
-    track.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    sync();
   })();
 
   document.getElementById("bookDemo").addEventListener("click", function (ev) { if (this.getAttribute("href") === "#access") ev.preventDefault(); });
