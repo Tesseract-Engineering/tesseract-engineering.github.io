@@ -524,8 +524,7 @@ footer.foot { padding-block: 0 26px; }
 @media (max-width: 900px) { .int-panel { grid-template-columns: minmax(0, 1fr); } }
 #integrations { padding-bottom: clamp(32px, 4vw, 56px); }
 #why { padding-block: clamp(32px, 4vw, 56px); }
-.final { padding-top: 0; }
-.exp-foot { margin-top: clamp(48px, 5.5vw, 80px); font-size: 1.1875rem; }
+.final { padding-top: 0; padding-bottom: calc(clamp(32px, 4vw, 56px) + 22px); }
 @media (max-width: 620px) {
   .doc, .desk { grid-template-columns: minmax(0, 1fr); }
   .side { border-left: 0; border-top: 1px solid var(--line); }
@@ -771,7 +770,6 @@ button.mini { cursor: pointer; background: transparent; flex: none; }
         <div class="exp"><b>OpenMind</b><span>Product and growth</span></div>
         <div class="exp"><b>Berkeley AI Research</b><span>Research</span></div>
       </div>
-        <p class="exp-foot">Four Berkeley friends, building Tesseract full time.</p>
       </div>
     </div>
   </section>
