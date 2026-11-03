@@ -523,7 +523,8 @@ footer.foot { padding-block: 0 26px; }
 .int .demo-foot, .int + .demo-foot { margin-top: 18px; }
 @media (max-width: 900px) { .int-panel { grid-template-columns: minmax(0, 1fr); } }
 #integrations { padding-bottom: clamp(32px, 4vw, 56px); }
-#why { padding-top: clamp(32px, 4vw, 56px); }
+#why { padding-block: clamp(32px, 4vw, 56px); }
+.final { padding-top: 0; }
 @media (max-width: 620px) {
   .doc, .desk { grid-template-columns: minmax(0, 1fr); }
   .side { border-left: 0; border-top: 1px solid var(--line); }
@@ -760,7 +761,10 @@ button.mini { cursor: pointer; background: transparent; flex: none; }
     </div>
         <div class="wrap why-more">
       <div id="team">
-        <h2>Built by engineers from</h2>
+        <div class="chapter-head">
+          <h2>Built by engineers from</h2>
+          <p>Four Berkeley friends, building Tesseract full time.</p>
+        </div>
         <div class="exp-grid">
         <div class="exp"><b>Amazon</b><span>ML platforms</span></div>
         <div class="exp"><b>Tesla</b><span>Machine learning</span></div>
@@ -769,7 +773,6 @@ button.mini { cursor: pointer; background: transparent; flex: none; }
         <div class="exp"><b>OpenMind</b><span>Product and growth</span></div>
         <div class="exp"><b>Berkeley AI Research</b><span>Research</span></div>
       </div>
-        <p class="exp-foot">Four Berkeley friends, building Tesseract full time.</p>
       </div>
     </div>
   </section>
