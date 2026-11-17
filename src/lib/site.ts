@@ -65,15 +65,15 @@ export const team = {
   title: "Built by engineers from",
   /*
     Logos are drawn in ink from each file's transparent shape, so the set matches. `ratio` is the
-    file's width ÷ height; `height` (px) balances the marks optically.
+    file's width ÷ height; `height` (px) sizes each mark so the row has an even visual weight.
     Sources: Amazon and Applied Materials press kits (Applied's white lines made transparent so it works as a stencil), BAIR's site, and the Tesla wordmark from Wikimedia
     Commons (public-domain text logo). The trademarks belong to their owners.
   */
   companies: [
-    { name: "Amazon", logo: "/logos/amazon.png", ratio: 6110 / 2047, height: 40 },
-    { name: "Tesla", logo: "/logos/tesla.svg", ratio: 1236 / 161, height: 19 },
-    { name: "Applied Materials", logo: "/logos/applied-materials.png", ratio: 1475 / 461, height: 46 },
-    { name: "Berkeley AI Research", logo: "/logos/bair.png", ratio: 1050 / 561, height: 64 },
+    { name: "Amazon", logo: "/logos/amazon.png", ratio: 6110 / 2047, height: 30 },
+    { name: "Tesla", logo: "/logos/tesla.svg", ratio: 1236 / 161, height: 15 },
+    { name: "Applied Materials", logo: "/logos/applied-materials.png", ratio: 1475 / 461, height: 34 },
+    { name: "Berkeley AI Research", logo: "/logos/bair.png", ratio: 1050 / 561, height: 46 },
   ],
 } as const;
 
