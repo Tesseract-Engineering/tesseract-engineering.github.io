@@ -12,11 +12,6 @@ export const site = {
   footer: "© 2026 · Ishan, Karthik, Hamilton and Dhruv",
 } as const;
 
-export const nav = [
-  { href: "#integrations", label: "Integrations" },
-  { href: "#why", label: "Why us" },
-] as const;
-
 export const hero = {
   kicker: "Enterprise knowledge infrastructure",
   title: "Tuned to your company’s needs.",
