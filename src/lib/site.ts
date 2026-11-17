@@ -9,7 +9,7 @@ export const site = {
   url: "https://tesseract-engineering.github.io",
   description:
     "Enterprise knowledge infrastructure tuned to your company. Tesseract maps your people, projects and decisions into a knowledge graph in your own cloud, then builds it into Slack, Docs, meetings and support.",
-  footer: "© 2026 · Ishan, Karthik, Hamilton and Dhruv",
+  legalName: "Tesseract Engineering Inc.",
 } as const;
 
 export const hero = {
@@ -63,7 +63,18 @@ export const security = {
 
 export const team = {
   title: "Built by engineers from",
-  companies: ["Amazon", "Tesla", "Applied Materials", "Berkeley AI Research"],
+  /*
+    Logos are drawn in ink from each file's transparent shape, so the set matches. `ratio` is the
+    file's width ÷ height; `height` (px) balances the marks optically.
+    Sources: Amazon and Applied Materials press kits (Applied's white lines made transparent so it works as a stencil), BAIR's site, and the Tesla "T" from Simple Icons
+    (CC0). The trademarks belong to their owners.
+  */
+  companies: [
+    { name: "Amazon", logo: "/logos/amazon.png", ratio: 6110 / 2047, height: 40 },
+    { name: "Tesla", logo: "/logos/tesla.svg", ratio: 1, height: 46 },
+    { name: "Applied Materials", logo: "/logos/applied-materials.png", ratio: 618 / 198, height: 46 },
+    { name: "Berkeley AI Research", logo: "/logos/bair.png", ratio: 1050 / 561, height: 64 },
+  ],
 } as const;
 
 export const closing = {
