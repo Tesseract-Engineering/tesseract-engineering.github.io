@@ -1,6 +1,6 @@
 import { ArrowUp, Plus } from "lucide-react";
 
-const SOURCES = ["GitHub", "Jira", "Slack", "Teams", "Google Docs", "SharePoint", "Help desk"];
+const SOURCES = ["GitHub", "Jira", "Slack", "Teams", "Google Docs", "SharePoint", "ServiceNow"];
 
 /**
  * A Glean-style ask bar that floats over the dashboard: a question being typed and the sources

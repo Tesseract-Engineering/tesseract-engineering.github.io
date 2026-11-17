@@ -49,9 +49,9 @@ export const integrations = {
     {
       id: "support",
       label: "IT support",
-      tools: ["Your help desk"],
+      tools: ["ServiceNow", "Jira Service Management"],
       title: "IT answers that know the history.",
-      text: "Answers employees’ IT questions from past tickets and runbooks, and drafts fixes for your IT team to approve.",
+      text: "Answers employees’ IT questions in ServiceNow or Jira Service Management from past tickets and runbooks, and drafts fixes for your IT team to approve.",
     },
   ],
 } as const;

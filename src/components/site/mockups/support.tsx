@@ -1,11 +1,11 @@
 import { Mini, WindowFrame, reveal } from "./window-frame";
 
-/** IT support in your own help desk: Tesseract recognises a repeat issue and drafts the fix for IT to approve. */
+/** IT support in Jira Service Management: Tesseract recognises a repeat issue and drafts the fix for IT to approve. */
 export function SupportMockup() {
   return (
     <WindowFrame
-      title="Help desk · IT queue"
-      label="Mock-up: an internal IT help desk where Tesseract recognises a repeat VPN issue from an earlier ticket, cites the runbook and drafts a fix for the IT team to approve."
+      title="Jira Service Management · IT queue"
+      label="Mock-up: an IT queue in Jira Service Management where Tesseract recognises a repeat VPN issue from an earlier ticket, cites the runbook and drafts a fix for the IT team to approve."
       bodyClassName="gap-0 p-0 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)]"
     >
       <ul className="hidden content-start gap-1 border-r border-line bg-paper p-2.5 sm:grid">

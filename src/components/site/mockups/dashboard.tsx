@@ -32,7 +32,7 @@ const COVERAGE = [
   { source: "GitHub", pct: 96 },
   { source: "Jira", pct: 92 },
   { source: "Slack", pct: 88 },
-  { source: "Help desk", pct: 81 },
+  { source: "ServiceNow", pct: 81 },
   { source: "SharePoint", pct: 74 },
   { source: "Outlook", pct: 69 },
 ];
@@ -44,7 +44,7 @@ const ASKED = [
 ];
 
 const APPROVALS = [
-  { what: "Reply to Lena Park on IT-2291", detail: "VPN fix from IT-1876", where: "Help desk" },
+  { what: "Reply to Lena Park on IT-2291", detail: "VPN fix from IT-1876", where: "Jira Service Management" },
   { what: "Comment on the OIDC design doc", detail: "Flags the conflict with SBX-14", where: "Google Docs" },
   { what: "Link INC-12 to PLAT-218", detail: "Same root cause", where: "Jira" },
 ];
@@ -113,7 +113,7 @@ export function DashboardMockup() {
   return (
     <div
       role="img"
-      aria-label="Mock-up of the Tesseract workspace for a sample company: 48,210 entities mapped across GitHub, Jira, Slack, the help desk, SharePoint and Outlook; questions answered this week with citations; and three actions waiting for approval."
+      aria-label="Mock-up of the Tesseract workspace for a sample company: 48,210 entities mapped across GitHub, Jira, Slack, ServiceNow, SharePoint and Outlook; questions answered this week with citations; and three actions waiting for approval."
       className="flex h-[640px] overflow-hidden rounded-[12px] bg-paper text-left text-ink shadow-[0_60px_120px_-40px_rgb(0_0_0/0.7)] ring-1 ring-white/10"
     >
       {/* sidebar */}
