@@ -18,7 +18,7 @@ export const site = {
  */
 export const hero = {
   lead: "Put your company knowledge to work.",
-  rest: "Large organizations hold years of decisions, systems and expertise that no one person can find. Tesseract brings it together and delivers it inside the tools your people already use, secure by design, so that knowledge stops being lost when people move on.",
+  rest: "Organizations hold years of decisions, systems and expertise that no one person can find. Tesseract brings it together and delivers it inside the tools your people already use, secure by design, so that knowledge stops being lost when people move on.",
 } as const;
 
 export const integrations = {
