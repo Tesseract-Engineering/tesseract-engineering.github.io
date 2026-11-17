@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/*
+  Tesseract design tokens. Editorial and quiet: warm paper, near-black ink, flat grey boxes with
+  small corners, black blocks for contrast, and one accent (forest green) used sparingly for
+  citations, highlights and markers. Light theme only.
+*/
+@theme {
+  --color-paper: #fafaf9;
+  --color-paper-2: #f2f1f0;
+  --color-ink: #0f0e0d;
+  --color-ink-2: #2a2826;
+  --color-stone: #706d66; /* secondary text */
+  --color-line: rgb(15 14 13 / 0.1);
+  --color-line-2: rgb(15 14 13 / 0.18);
+  --color-forest: #1f5a3d;
+  --color-forest-soft: rgb(31 90 61 / 0.09);
+  /* on black blocks */
+  --color-on-dark: #fafaf9;
+  --color-stone-dark: #a3a099;
+  --color-line-dark: rgb(250 250 249 / 0.14);
+  --color-forest-light: #8cc2a3;
+
+  --radius-box: 8px;
+  --radius-btn: 4px;
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-newsreader), "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-rise: rise 0.45s ease both;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+}
+
+/* shadcn/ui reads these; they point at the tokens above so its components come out on-brand. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --radius: 8px;
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --card: #ffffff;
+  --card-foreground: var(--color-ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-paper);
+  --secondary: var(--color-paper-2);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-paper-2);
+  --muted-foreground: var(--color-stone);
+  --accent: var(--color-paper-2);
+  --accent-foreground: var(--color-ink);
+  --destructive: #b42318;
+  --border: var(--color-line-2);
+  --input: var(--color-line-2);
+  --ring: var(--color-forest);
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px; /* clear the fixed top bar on in-page links */
+  }
+  body {
+    @apply bg-background font-sans text-[1.0625rem]/[1.6] text-foreground antialiased;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-normal tracking-[-0.02em] text-balance;
+    line-height: 1.06;
+  }
+  ::selection {
+    background: var(--color-forest);
+    color: var(--color-on-dark);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 3px;
+  }
+}
+
+/* small uppercase mono labels: citations, captions, kickers */
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/*
+  Staggered reveal for the integration mock-ups. Items carry `data-reveal` and an index in `--i`;
+  they rise in once their panel is on screen (`data-play` on an ancestor). Radix remounts a tab's
+  content when it's selected, so switching tabs replays the sequence.
+*/
+@layer components {
+  [data-reveal] {
+    animation: var(--animate-rise);
+    animation-delay: calc(80ms + var(--i, 0) * 180ms);
+    animation-play-state: paused;
+  }
+  [data-play] [data-reveal] {
+    animation-play-state: running;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
