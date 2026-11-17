@@ -18,7 +18,8 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  title: "Enterprise knowledge infrastructure tuned to your company’s needs.",
+  kicker: "Enterprise knowledge infrastructure",
+  title: "Tuned to your company’s needs.",
   lede: "AI agents map your company into a knowledge graph in your own cloud, then bring it into your services and tools.",
 } as const;
 

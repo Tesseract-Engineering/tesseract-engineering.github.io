@@ -114,7 +114,7 @@ export function DashboardMockup() {
     <div
       role="img"
       aria-label="Mock-up of the Tesseract workspace for a sample company: 48,210 entities mapped across GitHub, Jira, Slack, Zendesk, SharePoint and Outlook; questions answered this week with citations; and three actions waiting for approval."
-      className="flex h-[680px] overflow-hidden rounded-[12px] bg-paper text-left text-ink shadow-[0_60px_120px_-40px_rgb(0_0_0/0.7)] ring-1 ring-white/10"
+      className="flex h-[640px] overflow-hidden rounded-[12px] bg-paper text-left text-ink shadow-[0_60px_120px_-40px_rgb(0_0_0/0.7)] ring-1 ring-white/10"
     >
       {/* sidebar */}
       <aside className="flex w-[216px] flex-none flex-col bg-[#161513] px-3 py-4 text-on-dark">
@@ -159,7 +159,7 @@ export function DashboardMockup() {
       </aside>
 
       {/* main */}
-      <div className="min-w-0 flex-1 px-7 py-6">
+      <div className="min-w-0 flex-1 px-7 pt-14 pb-6">
         <div className="mb-4 flex items-center justify-between">
           <p className="font-display text-[26px] leading-none">Northwind&rsquo;s knowledge graph</p>
           <div className="flex items-center gap-2.5">

@@ -1,3 +1,4 @@
+import { AskBar } from "./mockups/ask-bar";
 import { DashboardMockup } from "./mockups/dashboard";
 import { ScaleToFit } from "./scale-to-fit";
 
@@ -39,7 +40,7 @@ const GRAIN =
 
 /**
  * The product, right under the hero: a black stage with grain, a soft green light and a faint
- * graph, holding a mock-up of the Tesseract workspace.
+ * graph, holding an ask bar over a mock-up of the Tesseract workspace.
  */
 export function ProductShowcase() {
   return (
@@ -58,6 +59,10 @@ export function ProductShowcase() {
           <GraphLines />
         </div>
         <ScaleToFit width={1120} className="px-[6%] pt-[clamp(24px,5vw,72px)] pb-[clamp(24px,5vw,72px)]">
+          {/* the ask bar floats over the top edge of the workspace */}
+          <div className="relative z-10 -mb-8">
+            <AskBar />
+          </div>
           <DashboardMockup />
         </ScaleToFit>
       </div>
