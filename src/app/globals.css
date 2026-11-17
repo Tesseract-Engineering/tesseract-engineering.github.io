@@ -27,7 +27,7 @@
   --radius-btn: 4px;
 
   --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: var(--font-newsreader), "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-display: var(--font-plex-sans), "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --animate-marquee: marquee 38s linear infinite;
@@ -110,7 +110,7 @@
   h1,
   h2,
   h3 {
-    @apply font-display font-normal tracking-[-0.02em] text-balance;
+    @apply font-display font-normal tracking-[-0.03em] text-balance;
     line-height: 1.06;
   }
   ::selection {
