@@ -13,8 +13,7 @@ export const site = {
 } as const;
 
 export const hero = {
-  kicker: "Enterprise knowledge infrastructure",
-  title: "Tuned to your company’s needs.",
+  title: "Put your company’s knowledge to work.",
   lede: "AI agents map your company into a knowledge graph in your own cloud, then bring it into your services and tools.",
 } as const;
 
