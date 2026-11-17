@@ -72,7 +72,7 @@ export const team = {
   companies: [
     { name: "Amazon", logo: "/logos/amazon.png", ratio: 6110 / 2047, height: 40 },
     { name: "Tesla", logo: "/logos/tesla.svg", ratio: 1, height: 46 },
-    { name: "Applied Materials", logo: "/logos/applied-materials.png", ratio: 618 / 198, height: 46 },
+    { name: "Applied Materials", logo: "/logos/applied-materials.png", ratio: 1475 / 461, height: 46 },
     { name: "Berkeley AI Research", logo: "/logos/bair.png", ratio: 1050 / 561, height: 64 },
   ],
 } as const;
