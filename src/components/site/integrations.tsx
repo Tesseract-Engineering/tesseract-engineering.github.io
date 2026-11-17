@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type ComponentType } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 import { integrations, type IntegrationId } from "@/lib/site";
 import { DocumentsMockup } from "./mockups/documents";
 import { MeetingsMockup } from "./mockups/meetings";
@@ -44,6 +45,7 @@ function useSeen<T extends Element>() {
 /** A black block with tabs over white mock-ups of each integration. */
 export function Integrations() {
   const [ref, seen] = useSeen<HTMLDivElement>();
+  const [keyboard, setKeyboard] = useState(false);
 
   return (
     <div className="mx-auto max-w-[1240px] px-5">
@@ -54,12 +56,31 @@ export function Integrations() {
 
       <div ref={ref} data-play={seen ? "" : undefined} className="rounded-box bg-ink p-[clamp(20px,4vw,56px)] text-on-dark">
         <Tabs defaultValue={integrations.tabs[0].id} className="gap-0">
-          <TabsList aria-label="Integrations" className="mb-[clamp(28px,4vw,48px)] h-auto flex-wrap group-data-[orientation=horizontal]/tabs:h-auto justify-start gap-2 bg-transparent p-0">
+          {/*
+            Radix focuses a tab when it's clicked, and Chrome treats that as keyboard focus, so a
+            focus ring would flash on every click. `keyboard` tracks how the tabs were last used and the
+            ring only shows for keyboard users: a crisp light outline that reads on the black block.
+          */}
+          <TabsList
+            aria-label="Integrations"
+            data-keyboard={keyboard || undefined}
+            onPointerDown={() => setKeyboard(false)}
+            onKeyDown={() => setKeyboard(true)}
+            className="mb-[clamp(28px,4vw,48px)] h-auto flex-wrap justify-start gap-2 bg-transparent p-0 group-data-[orientation=horizontal]/tabs:h-auto"
+          >
             {integrations.tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="h-auto flex-none rounded-btn border-line-dark px-4 py-[11px] text-sm text-stone-dark hover:border-stone-dark hover:text-on-dark focus-visible:ring-forest-light/50 data-[state=active]:border-on-dark data-[state=active]:bg-on-dark data-[state=active]:text-ink data-[state=active]:shadow-none"
+                className={cn(
+                  "h-auto flex-none rounded-btn border-line-dark px-4 py-[11px] text-sm text-stone-dark transition-colors",
+                  "data-[state=inactive]:hover:border-stone-dark data-[state=inactive]:hover:text-on-dark",
+                  "data-[state=active]:border-on-dark data-[state=active]:bg-on-dark data-[state=active]:text-ink data-[state=active]:shadow-none",
+                  // no ring, border change or outline on click…
+                  "focus-visible:border-line-dark focus-visible:ring-0 focus-visible:outline-none data-[state=active]:focus-visible:border-on-dark",
+                  // …and a clear one for keyboard users
+                  "group-data-[keyboard]/tabs-list:focus-visible:outline-2 group-data-[keyboard]/tabs-list:focus-visible:outline-offset-2 group-data-[keyboard]/tabs-list:focus-visible:outline-solid group-data-[keyboard]/tabs-list:focus-visible:outline-on-dark",
+                )}
               >
                 {tab.label}
               </TabsTrigger>
