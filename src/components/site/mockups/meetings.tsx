@@ -3,7 +3,7 @@ import { Cite, WindowFrame, reveal } from "./window-frame";
 export function MeetingsMockup() {
   return (
     <WindowFrame
-      title="Platform sync · live"
+      title="Zoom · Platform sync · live"
       label="Mock-up: a live call transcript, a question asked to Tesseract, and a cited answer shown to everyone on the call."
     >
       <p {...reveal(0)} className="label-mono inline-flex items-center gap-2 tracking-[0.08em] text-forest">

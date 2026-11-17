@@ -96,6 +96,13 @@ export function Integrations() {
                 className="grid items-center gap-[clamp(28px,4vw,56px)] lg:grid-cols-[minmax(0,5fr)_minmax(0,8fr)]"
               >
                 <div className="grid content-start gap-4">
+                  <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.6875rem] leading-none font-medium tracking-[0.14em] text-stone-dark uppercase">
+                    {tab.tools.map((tool) => (
+                      <span key={tool} className="inline-flex items-center gap-2 before:size-[5px] before:bg-forest-light">
+                        {tool}
+                      </span>
+                    ))}
+                  </p>
                   <h3 className="text-[clamp(1.6rem,1.1rem+1.4vw,2.3rem)]">{tab.title}</h3>
                   <p className="leading-[1.6] text-stone-dark">{tab.text}</p>
                 </div>

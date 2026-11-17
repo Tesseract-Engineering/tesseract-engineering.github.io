@@ -21,7 +21,7 @@ function Note({ warn, label, i, children }: { warn?: boolean; label: string; i: 
 export function DocumentsMockup() {
   return (
     <WindowFrame
-      title="Design: billing-service verifies OIDC tokens directly"
+      title="Google Docs · Design: billing-service verifies OIDC tokens directly"
       label="Mock-up: a Google Docs design document with a highlighted passage and the Tesseract sidebar listing a contradiction and who to talk to."
       bodyClassName="gap-0 p-0 sm:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]"
     >

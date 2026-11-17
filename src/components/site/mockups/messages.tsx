@@ -33,7 +33,7 @@ function Who({ name, time, app }: { name: string; time: string; app?: boolean })
 export function MessagesMockup() {
   return (
     <WindowFrame
-      title="# platform"
+      title="Slack · # platform"
       label="Mock-up: Tesseract answering a question in a Slack channel, with quoted sources and a request-access button for locked documents."
     >
       <div {...reveal(0)} className="grid grid-cols-[34px_minmax(0,1fr)] gap-3">
