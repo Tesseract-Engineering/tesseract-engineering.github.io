@@ -22,11 +22,6 @@ export const hero = {
   lede: "AI agents map your company into a knowledge graph in your own cloud, then bring it into your services and tools.",
 } as const;
 
-export const sources = {
-  label: "Reads the tools you already use",
-  items: ["GitHub", "Jira", "Slack", "Microsoft Teams", "Outlook", "SharePoint", "Zendesk", "Markdown docs"],
-} as const;
-
 export const integrations = {
   title: "Built into the tools your team already uses.",
   lede: "Forge turns the graph into tools your team actually uses, and your engineers can extend them.",

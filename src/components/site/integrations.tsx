@@ -54,7 +54,7 @@ export function Integrations() {
 
       <div ref={ref} data-play={seen ? "" : undefined} className="rounded-box bg-ink p-[clamp(20px,4vw,56px)] text-on-dark">
         <Tabs defaultValue={integrations.tabs[0].id} className="gap-0">
-          <TabsList aria-label="Integrations" className="mb-[clamp(28px,4vw,48px)] h-auto flex-wrap justify-start gap-2 bg-transparent p-0">
+          <TabsList aria-label="Integrations" className="mb-[clamp(28px,4vw,48px)] h-auto flex-wrap group-data-[orientation=horizontal]/tabs:h-auto justify-start gap-2 bg-transparent p-0">
             {integrations.tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
