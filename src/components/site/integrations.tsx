@@ -48,7 +48,7 @@ export function Integrations() {
   const [keyboard, setKeyboard] = useState(false);
 
   return (
-    <div className="mx-auto max-w-[1240px] px-5">
+    <div className="mx-auto max-w-[1336px] px-5">
       <div className="mb-[clamp(36px,5vw,56px)] grid max-w-[860px] gap-[18px]">
         <h2 className="text-[clamp(2rem,1.2rem+3vw,3.6rem)]">{integrations.title}</h2>
         <p className="max-w-[58ch] text-[1.1875rem] leading-[1.55] text-stone">{integrations.lede}</p>

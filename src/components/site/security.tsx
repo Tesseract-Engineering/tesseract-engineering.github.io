@@ -12,7 +12,7 @@ const ICONS: Record<(typeof security.items)[number]["icon"], LucideIcon> = {
 /** Four flat grey boxes: icon at the top, title and line at the bottom. */
 export function Security() {
   return (
-    <div className="mx-auto max-w-[1240px] px-5">
+    <div className="mx-auto max-w-[1336px] px-5">
       <h2 className="mb-[clamp(36px,5vw,56px)] text-[clamp(2rem,1.2rem+3vw,3.6rem)]">{security.title}</h2>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {security.items.map((item) => {

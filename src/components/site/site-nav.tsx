@@ -27,7 +27,7 @@ export function SiteNav() {
         scrolled && "border-line bg-paper/85 backdrop-blur-md",
       )}
     >
-      <div className="mx-auto flex h-[60px] max-w-[1240px] items-center justify-between px-5">
+      <div className="mx-auto flex h-[60px] max-w-[1336px] items-center justify-between px-5">
         <a href="#top" aria-label="Tesseract home" className="inline-flex items-center gap-2 font-display text-[1.1875rem] font-semibold tracking-[-0.03em]">
           <Logo className="size-[18px]" />
           Tesseract
