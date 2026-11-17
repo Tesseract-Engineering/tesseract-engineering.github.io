@@ -1,19 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Inter } from "next/font/google";
+import { IBM_Plex_Mono, Inter } from "next/font/google";
 
 import { site } from "@/lib/site";
 import "./globals.css";
 
 // Fonts are downloaded at build time and served from this site, with no request to Google at runtime.
-// Headings: IBM Plex Sans, the same family as the mono labels, so the type reads as one system.
-const plexSans = IBM_Plex_Sans({
-  variable: "--font-plex-sans",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
+// Inter for everything but the mono labels. The optical-size axis switches large headings to
+// Inter's tighter display cut, as on brex.com.
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  axes: ["opsz"],
 });
 const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
@@ -46,7 +43,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${plexSans.variable} ${inter.variable} ${plexMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${plexMono.variable}`}>
       <body>{children}</body>
     </html>
   );

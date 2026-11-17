@@ -13,7 +13,7 @@ export function SiteFooter() {
       </div>
       <div className="mx-auto max-w-[1240px] px-5">
         <div className="flex flex-wrap items-baseline justify-between gap-3 border-t border-line-dark pt-[26px]">
-          <span className="font-display text-xl tracking-[-0.02em] text-on-dark">{site.name}</span>
+          <span className="font-display text-xl font-semibold tracking-[-0.03em] text-on-dark">{site.name}</span>
           <span>{site.footer}</span>
         </div>
       </div>

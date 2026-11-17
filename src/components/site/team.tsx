@@ -9,7 +9,7 @@ export function Team() {
         {team.companies.map((name) => (
           <li
             key={name}
-            className="border-t-2 border-ink pt-[18px] pb-[30px] font-display text-[clamp(1.5rem,1rem+1.6vw,2.4rem)] leading-[1.1] tracking-[-0.02em] last:pb-0"
+            className="border-t-2 border-ink pt-[18px] pb-[30px] font-display text-[clamp(1.5rem,1rem+1.6vw,2.4rem)] leading-[1.1] font-medium tracking-[-0.02em] last:pb-0"
           >
             {name}
           </li>

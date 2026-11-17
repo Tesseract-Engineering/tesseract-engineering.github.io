@@ -26,7 +26,7 @@ export function SiteNav() {
       )}
     >
       <div className="mx-auto flex max-w-[1240px] items-center gap-4.5 px-5">
-        <a href="#top" aria-label="Tesseract home" className="inline-flex items-center gap-2.5 font-display text-2xl tracking-[-0.02em]">
+        <a href="#top" aria-label="Tesseract home" className="inline-flex items-center gap-2.5 font-display text-2xl font-semibold tracking-[-0.03em]">
           <Logo className="size-[22px]" />
           Tesseract
         </a>
