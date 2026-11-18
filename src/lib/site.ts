@@ -23,7 +23,7 @@ export const hero = {
 
 export const integrations = {
   title: "Built into the tools your team already uses.",
-  lede: "Forge turns the graph into tools your team actually uses, and your engineers can extend them.",
+  lede: "Tesseract meets your team where they work, and grows with what your company needs.",
   tabs: [
     {
       id: "messages",
