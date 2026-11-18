@@ -5,12 +5,14 @@ import {
   Code2,
   Hammer,
   History,
+  Layers,
   Lock,
   MessageSquare,
   MoreHorizontal,
   Network,
   Paperclip,
   Plug,
+  Plus,
   Search,
   Share2,
   Sparkles,
@@ -43,9 +45,18 @@ const RECENT = [
   "Has anyone already built a customer data export?",
   "Who owns the billing service?",
   "Why did we change the refund policy in June?",
-  "How do I get production access for on-call?",
-  "Summarize last week's customer escalations",
 ];
+
+/** Sub-organisations: each team's own space, with its own sources and permissions. */
+const SPACES = [
+  { name: "Payments", tone: "bg-[#2E5E4A]" },
+  { name: "Platform", tone: "bg-[#3B4A6B]" },
+  { name: "Security", tone: "bg-[#6B3B3B]" },
+  { name: "Legal", tone: "bg-[#5A4A2E]" },
+  { name: "Finance", tone: "bg-[#4A3B6B]" },
+];
+
+const SYNCED = ["slack", "github", "confluence", "jira-icon", "microsoft-365"];
 
 function NavItem({ icon: Icon, label, active }: { icon: LucideIcon; label: string; active?: boolean }) {
   return (
@@ -139,7 +150,21 @@ export function WorkspaceMockup() {
           <NavItem icon={MessageSquare} label="Ask" active />
           <NavItem icon={Hammer} label="Forge" />
         </ul>
-        <p className="mt-6 mb-1.5 flex items-center gap-1.5 px-2.5 text-[11px] text-stone-dark">
+        <p className="mt-5 mb-1.5 flex items-center justify-between px-2.5 text-[11px] text-stone-dark">
+          <span className="flex items-center gap-1.5">
+            <Layers className="size-3" /> Spaces
+          </span>
+          <Plus className="size-3" />
+        </p>
+        <ul className="grid gap-0.5 text-[12.5px] text-stone-dark">
+          {SPACES.map((sp) => (
+            <li key={sp.name} className="flex items-center gap-2.5 rounded-md px-2.5 py-[5px]">
+              <span className={cn("grid size-4 place-items-center rounded-[4px] text-[9px] font-bold text-white", sp.tone)}>{sp.name[0]}</span>
+              {sp.name}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-5 mb-1.5 flex items-center gap-1.5 px-2.5 text-[11px] text-stone-dark">
           <History className="size-3" /> Recent
         </p>
         <ul className="grid gap-0.5 text-[12.5px] text-stone-dark">
@@ -149,7 +174,26 @@ export function WorkspaceMockup() {
             </li>
           ))}
         </ul>
-        <div className="mt-auto flex items-center gap-2.5 border-t border-white/10 px-2 pt-3 text-[12.5px]">
+        {/* the knowledge graph, live */}
+        <div className="mt-auto mb-3 grid gap-2 rounded-lg border border-white/10 bg-white/[0.03] p-2.5 text-[11.5px]">
+          <p className="flex items-center justify-between">
+            <span className="font-medium text-on-dark">Knowledge graph</span>
+            <span className="flex items-center gap-1.5 text-[10.5px] text-forest-light">
+              <i className="size-1.5 animate-pulse rounded-full bg-forest-light" /> Live
+            </span>
+          </p>
+          <p className="text-stone-dark">48,210 entities &middot; 12 sources</p>
+          <p className="flex items-center gap-1.5">
+            {SYNCED.map((a) => (
+              <span key={a} className="grid size-5 place-items-center rounded-[4px] bg-white">
+                <img src={`/logos/apps/${a}.svg`} alt="" className="size-3" />
+              </span>
+            ))}
+            <span className="text-[10.5px] text-stone-dark">+7</span>
+          </p>
+          <p className="text-[10.5px] text-stone-dark">Synced 2 min ago</p>
+        </div>
+        <div className="flex items-center gap-2.5 border-t border-white/10 px-2 pt-3 text-[12.5px]">
           <span className="grid size-7 place-items-center rounded-full bg-[#E8D9C9] text-[10px] font-semibold text-ink">KV</span>
           <span className="leading-tight">
             Karthik Valluri
