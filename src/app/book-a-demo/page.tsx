@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { DemoForm } from "@/components/site/demo-form";
-import { SiteFooter } from "@/components/site/site-footer";
 import { SiteNav } from "@/components/site/site-nav";
 import { contact } from "@/lib/site";
 
@@ -10,17 +9,15 @@ export const metadata: Metadata = {
   description: "Book a demo of Tesseract.",
 };
 
-/** Book a demo: a short, centred form, after brex.com/book-a-demo. */
+/** Book a demo: a short, centred form with no footer, after brex.com/book-a-demo. */
 export default function BookADemo() {
   return (
-    // a full-height column, so the footer sits at the bottom of the window even on tall screens
-    <div className="flex min-h-svh flex-col">
+    <>
       <SiteNav cta={false} />
-      <main className="mx-auto w-full max-w-[560px] flex-1 px-5 pt-[clamp(120px,14vw,168px)] pb-[clamp(64px,8vw,112px)]">
+      <main className="mx-auto w-full max-w-[560px] px-5 pt-[clamp(120px,14vw,168px)] pb-[clamp(64px,8vw,112px)]">
         <h1 className="mb-8 text-[clamp(1.875rem,1.4rem+1.6vw,2.5rem)]">{contact.page.title}</h1>
         <DemoForm />
       </main>
-      <SiteFooter call={false} />
-    </div>
+    </>
   );
 }
