@@ -73,8 +73,16 @@ export function Integrations() {
       <div
         ref={ref}
         data-play={seen ? "" : undefined}
-        className="rounded-box bg-ink p-[clamp(20px,4vw,56px)] text-on-dark"
+        className="relative isolate overflow-hidden rounded-box bg-ink p-[clamp(20px,4vw,56px)] text-on-dark"
       >
+        {/* the same marbled forest backdrop as the product stage, mirrored so the two don't repeat */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 -scale-x-100 bg-cover bg-center"
+          style={{ backgroundImage: "url(/backdrops/marble-forest.webp)" }}
+        />
+        {/* darkened a quarter, so text stays readable over the brightest green (4.5:1 or better) */}
+        <div aria-hidden className="absolute inset-0 -z-10 bg-ink/25" />
         <Tabs value={active} onValueChange={(v) => setActive(v as IntegrationId)} className="gap-0">
           {/*
             Radix focuses a tab when it's clicked, and Chrome treats that as keyboard focus, so a
@@ -93,7 +101,7 @@ export function Integrations() {
                 key={tab.id}
                 value={tab.id}
                 className={cn(
-                  "relative h-auto flex-none cursor-pointer overflow-hidden rounded-btn border-line-dark bg-transparent px-4 py-[11px] text-sm text-stone-dark transition-colors",
+                  "relative h-auto flex-none cursor-pointer overflow-hidden rounded-btn border-line-dark bg-transparent px-4 py-[11px] text-sm text-on-dark/75 transition-colors",
                   "data-[state=inactive]:hover:border-stone-dark data-[state=inactive]:hover:text-on-dark",
                   // selected: brighter, never darker. No fill, just white text and a white border
                   "data-[state=active]:border-on-dark data-[state=active]:bg-transparent data-[state=active]:font-semibold data-[state=active]:text-on-dark data-[state=active]:shadow-none",
@@ -127,7 +135,7 @@ export function Integrations() {
               >
                 <div className="grid content-start gap-4">
                   <h3 className="text-[clamp(1.6rem,1.1rem+1.4vw,2.3rem)]">{tab.title}</h3>
-                  <p className="leading-[1.6] text-stone-dark">{tab.text}</p>
+                  <p className="leading-[1.6] text-on-dark/80">{tab.text}</p>
                 </div>
                 <Mockup />
               </TabsContent>
