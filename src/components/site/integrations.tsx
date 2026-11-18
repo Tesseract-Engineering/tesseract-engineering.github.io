@@ -125,22 +125,37 @@ export function Integrations() {
             ))}
           </TabsList>
 
-          {integrations.tabs.map((tab) => {
-            const Mockup = MOCKUPS[tab.id];
-            return (
-              <TabsContent
-                key={tab.id}
-                value={tab.id}
-                className="grid items-center gap-[clamp(28px,4vw,56px)] lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]"
-              >
-                <div className="grid content-start gap-4">
-                  <h3 className="text-[clamp(1.6rem,1.1rem+1.4vw,2.3rem)]">{tab.title}</h3>
-                  <p className="leading-[1.6] text-on-dark/80">{tab.text}</p>
-                </div>
-                <Mockup />
-              </TabsContent>
-            );
-          })}
+          {/*
+            All four panels stay mounted, stacked in one grid cell, so the block is always as tall as
+            the tallest one: switching tabs never changes its height, moves the backdrop or shifts the
+            page. Hidden panels are invisible (and so out of reach of screen readers and the keyboard).
+            The active panel's content is keyed so its reveal animation replays on every switch.
+          */}
+          <div className="grid">
+            {integrations.tabs.map((tab) => {
+              const Mockup = MOCKUPS[tab.id];
+              const on = tab.id === active;
+              return (
+                <TabsContent
+                  key={tab.id}
+                  value={tab.id}
+                  forceMount
+                  className="col-start-1 row-start-1 data-[state=inactive]:invisible"
+                >
+                  <div
+                    key={on ? "on" : "off"}
+                    className="grid h-full grid-rows-[1fr_auto] items-start gap-[clamp(28px,4vw,56px)] lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:grid-rows-none lg:items-center"
+                  >
+                    <div className="grid content-start gap-4">
+                      <h3 className="text-[clamp(1.6rem,1.1rem+1.4vw,2.3rem)]">{tab.title}</h3>
+                      <p className="leading-[1.6] text-on-dark/80">{tab.text}</p>
+                    </div>
+                    <Mockup />
+                  </div>
+                </TabsContent>
+              );
+            })}
+          </div>
         </Tabs>
       </div>
     </div>

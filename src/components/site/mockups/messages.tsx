@@ -143,7 +143,7 @@ export function MessagesMockup() {
               time="2:14 PM"
             >
               <p className="font-semibold">
-                40 N&middot;m, down from 45 N&middot;m since Rev C. The higher torque cracked the cast aluminium bosses on two Rev B prototypes.
+                40 N&middot;m, down from 45 N&middot;m since Rev C. The higher torque cracked the cast aluminum bosses on two Rev B prototypes.
               </p>
               <blockquote className="border-l-[3px] border-[#DDDDDD] pl-2.5">
                 &ldquo;Reduce M8 housing bolt torque to 40 N&middot;m to prevent boss cracking.&rdquo;

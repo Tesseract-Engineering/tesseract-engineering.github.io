@@ -35,7 +35,7 @@ export const integrations = {
       id: "documents",
       label: "Documents",
       title: "Review a contract against your playbook.",
-      text: "Flags clauses that break your playbook and the precedents you agreed to before, right inside Word or Google Docs.",
+      text: "Lawyers review contracts in Word or Google Docs, and Tesseract flags clauses that break your playbook, citing the terms you’ve agreed to before.",
     },
     {
       id: "meetings",
@@ -79,7 +79,7 @@ export const security = {
   // The questions a security reviewer asks, each answered in a line. Confirm "Nowhere." and
   // "nothing is copied to us" with the team before launch.
   questions: [
-    { icon: "cloud", q: "Where does our data go?", a: "Nowhere. Tesseract collects and stores it inside your own cloud, and nothing is copied to us." },
+    { icon: "cloud", q: "Where does your data go?", a: "Nowhere. Tesseract collects and stores it inside your own cloud, and nothing is copied to us." },
     { icon: "lock", q: "Who can see what?", a: "The same people as today. Access is read-only, and every record keeps its original permissions." },
     { icon: "cpu", q: "Which model does it use?", a: "Your choice: Anthropic, OpenAI or OpenRouter. Switch any time." },
     { icon: "check", q: "Can it act on its own?", a: "No. Every answer is cited, and every action waits for a person to approve it." },
