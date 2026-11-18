@@ -28,28 +28,28 @@ export const integrations = {
     {
       id: "messages",
       label: "Messages",
-      tools: ["Slack", "Microsoft Teams"],
+      tools: [{ id: "slack", name: "Slack" }, { id: "teams", name: "Teams" }],
       title: "Ask anything. Get a cited answer.",
       text: "Cited answers in any Slack or Teams channel or DM, using only what you can access.",
     },
     {
       id: "documents",
       label: "Documents",
-      tools: ["Google Docs", "Microsoft Word"],
+      tools: [{ id: "gdocs", name: "Google Docs" }, { id: "word", name: "Word" }],
       title: "Check a design doc before review.",
       text: "Flags contradictions, past incidents and who to ask, right inside Google Docs or Word.",
     },
     {
       id: "meetings",
       label: "Meetings",
-      tools: ["Google Meet", "Zoom"],
+      tools: [{ id: "meet", name: "Google Meet" }, { id: "zoom", name: "Zoom" }],
       title: "Context in the meeting, while it’s happening.",
       text: "Ask mid-call in Google Meet or Zoom and get context on screen that everyone in the room can see.",
     },
     {
       id: "support",
       label: "IT support",
-      tools: ["ServiceNow", "Jira Service Management"],
+      tools: [{ id: "servicenow", name: "ServiceNow" }, { id: "jsm", name: "Jira" }],
       title: "IT answers that know the history.",
       text: "Answers employees’ IT questions in ServiceNow or Jira Service Management from past tickets and runbooks, and drafts fixes for your IT team to approve.",
     },
@@ -57,6 +57,7 @@ export const integrations = {
 } as const;
 
 export type IntegrationId = (typeof integrations.tabs)[number]["id"];
+export type ToolId = (typeof integrations.tabs)[number]["tools"][number]["id"];
 
 export const security = {
   title: "Secure by design.",

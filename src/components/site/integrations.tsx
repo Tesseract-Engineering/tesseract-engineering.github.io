@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState, type ComponentType } from "react";
+import { useEffect, useRef, useState, type ComponentType, type ReactNode } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import { integrations, type IntegrationId } from "@/lib/site";
+import { integrations, type IntegrationId, type ToolId } from "@/lib/site";
 import { DocumentsMockup } from "./mockups/documents";
 import { MeetingsMockup } from "./mockups/meetings";
 import { MessagesMockup } from "./mockups/messages";
 import { SupportMockup } from "./mockups/support";
 
-const MOCKUPS: Record<IntegrationId, ComponentType> = {
+const MOCKUPS: Record<IntegrationId, ComponentType<{ tool: ToolId }>> = {
   messages: MessagesMockup,
   documents: DocumentsMockup,
   meetings: MeetingsMockup,
@@ -42,10 +42,50 @@ function useSeen<T extends Element>() {
   return [ref, seen] as const;
 }
 
-/** A black block with tabs over white mock-ups of each integration. */
-export function Integrations() {
+/**
+ * Two-way switch between the apps a tab works in (Slack | Teams, …). The mock-up redraws in the
+ * chosen app around the same Tesseract answer, to show it works wherever people already are.
+ */
+function ToolSwitch({
+  tools,
+  value,
+  onChange,
+}: {
+  tools: readonly { id: ToolId; name: string }[];
+  value: ToolId;
+  onChange: (id: ToolId) => void;
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <span className="font-mono text-[0.6875rem] leading-none font-medium tracking-[0.14em] text-stone-dark uppercase">Works in</span>
+      <div role="group" aria-label="Show it in" className="inline-flex rounded-btn border border-line-dark p-[3px]">
+        {tools.map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            aria-pressed={value === t.id}
+            onClick={() => onChange(t.id)}
+            className={cn(
+              "cursor-pointer rounded-[3px] px-3 py-1.5 text-[0.8125rem] font-medium transition-colors focus-visible:outline-on-dark",
+              value === t.id ? "bg-on-dark text-ink" : "text-stone-dark hover:text-on-dark",
+            )}
+          >
+            {t.name}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** A black block with tabs over app-styled mock-ups of each integration. */
+export function Integrations({ switchable = true, aboveBlock }: { switchable?: boolean; aboveBlock?: ReactNode }) {
   const [ref, seen] = useSeen<HTMLDivElement>();
   const [keyboard, setKeyboard] = useState(false);
+  // the app shown in each tab; starts on the first of each pair
+  const [tools, setTools] = useState(
+    () => Object.fromEntries(integrations.tabs.map((t) => [t.id, t.tools[0].id])) as Record<IntegrationId, ToolId>,
+  );
 
   return (
     <div className="mx-auto max-w-[1336px] px-5">
@@ -54,6 +94,7 @@ export function Integrations() {
         <p className="max-w-[58ch] text-[1.1875rem] leading-[1.55] text-stone">{integrations.lede}</p>
       </div>
 
+      {aboveBlock}
       <div ref={ref} data-play={seen ? "" : undefined} className="rounded-box bg-ink p-[clamp(20px,4vw,56px)] text-on-dark">
         <Tabs defaultValue={integrations.tabs[0].id} className="gap-0">
           {/*
@@ -96,17 +137,22 @@ export function Integrations() {
                 className="grid items-center gap-[clamp(28px,4vw,56px)] lg:grid-cols-[minmax(0,5fr)_minmax(0,8fr)]"
               >
                 <div className="grid content-start gap-4">
-                  <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.6875rem] leading-none font-medium tracking-[0.14em] text-stone-dark uppercase">
-                    {tab.tools.map((tool) => (
-                      <span key={tool} className="inline-flex items-center gap-2 before:size-[5px] before:bg-forest-light">
-                        {tool}
-                      </span>
-                    ))}
-                  </p>
+                  {switchable ? (
+                    <ToolSwitch tools={tab.tools} value={tools[tab.id]} onChange={(id) => setTools((cur) => ({ ...cur, [tab.id]: id }))} />
+                  ) : (
+                    <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.6875rem] leading-none font-medium tracking-[0.14em] text-stone-dark uppercase">
+                      {tab.tools.map((t) => (
+                        <span key={t.id} className="inline-flex items-center gap-2 before:size-[5px] before:bg-forest-light">
+                          {t.name}
+                        </span>
+                      ))}
+                    </p>
+                  )}
                   <h3 className="text-[clamp(1.6rem,1.1rem+1.4vw,2.3rem)]">{tab.title}</h3>
                   <p className="leading-[1.6] text-stone-dark">{tab.text}</p>
                 </div>
-                <Mockup />
+                {/* keyed by app, so switching replays the reveal */}
+                <Mockup key={tools[tab.id]} tool={tools[tab.id]} />
               </TabsContent>
             );
           })}

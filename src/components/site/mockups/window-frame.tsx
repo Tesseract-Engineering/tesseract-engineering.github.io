@@ -54,3 +54,29 @@ export function WindowFrame({
     </div>
   );
 }
+
+/**
+ * The outer frame of an app-styled mock-up: a rounded window that clips the app's own chrome.
+ * Each app draws its own bars and sidebars inside; this only sets the size and the accessible name.
+ */
+export function Shell({ label, className, children }: { label: string; className?: string; children: ReactNode }) {
+  return (
+    <div
+      role="img"
+      aria-label={label}
+      className={cn("flex h-[400px] flex-col overflow-hidden rounded-md bg-white text-left text-[0.8125rem] leading-normal text-ink", className)}
+    >
+      {children}
+    </div>
+  );
+}
+
+/** A small round avatar with initials. */
+export function Initials({ name, className }: { name: string; className?: string }) {
+  const initials = name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2);
+  return <span className={cn("grid size-8 flex-none place-items-center text-[11px] font-semibold", className)}>{initials}</span>;
+}
