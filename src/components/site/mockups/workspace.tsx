@@ -37,7 +37,6 @@ const SOURCES: Record<number, Source> = {
   2: { n: 2, title: "payments/export-service", where: "GitHub", logo: "/logos/apps/github.svg" },
   3: { n: 3, title: "#security-review, April 9", where: "Slack", logo: "/logos/apps/slack.svg" },
   4: { n: 4, title: "PAY-212: Per-tenant encryption keys", where: "Jira", logo: "/logos/apps/jira-icon.svg" },
-  5: { n: 5, title: "Export service security review", where: "Confluence", logo: "/logos/apps/confluence.svg" },
 };
 
 const RECENT = [
@@ -114,8 +113,8 @@ export function WorkspaceMockup() {
   return (
     <div
       role="img"
-      aria-label="Mock-up of the Tesseract workspace, open on Ask. An engineer planning a customer data export for enterprise accounts asks whether anyone has built one. Tesseract answers that Payments shipped an export service in March, owned by Priya Nair; that Security rejected direct database access in April; and that per-tenant encryption keys are a known gap. It cites Confluence, GitHub, Slack and Jira, notes two restricted Security documents, and drafts a Slack message, an access request and a coding-agent brief for approval. A follow-up asks why direct database access was rejected, and Tesseract quotes the security review."
-      className="flex h-[1050px] overflow-hidden rounded-[12px] bg-paper text-left text-[13.5px] leading-[1.6] text-ink shadow-[0_60px_120px_-40px_rgb(0_0_0/0.7)] ring-1 ring-white/10"
+      aria-label="Mock-up of the Tesseract workspace, open on Ask. An engineer planning a customer data export for enterprise accounts asks whether anyone has built one. Tesseract answers that Payments shipped an export service in March, owned by Priya Nair; that Security rejected direct database access in April; and that per-tenant encryption keys are a known gap. It cites Confluence, GitHub, Slack and Jira, notes two restricted Security documents, and drafts a Slack message, an access request and a coding-agent brief for approval."
+      className="flex h-[820px] overflow-hidden rounded-[12px] bg-paper text-left text-[13.5px] leading-[1.6] text-ink shadow-[0_60px_120px_-40px_rgb(0_0_0/0.7)] ring-1 ring-white/10"
     >
       {/* sidebar */}
       <aside className="flex w-[236px] flex-none flex-col bg-[#161513] px-3 py-4 leading-normal text-on-dark">
@@ -220,21 +219,6 @@ export function WorkspaceMockup() {
               <span className="mt-2.5 inline-flex rounded-md bg-ink px-3 py-1.5 text-[12px] font-semibold text-white">Review and approve</span>
             </div>
 
-            <Question>Why did they reject direct database access?</Question>
-            <Answer sources={[3, 5]}>
-              <p>
-                Export queries ran against shared tables, so a missed filter could return another tenant&rsquo;s rows. Marcus Webb put it this way
-                in the review:
-              </p>
-              <blockquote className="border-l-2 border-forest pl-3 text-ink">
-                &ldquo;One missed WHERE clause and we hand a customer someone else&rsquo;s data.&rdquo;
-              </blockquote>
-              <p>
-                The Payments team added row-level filters on a read replica instead.
-                <Ref n={3} />
-                <Ref n={5} />
-              </p>
-            </Answer>
           </div>
         </div>
 
