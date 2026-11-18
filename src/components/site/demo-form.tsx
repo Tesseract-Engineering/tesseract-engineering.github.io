@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, ChevronDown } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { useState, type FormEvent, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import { contact } from "@/lib/site";
 // Personal inboxes: the form asks for a work email instead.
 const PERSONAL = ["gmail.com", "googlemail.com", "yahoo.com", "hotmail.com", "outlook.com", "live.com", "msn.com", "icloud.com", "me.com", "aol.com", "proton.me", "protonmail.com"];
 
-type Fields = { firstName: string; lastName: string; company: string; email: string; size: string; phone: string };
+type Fields = { firstName: string; lastName: string; company: string; email: string; phone: string };
 
 const input =
   "h-11 w-full rounded-btn border border-line-2 bg-white px-3 text-[15px] text-ink outline-none transition-colors placeholder:text-stone/70 focus:border-forest focus:ring-2 focus:ring-forest/20 aria-invalid:border-[#B42318]";
@@ -74,7 +74,6 @@ export function DemoForm() {
       `Name: ${data.firstName} ${data.lastName}`,
       `Company: ${data.company}`,
       `Work email: ${data.email}`,
-      `Company size: ${data.size}`,
       data.phone && `Phone: ${data.phone}`,
     ]
       .filter(Boolean)
@@ -123,26 +122,9 @@ export function DemoForm() {
           className={input}
         />
       </Field>
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Company size" htmlFor="size">
-          <div className="relative">
-          <select id="size" name="size" required defaultValue="" className={`${input} appearance-none pr-9`}>
-            <option value="" disabled>
-              Select
-            </option>
-            {contact.companySizes.map((s) => (
-              <option key={s} value={s}>
-                {s} employees
-              </option>
-            ))}
-          </select>
-          <ChevronDown aria-hidden className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-stone" />
-          </div>
-        </Field>
-        <Field label="Phone number" htmlFor="phone" optional>
-          <input id="phone" name="phone" type="tel" autoComplete="tel" className={input} />
-        </Field>
-      </div>
+      <Field label="Phone number" htmlFor="phone" optional>
+        <input id="phone" name="phone" type="tel" autoComplete="tel" className={input} />
+      </Field>
       {state === "failed" && (
         <p role="alert" className="text-[14px] text-[#B42318]">
           Something went wrong sending your request. Please email us at{" "}

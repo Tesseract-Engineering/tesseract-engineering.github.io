@@ -120,5 +120,4 @@ export const contact = {
   page: {
     title: "Book a Tesseract demo",
   },
-  companySizes: ["1–50", "51–200", "201–1,000", "1,001–5,000", "5,000+"],
 } as const;
