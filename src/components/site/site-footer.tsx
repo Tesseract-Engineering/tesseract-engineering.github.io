@@ -1,4 +1,5 @@
 import { closing, site } from "@/lib/site";
+import { Logo } from "./logo";
 import { RequestDemoButton } from "./request-demo";
 
 /** A black block: the closing call, then the footer line. */
@@ -12,8 +13,10 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="mx-auto max-w-[1336px] px-5">
-        <div className="flex flex-wrap items-baseline justify-between gap-3 border-t border-line-dark pt-[26px]">
-          <span className="font-display text-xl font-semibold tracking-[-0.03em] text-on-dark">{site.name}</span>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line-dark pt-[26px]">
+          <a href="#top" aria-label={`${site.name} home`} className="text-on-dark">
+            <Logo className="size-[22px]" />
+          </a>
           <span>&copy; {new Date().getFullYear()} {site.legalName}</span>
         </div>
       </div>
