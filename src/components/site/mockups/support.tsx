@@ -3,7 +3,7 @@ import { Bell, ChevronDown, CircleHelp, Grip, Link2, Paperclip, Plus, Search } f
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
-import { Shell, reveal } from "./window-frame";
+import { Shell, TesseractMark, reveal } from "./window-frame";
 
 /*
   Jira Service Management: a software engineer starting on-call can't get into production Grafana.
@@ -97,7 +97,7 @@ export function SupportMockup() {
             {/* Tesseract's suggestion: someone hit this before, here's the fix that worked */}
             <div className="mt-2.5 grid gap-2 rounded-[6px] border border-[#DCDFE4] border-l-[3px] border-l-forest bg-white p-2.5 text-[11.5px]">
               <p {...reveal(0)} className="flex items-center gap-1.5">
-                <span className="grid size-4 place-items-center rounded-[3px] bg-ink text-[8.5px] text-white">T</span>
+                <TesseractMark size={16} />
                 <b>Tesseract</b>
                 <span className="rounded-[3px] bg-forest-soft px-1.5 py-px text-[10.5px] font-medium text-forest">Seen before</span>
               </p>

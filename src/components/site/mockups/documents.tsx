@@ -18,7 +18,7 @@ import {
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
-import { Cite, Shell, reveal } from "./window-frame";
+import { Cite, Shell, TesseractMark, reveal } from "./window-frame";
 
 /* Microsoft Word for the web: a lawyer reviews a customer contract; Tesseract checks it against the playbook. */
 
@@ -105,7 +105,7 @@ export function DocumentsMockup() {
         </div>
         <aside className="hidden w-[214px] flex-none flex-col gap-2 overflow-hidden border-l border-line-2 bg-white p-2.5 sm:flex">
           <p className="flex items-center gap-1.5 border-b border-line pb-2 text-[12.5px] font-semibold">
-            <span className="grid size-4 place-items-center rounded-[3px] bg-ink text-[9px] text-white">T</span>
+            <TesseractMark size={16} />
             Tesseract
             <X className="ml-auto size-3.5 text-stone" />
           </p>

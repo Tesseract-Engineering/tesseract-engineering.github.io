@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Cite, Shell, reveal } from "./window-frame";
+import { Cite, Shell, TesseractMark, reveal } from "./window-frame";
 
 /* Zoom: a finance budget review; a supplier wants more to renew, and Tesseract shows what was paid last year and what the contract allows. */
 
@@ -80,7 +80,7 @@ export function MeetingsMockup() {
         <aside className="hidden w-[214px] flex-none flex-col gap-2.5 overflow-hidden rounded-[6px] bg-white p-2.5 text-ink sm:flex">
           <p className="flex items-center justify-between border-b border-line pb-2 text-[12px] font-semibold">
             <span className="flex items-center gap-1.5">
-              <span className="grid size-4 place-items-center rounded-[3px] bg-ink text-[9px] text-white">T</span>
+              <TesseractMark size={16} />
               Tesseract
             </span>
             <span className="text-[10.5px] font-normal text-stone">Apps</span>

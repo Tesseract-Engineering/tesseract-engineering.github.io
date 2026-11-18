@@ -28,7 +28,7 @@ npx serve out      # optional: preview the exact files that will be deployed
 | `src/app/layout.tsx` | Fonts (Inter, with its display cut for headings, and IBM Plex Mono for labels), page title and description, social previews. |
 | `src/app/globals.css` | Design tokens (colours, radii, fonts) and the shadcn/ui theme mapping. |
 | `src/components/site/` | One component per section (nav, hero, product showcase, integrations, security, team, footer) and the Request a demo dialog. |
-| `src/components/site/mockups/` | Product mock-ups: the workspace dashboard under the hero (`dashboard.tsx`) and the four integration tabs. |
+| `src/components/site/mockups/` | Product mock-ups: the Tesseract workspace under the hero (`workspace.tsx`) and the four integration tabs. |
 | `src/components/ui/` | shadcn/ui components (button, tabs, dialog). These files are ours to edit. |
 
 ### Design tokens

@@ -101,7 +101,7 @@ export const team = {
 } as const;
 
 export const closing = {
-  title: "Unlock what your company knows.",
+  title: "Unlock what your company already knows.",
 } as const;
 
 /** Request a demo: there's no form backend on a static site, so the buttons start an email. */

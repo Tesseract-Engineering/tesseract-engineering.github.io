@@ -24,7 +24,7 @@ import {
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
-import { Cite, Initials, Mini, Shell, reveal } from "./window-frame";
+import { Cite, Initials, Mini, Shell, TesseractMark, reveal } from "./window-frame";
 
 /* Slack: a mechanical engineer asks about a torque spec in #drivetrain; Tesseract answers from the change order. */
 
@@ -106,7 +106,7 @@ export function MessagesMockup() {
             <ChevronDown className="size-3" /> Apps
           </p>
           <p className="flex items-center gap-1.5 px-2 py-[3px]">
-            <span className="grid size-4 place-items-center rounded-[3px] bg-ink text-[9px] font-semibold text-white">T</span>Tesseract
+            <TesseractMark size={16} />Tesseract
           </p>
         </aside>
         {/* channel */}
@@ -137,7 +137,7 @@ export function MessagesMockup() {
             </Message>
             <Message
               i={1}
-              avatar={<span className="grid size-8 flex-none place-items-center rounded-lg bg-ink text-[13px] font-semibold text-white">T</span>}
+              avatar={<TesseractMark size={32} className="rounded-lg" />}
               name="Tesseract"
               app
               time="2:14 PM"

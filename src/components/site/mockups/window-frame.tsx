@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
+import { Logo } from "../logo";
 
 /** Props for an item that rises in, in order, when its panel comes on screen (see `[data-reveal]` in globals.css). */
 export function reveal(i: number) {
@@ -50,4 +51,16 @@ export function Initials({ name, className }: { name: string; className?: string
     .join("")
     .slice(0, 2);
   return <span className={cn("grid size-8 flex-none place-items-center text-[11px] font-semibold", className)}>{initials}</span>;
+}
+
+/** Tesseract's avatar inside the mock-ups: the white logo on a black square. */
+export function TesseractMark({ size = 16, className }: { size?: number; className?: string }) {
+  return (
+    <span
+      className={cn("grid flex-none place-items-center rounded-[4px] bg-ink text-white", className)}
+      style={{ width: size, height: size }}
+    >
+      <Logo className="size-[68%]" />
+    </span>
+  );
 }
