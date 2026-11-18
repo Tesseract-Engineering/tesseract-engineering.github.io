@@ -36,7 +36,9 @@ export function Shell({ label, className, children }: { label: string; className
     <div
       role="img"
       aria-label={label}
-      className={cn("flex h-[460px] flex-col overflow-hidden rounded-md bg-white select-none [&_img]:pointer-events-none text-left text-[0.8125rem] leading-normal text-ink", className)}
+      // The height follows the width the mock-up gets, so text that wraps more on narrow screens
+      // still fits: tall on phones, shorter beside the copy on desktop (measured, not guessed).
+      className={cn("flex h-[660px] min-[480px]:h-[560px] sm:h-[590px] md:h-[530px] lg:h-[590px] xl:h-[490px] 2xl:h-[470px] flex-col overflow-hidden rounded-md bg-white select-none [&_img]:pointer-events-none text-left text-[0.8125rem] leading-normal text-ink", className)}
     >
       {children}
     </div>

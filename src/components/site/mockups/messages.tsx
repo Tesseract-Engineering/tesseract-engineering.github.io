@@ -150,7 +150,10 @@ export function MessagesMockup() {
                 <Cite>ECN-0412 &middot; PLM &middot; Ishan Sinha</Cite>
               </blockquote>
               <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-stone">
-                <Lock aria-hidden className="size-3" strokeWidth={1.8} /> Supplier failure report: Procurement only. <Mini>Request access</Mini>
+                <span className="inline-flex items-center gap-1.5">
+                  <Lock aria-hidden className="size-3 flex-none" strokeWidth={1.8} /> Supplier failure report: Procurement only.
+                </span>
+                <Mini>Request access</Mini>
               </span>
               <span className="flex flex-wrap items-center gap-1.5">
                 <Reaction emoji="👀" n={3} mine />
