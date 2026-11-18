@@ -53,18 +53,22 @@ export const integrations = {
 } as const;
 
 /**
- * Every app Tesseract works in, for the hub diagram above the integrations. `wordmark` logos already
- * spell the name, so they're shown without a text label. Logos are each company's trademark.
+ * The tools Tesseract works across, for the hub diagram above the integrations: the Microsoft and
+ * Google suites as a whole, plus the tools most companies run on. `wordmark` logos already spell the
+ * name, so they're shown without a text label (`height` sizes the taller ones). Logos are each
+ * company's trademark, from Wikimedia Commons.
  */
 export const apps = [
   { name: "Slack", logo: "/logos/apps/slack.svg" },
-  { name: "Microsoft Teams", logo: "/logos/apps/teams.svg" },
-  { name: "Google Docs", logo: "/logos/apps/gdocs.svg" },
-  { name: "Microsoft Word", logo: "/logos/apps/word.svg" },
-  { name: "Google Meet", logo: "/logos/apps/meet.svg" },
+  { name: "Microsoft 365", logo: "/logos/apps/microsoft-365.svg" },
+  { name: "Google Workspace", logo: "/logos/apps/google-workspace.svg", wordmark: true },
   { name: "Zoom", logo: "/logos/apps/zoom.svg", wordmark: true },
+  { name: "GitHub", logo: "/logos/apps/github.svg" },
+  { name: "Jira", logo: "/logos/apps/jira.svg", wordmark: true },
+  { name: "Confluence", logo: "/logos/apps/confluence.svg" },
+  { name: "Salesforce", logo: "/logos/apps/salesforce.svg", wordmark: true, height: 30 },
+  { name: "Zendesk", logo: "/logos/apps/zendesk.svg", wordmark: true, height: 30 },
   { name: "ServiceNow", logo: "/logos/apps/servicenow.svg", wordmark: true },
-  { name: "Jira Service Management", logo: "/logos/apps/jira.svg", wordmark: true },
 ] as const;
 
 export type IntegrationId = (typeof integrations.tabs)[number]["id"];

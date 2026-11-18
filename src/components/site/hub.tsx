@@ -4,8 +4,8 @@ import { Logo } from "./logo";
 
 // Where each app sits around the hub, in percent of the diagram (same order as `apps`).
 const SPOTS: [number, number][] = [
-  [9, 16], [33, 6], [67, 6], [91, 16],
-  [9, 84], [33, 94], [67, 94], [91, 84],
+  [8, 20], [28, 7], [50, 3], [72, 7], [92, 20],
+  [8, 80], [28, 93], [50, 97], [72, 93], [92, 80],
 ];
 
 function Core() {
@@ -24,7 +24,7 @@ export function Hub() {
   return (
     <figure className="mb-[clamp(36px,5vw,64px)]" aria-label={`Tesseract works in ${apps.map((a) => a.name).join(", ")}.`}>
       {/* wide screens: hub and spokes */}
-      <div className="relative mx-auto hidden h-[340px] max-w-[1100px] md:block">
+      <div className="relative mx-auto hidden h-[380px] max-w-[1160px] md:block">
         <svg aria-hidden viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 size-full">
           {SPOTS.map(([x, y], i) => (
             <path

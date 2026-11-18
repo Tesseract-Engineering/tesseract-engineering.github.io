@@ -48,17 +48,16 @@ function useInView<T extends Element>() {
 /**
  * The hub of apps, then a black block with tabs over app mock-ups (Slack, Word, Zoom, Jira).
  * The tabs advance on their own every few seconds: a thin line in the selected tab shows the time
- * left, and when its animation ends the next tab opens. It pauses while the block is hovered,
- * focused or off screen; clicking a tab jumps there and the rotation carries on from it. Reduced
- * motion turns animations off, so the tabs then stay put.
+ * left, and when its animation ends the next tab opens. Clicking a tab jumps there and the rotation
+ * carries on from it; it only waits while the block is off screen. Reduced motion turns animations
+ * off, so the tabs then stay put.
  */
 export function Integrations() {
   const [ref, inView, seen] = useInView<HTMLDivElement>();
   const [active, setActive] = useState<IntegrationId>(IDS[0]);
-  const [hovered, setHovered] = useState(false);
-  const [focused, setFocused] = useState(false);
   const [keyboard, setKeyboard] = useState(false);
-  const running = inView && !hovered && !focused;
+  // keeps going after a click; it only waits while the block is off screen
+  const running = inView;
 
   const next = () => setActive((cur) => IDS[(IDS.indexOf(cur) + 1) % IDS.length]);
 
@@ -74,12 +73,6 @@ export function Integrations() {
       <div
         ref={ref}
         data-play={seen ? "" : undefined}
-        onPointerEnter={() => setHovered(true)}
-        onPointerLeave={() => setHovered(false)}
-        onFocus={() => setFocused(true)}
-        onBlur={(e) => {
-          if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocused(false);
-        }}
         className="rounded-box bg-ink p-[clamp(20px,4vw,56px)] text-on-dark"
       >
         <Tabs value={active} onValueChange={(v) => setActive(v as IntegrationId)} className="gap-0">
@@ -100,12 +93,12 @@ export function Integrations() {
                 key={tab.id}
                 value={tab.id}
                 className={cn(
-                  "relative h-auto flex-none overflow-hidden rounded-btn border-line-dark px-4 py-[11px] text-sm text-stone-dark transition-colors",
+                  "relative h-auto flex-none cursor-pointer overflow-hidden rounded-btn border-line-dark bg-transparent px-4 py-[11px] text-sm text-stone-dark transition-colors",
                   "data-[state=inactive]:hover:border-stone-dark data-[state=inactive]:hover:text-on-dark",
-                  // selected: a soft highlight, still clearly a button
-                  "data-[state=active]:border-on-dark/55 data-[state=active]:bg-white/12 data-[state=active]:text-on-dark data-[state=active]:shadow-none",
-                  // no ring on click; a clear outline for keyboard users
-                  "focus-visible:ring-0 focus-visible:outline-none",
+                  // selected: brighter, never darker. No fill, just white text and a white border
+                  "data-[state=active]:border-on-dark data-[state=active]:bg-transparent data-[state=active]:font-semibold data-[state=active]:text-on-dark data-[state=active]:shadow-none",
+                  // clicking focuses the tab: no ring, border change or fill from that
+                  "focus-visible:ring-0 focus-visible:outline-none data-[state=inactive]:focus-visible:border-line-dark data-[state=active]:focus-visible:border-on-dark",
                   "group-data-[keyboard]/tabs-list:focus-visible:outline-2 group-data-[keyboard]/tabs-list:focus-visible:outline-offset-2 group-data-[keyboard]/tabs-list:focus-visible:outline-solid group-data-[keyboard]/tabs-list:focus-visible:outline-on-dark",
                 )}
               >

@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 
 import { cn } from "@/lib/utils";
 
-type App = { name: string; logo: string; wordmark?: boolean };
+type App = { name: string; logo: string; wordmark?: boolean; height?: number };
 
 /**
  * An app's logo on a small white chip. Icon logos get the app's name beside them; wordmark logos
@@ -14,12 +14,12 @@ export function AppBadge({ app, className, style }: { app: App; className?: stri
     <span
       style={style}
       className={cn(
-        "inline-flex items-center gap-2 rounded-btn border border-line-2 bg-white px-3 py-2 text-[13px] font-medium whitespace-nowrap text-ink shadow-[0_1px_2px_rgb(0_0_0/0.06)]",
+        "inline-flex h-10 items-center gap-2 rounded-btn border border-line-2 bg-white px-3 py-2 text-[13px] font-medium whitespace-nowrap text-ink shadow-[0_1px_2px_rgb(0_0_0/0.06)]",
         className,
       )}
     >
       {app.wordmark ? (
-        <img src={app.logo} alt={app.name} className="h-[17px] w-auto" />
+        <img src={app.logo} alt={app.name} className="w-auto" style={{ height: app.height ?? 17 }} />
       ) : (
         <>
           <img src={app.logo} alt="" className="size-5" />
