@@ -79,7 +79,12 @@ export const security = {
   lede: "Tesseract builds your knowledge graph inside your own cloud. Your data is collected and stored there, and nothing is copied to us.",
   // Once models can run inside the customer's cloud, the lede can become:
   // "Tesseract builds your knowledge graph inside your own cloud. Nothing leaves it." (not yet)
-  footnote: "Read-only access. Every record keeps its original permissions.",
+  points: [
+    { title: "Runs in your cloud", text: "Your data is collected and stored there. Nothing is copied to us." },
+    { title: "Read-only, same permissions", text: "Every record keeps its original permissions." },
+    { title: "Any model", text: "Anthropic, OpenAI or OpenRouter. No lock-in." },
+    { title: "Cited and approved", text: "Every claim sourced. Every action approved." },
+  ],
 } as const;
 
 export const team = {
