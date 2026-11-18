@@ -10,9 +10,8 @@ const SPOTS: [number, number][] = [
 
 function Core() {
   return (
-    <div className="grid justify-items-center gap-2 rounded-box bg-ink px-6 py-5 text-on-dark shadow-[0_20px_50px_-20px_rgb(0_0_0/0.5)]">
-      <Logo className="size-7" />
-      <span className="text-[15px] font-semibold">Tesseract</span>
+    <div role="img" aria-label="Tesseract" className="grid size-[84px] place-items-center rounded-box bg-ink text-on-dark shadow-[0_20px_50px_-20px_rgb(0_0_0/0.5)]">
+      <Logo className="size-10" />
     </div>
   );
 }
