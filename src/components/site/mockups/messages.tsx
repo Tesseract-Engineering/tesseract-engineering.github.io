@@ -70,7 +70,7 @@ function Message({ avatar, name, app, time, children, i }: { avatar: ReactNode; 
 
 export function MessagesMockup() {
   return (
-    <Shell label="Mock-up: Slack. In the #drivetrain channel, a mechanical engineer asks @Tesseract for the torque spec on the gearbox housing bolts and why it changed; Tesseract answers 40 newton-metres, citing the engineering change order, and offers to request access to a restricted supplier report.">
+    <Shell label="Mock-up: Slack. In the #drivetrain channel, mechanical engineer Dhruv Pendharkar asks @Tesseract for the torque spec on the gearbox housing bolts and why it changed; Tesseract answers 40 newton-metres, citing the engineering change order, and offers to request access to a restricted supplier report.">
       {/* top bar */}
       <div className="flex items-center gap-2 bg-[#350D36] px-2.5 py-1.5 text-white/80">
         <ArrowLeft className="size-3.5" />
@@ -129,7 +129,7 @@ export function MessagesMockup() {
             </p>
           </div>
           <div className="grid flex-1 content-start gap-3 overflow-hidden px-4 py-2.5">
-            <Message i={0} avatar={<Initials name="Ishan Sinha" className="rounded-lg bg-[#E8D9C9]" />} name="Ishan Sinha" time="2:14 PM">
+            <Message i={0} avatar={<Initials name="Dhruv Pendharkar" className="rounded-lg bg-[#E8D9C9]" />} name="Dhruv Pendharkar" time="2:14 PM">
               <p>
                 <span className="rounded-[3px] bg-[#E8F5FA] px-0.5 text-[#1264A3]">@Tesseract</span> what&rsquo;s the torque spec for the M8 bolts
                 on the gearbox housing, and why did it change?

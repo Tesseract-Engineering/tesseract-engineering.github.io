@@ -19,8 +19,8 @@ import { Cite, Shell, reveal } from "./window-frame";
 /* Zoom: a finance budget review; a supplier wants more to renew, and Tesseract shows what was paid last year and what the contract allows. */
 
 const PEOPLE = [
-  { name: "Hamilton Park", tone: "bg-[#7C6A58]", speaking: true },
-  { name: "Karthik Valluri", tone: "bg-[#5B6B5A]", muted: true },
+  { name: "Hamilton Park", tone: "bg-[#7C6A58]", muted: true },
+  { name: "Karthik Valluri", tone: "bg-[#5B6B5A]", speaking: true },
   { name: "Ishan Sinha", tone: "bg-[#5E6475]", muted: true },
   { name: "Dhruv Pendharkar", tone: "bg-[#6E5A66]" },
 ];
@@ -49,7 +49,7 @@ export function MeetingsMockup() {
   return (
     <Shell
       className="bg-[#1A1A1A] text-white"
-      label="Mock-up: a Zoom meeting, the Q4 budget review, with four people and a live caption: Globex wants 1.2 million dollars to renew, what did we pay last year? The Tesseract app panel answers 940 thousand dollars, and notes the contract caps price increases at 7 percent, about 1.01 million, citing the 2025 order form, shown to everyone on the call."
+      label="Mock-up: a Zoom meeting, the Q4 budget review, with four people and a live caption from Karthik Valluri: Globex wants 1.2 million dollars to renew, what did we pay last year? The Tesseract app panel answers 940 thousand dollars, and notes the contract caps price increases at 7 percent, about 1.01 million, citing the 2025 order form, shown to everyone on the call."
     >
       {/* top bar */}
       <div className="flex items-center gap-2 px-3 py-1.5 text-[11px] text-white/80">
@@ -73,7 +73,7 @@ export function MeetingsMockup() {
             </div>
           ))}
           <p {...reveal(0)} className="absolute inset-x-8 bottom-9 rounded-[4px] bg-black/75 px-3 py-1.5 text-center text-[11.5px]">
-            <b>Hamilton Park:</b> Globex wants $1.2M to renew. What did we pay them last year?
+            <b>Karthik Valluri:</b> Globex wants $1.2M to renew. What did we pay them last year?
           </p>
         </div>
         {/* Zoom Apps panel */}
