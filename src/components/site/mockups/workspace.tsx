@@ -2,6 +2,7 @@
 import {
   ArrowUp,
   ChevronDown,
+  Code2,
   Hammer,
   History,
   Lock,
@@ -23,22 +24,24 @@ import { Logo } from "../logo";
 import { TesseractMark } from "./window-frame";
 
 /*
-  The Tesseract workspace, open on Ask: a real conversation where someone taking over a customer
-  renewal asks what they need to know, and every answer cites where it came from (contracts, code,
-  docs, Slack). Laid out at 1120px and scaled to fit by <ScaleToFit>.
+  The Tesseract workspace, open on Ask: an engineer planning a customer data export asks whether
+  anyone has built one. Tesseract finds the existing service, the security decision behind it and
+  the known gap, cites each source, hides what the asker can't see, and drafts the next steps for
+  approval. Laid out at 1120px and scaled to fit by <ScaleToFit>.
 */
 
 type Source = { n: number; title: string; where: string; logo: string };
 
 const SOURCES: Record<number, Source> = {
-  1: { n: 1, title: "Globex order form 2025", where: "SharePoint", logo: "/logos/apps/microsoft-365.svg" },
-  2: { n: 2, title: "Fix SSO login loop for Globex", where: "GitHub · PR #482", logo: "/logos/apps/github.svg" },
-  3: { n: 3, title: "Globex account plan", where: "Confluence", logo: "/logos/apps/confluence.svg" },
-  4: { n: 4, title: "Globex renewal thread, March 2025", where: "Slack · #deals", logo: "/logos/apps/slack.svg" },
+  1: { n: 1, title: "Customer export service design v3", where: "Confluence", logo: "/logos/apps/confluence.svg" },
+  2: { n: 2, title: "payments/export-service", where: "GitHub", logo: "/logos/apps/github.svg" },
+  3: { n: 3, title: "#security-review, April 9", where: "Slack", logo: "/logos/apps/slack.svg" },
+  4: { n: 4, title: "PAY-212: Per-tenant encryption keys", where: "Jira", logo: "/logos/apps/jira-icon.svg" },
+  5: { n: 5, title: "Export service security review", where: "Confluence", logo: "/logos/apps/confluence.svg" },
 };
 
 const RECENT = [
-  "What do I need to know before the Globex renewal?",
+  "Has anyone already built a customer data export?",
   "Who owns the billing service?",
   "Why did we change the refund policy in June?",
   "How do I get production access for on-call?",
@@ -47,22 +50,17 @@ const RECENT = [
 
 function NavItem({ icon: Icon, label, active }: { icon: LucideIcon; label: string; active?: boolean }) {
   return (
-    <li
-      className={cn(
-        "flex items-center gap-2.5 rounded-md px-2.5 py-[7px] text-[13px] text-stone-dark",
-        active && "bg-white/[0.08] font-medium text-on-dark",
-      )}
-    >
+    <li className={cn("flex items-center gap-2.5 rounded-md px-2.5 py-[7px] text-[13px] text-stone-dark", active && "bg-white/[0.08] font-medium text-on-dark")}>
       <Icon className="size-[15px]" strokeWidth={1.7} />
       {label}
     </li>
   );
 }
 
-/** An inline citation, linked to a source chip below the answer. */
+/** An inline citation, linked to a numbered source below the answer. */
 function Ref({ n }: { n: number }) {
   return (
-    <span className="mx-0.5 inline-grid size-[17px] place-items-center rounded-[4px] bg-forest-soft align-[1px] text-[10px] font-semibold text-forest">
+    <span className="mx-0.5 inline-grid size-[16px] place-items-center rounded-[4px] bg-forest-soft align-[1px] text-[9.5px] font-semibold text-forest">
       {n}
     </span>
   );
@@ -70,8 +68,8 @@ function Ref({ n }: { n: number }) {
 
 function SourceChip({ s }: { s: Source }) {
   return (
-    <span className="flex items-center gap-2 rounded-md border border-line bg-white py-1.5 pr-2.5 pl-1.5 text-[11.5px]">
-      <span className="grid size-[17px] place-items-center rounded-[4px] bg-forest-soft text-[10px] font-semibold text-forest">{s.n}</span>
+    <span className="flex items-center gap-2 rounded-md border border-line bg-white py-1 pr-2.5 pl-1 text-[11.5px]">
+      <span className="grid size-[16px] place-items-center rounded-[4px] bg-forest-soft text-[9.5px] font-semibold text-forest">{s.n}</span>
       <img src={s.logo} alt="" className="size-3.5" />
       <span className="font-medium">{s.title}</span>
       <span className="text-stone">{s.where}</span>
@@ -82,7 +80,7 @@ function SourceChip({ s }: { s: Source }) {
 function Question({ children }: { children: ReactNode }) {
   return (
     <div className="flex justify-end">
-      <p className="max-w-[78%] rounded-[14px_14px_4px_14px] bg-paper-2 px-4 py-2.5 text-[14px]">{children}</p>
+      <p className="max-w-[80%] rounded-[14px_14px_4px_14px] bg-paper-2 px-4 py-2.5">{children}</p>
     </div>
   );
 }
@@ -90,8 +88,8 @@ function Question({ children }: { children: ReactNode }) {
 function Answer({ children, sources }: { children: ReactNode; sources: number[] }) {
   return (
     <div className="flex gap-3">
-      <TesseractMark size={28} className="rounded-md" />
-      <div className="grid min-w-0 flex-1 gap-2.5 text-[14px] leading-[1.6]">
+      <TesseractMark size={26} className="rounded-md" />
+      <div className="grid min-w-0 flex-1 gap-2.5">
         {children}
         <div className="flex flex-wrap gap-1.5">
           {sources.map((n) => (
@@ -103,15 +101,24 @@ function Answer({ children, sources }: { children: ReactNode; sources: number[] 
   );
 }
 
+function Draft({ icon, children }: { icon: ReactNode; children: ReactNode }) {
+  return (
+    <li className="flex items-center gap-2.5 border-t border-line py-2 first:border-t-0 first:pt-0">
+      <span className="grid size-6 flex-none place-items-center rounded-md border border-line bg-white">{icon}</span>
+      <span>{children}</span>
+    </li>
+  );
+}
+
 export function WorkspaceMockup() {
   return (
     <div
       role="img"
-      aria-label="Mock-up of the Tesseract workspace, open on Ask. Someone taking over the Globex renewal asks what they need to know; Tesseract answers that the renewal is due December 15 and Globex asked for 1.2 million dollars while the contract caps increases at 7 percent, that their open SSO issue is fixed in a pull request shipping December 2, and that Hamilton Park owns the account, citing SharePoint, GitHub, Confluence and Slack. A follow-up asks what Globex got last time; Tesseract answers 15 percent off for a two-year term, citing a Slack thread."
-      className="flex h-[690px] overflow-hidden rounded-[12px] bg-paper text-left text-ink shadow-[0_60px_120px_-40px_rgb(0_0_0/0.7)] ring-1 ring-white/10"
+      aria-label="Mock-up of the Tesseract workspace, open on Ask. An engineer planning a customer data export for enterprise accounts asks whether anyone has built one. Tesseract answers that Payments shipped an export service in March, owned by Priya Nair; that Security rejected direct database access in April; and that per-tenant encryption keys are a known gap. It cites Confluence, GitHub, Slack and Jira, notes two restricted Security documents, and drafts a Slack message, an access request and a coding-agent brief for approval. A follow-up asks why direct database access was rejected, and Tesseract quotes the security review."
+      className="flex h-[1050px] overflow-hidden rounded-[12px] bg-paper text-left text-[13.5px] leading-[1.6] text-ink shadow-[0_60px_120px_-40px_rgb(0_0_0/0.7)] ring-1 ring-white/10"
     >
       {/* sidebar */}
-      <aside className="flex w-[236px] flex-none flex-col bg-[#161513] px-3 py-4 text-on-dark">
+      <aside className="flex w-[236px] flex-none flex-col bg-[#161513] px-3 py-4 leading-normal text-on-dark">
         <div className="mb-4 flex items-center justify-between px-2">
           <span className="flex items-center gap-2 font-display text-[17px] font-semibold tracking-[-0.02em]">
             <Logo className="size-4" />
@@ -147,16 +154,16 @@ export function WorkspaceMockup() {
           <span className="grid size-7 place-items-center rounded-full bg-[#E8D9C9] text-[10px] font-semibold text-ink">KV</span>
           <span className="leading-tight">
             Karthik Valluri
-            <span className="block text-[11px] text-stone-dark">Account Executive</span>
+            <span className="block text-[11px] text-stone-dark">Engineering Manager</span>
           </span>
         </div>
       </aside>
 
       {/* Ask */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <div className="flex items-center gap-3 border-b border-line bg-white px-6 py-3">
+        <div className="flex items-center gap-3 border-b border-line bg-white px-6 py-3 leading-normal">
           <MessageSquare className="size-4 text-stone" strokeWidth={1.7} />
-          <p className="text-[14px] font-semibold">Globex renewal prep</p>
+          <p className="text-[14px] font-semibold">Export service: does it exist?</p>
           <span className="rounded-[4px] bg-paper-2 px-1.5 py-0.5 text-[11px] text-stone">Ask</span>
           <span className="ml-auto flex items-center gap-1.5 rounded-md border border-line-2 px-2.5 py-1 text-[12px]">
             <Share2 className="size-3" /> Share
@@ -165,41 +172,77 @@ export function WorkspaceMockup() {
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col items-center overflow-hidden px-6 pt-5">
-          <div className="grid w-full max-w-[740px] gap-5">
-            <Question>I&rsquo;m taking over the Globex renewal next week. What do I need to know?</Question>
-            <Answer sources={[1, 2, 3]}>
-              <p>Three things to know before you talk to them:</p>
-              <ol className="grid list-decimal gap-1.5 pl-5">
+          <div className="grid w-full max-w-[740px] gap-[18px]">
+            <Question>We&rsquo;re planning a customer data export for enterprise accounts. Has anyone here already built something like this?</Question>
+            <Answer sources={[1, 2, 3, 4]}>
+              <p>
+                <b>Yes. Payments shipped one in March, and it&rsquo;s running in production.</b> Three things to know before you start:
+              </p>
+              <ol className="grid list-decimal gap-2 pl-5">
                 <li>
-                  The renewal is due <b>December 15</b>. They&rsquo;ve asked for <b>$1.2M</b>, but the contract caps increases at 7%, about
-                  $1.01M.
+                  <b>Most of what you need exists.</b> It runs scheduled CSV and Parquet exports to a customer&rsquo;s own S3 bucket, and about 40
+                  enterprise accounts use it today. Priya Nair on Payments owns it.
                   <Ref n={1} />
-                </li>
-                <li>
-                  Their open issue is an SSO login loop. The fix is merged and ships <b>December 2</b>.
                   <Ref n={2} />
                 </li>
                 <li>
-                  <b>Hamilton Park</b> owns the relationship. His notes from the last call are in the account plan.
+                  <b>Don&rsquo;t repeat the direct-database approach.</b> Security rejected it in April, and the team moved to a service that reads
+                  from a replica with enforced row-level filters.
                   <Ref n={3} />
                 </li>
+                <li>
+                  <b>There&rsquo;s a known gap you&rsquo;ll likely hit.</b> It doesn&rsquo;t support per-tenant encryption keys. The ticket has been
+                  open since August, and it&rsquo;s the first thing enterprise customers ask for.
+                  <Ref n={4} />
+                </li>
               </ol>
+              <p className="flex items-center gap-1.5 text-[12px] text-stone">
+                <Lock className="size-3" /> 2 more matching documents are restricted to Security and aren&rsquo;t shown.
+              </p>
             </Answer>
-            <Question>What did they get last time?</Question>
-            <Answer sources={[4]}>
+
+            {/* drafts for approval */}
+            <div className="ml-[38px] rounded-[10px] border border-line-2 bg-white p-3.5">
+              <p className="mb-2 text-[12.5px] font-semibold">
+                Drafts ready for your approval <span className="font-normal text-stone">&middot; nothing is sent until you approve</span>
+              </p>
+              <ul className="text-[12.5px]">
+                <Draft icon={<img src="/logos/apps/slack.svg" alt="" className="size-3.5" />}>
+                  Slack message to <b>Priya Nair</b>: a request for a 30-minute walkthrough
+                </Draft>
+                <Draft icon={<Lock className="size-3.5 text-stone" />}>
+                  Access request to <b>Marcus Webb</b> for the 2 restricted Security documents
+                </Draft>
+                <Draft icon={<Code2 className="size-3.5 text-stone" />}>
+                  A brief for your coding agent to build on <span className="font-mono text-[11.5px]">payments/export-service</span>
+                </Draft>
+              </ul>
+              <span className="mt-2.5 inline-flex rounded-md bg-ink px-3 py-1.5 text-[12px] font-semibold text-white">Review and approve</span>
+            </div>
+
+            <Question>Why did they reject direct database access?</Question>
+            <Answer sources={[3, 5]}>
               <p>
-                <b>15% off for a two-year term.</b> Hamilton agreed to it in March 2025 in exchange for keeping the 7% cap.
-                <Ref n={4} />
+                Export queries ran against shared tables, so a missed filter could return another tenant&rsquo;s rows. Marcus Webb put it this way
+                in the review:
+              </p>
+              <blockquote className="border-l-2 border-forest pl-3 text-ink">
+                &ldquo;One missed WHERE clause and we hand a customer someone else&rsquo;s data.&rdquo;
+              </blockquote>
+              <p>
+                The Payments team added row-level filters on a read replica instead.
+                <Ref n={3} />
+                <Ref n={5} />
               </p>
             </Answer>
           </div>
         </div>
 
         {/* composer */}
-        <div className="flex justify-center border-t border-line bg-paper px-6 pt-3 pb-4">
+        <div className="flex justify-center border-t border-line bg-paper px-6 pt-3 pb-4 leading-normal">
           <div className="w-full max-w-[740px]">
             <div className="rounded-[12px] border border-line-2 bg-white px-3.5 pt-3 pb-2.5 shadow-[0_1px_2px_rgb(0_0_0/0.04)]">
-              <p className="text-[14px] text-stone">Ask a follow-up about Globex&hellip;</p>
+              <p className="text-[14px] text-stone">Ask a follow-up&hellip;</p>
               <div className="mt-2.5 flex items-center gap-2 text-[12px] text-stone">
                 <Paperclip className="size-3.5" />
                 <span className="flex items-center gap-1 rounded-md border border-line px-2 py-0.5">

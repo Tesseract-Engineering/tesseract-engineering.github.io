@@ -46,7 +46,7 @@ export function DocumentsMockup() {
         <Grip className="size-3.5" />
         <img draggable={false} src="/logos/apps/word.svg" alt="" className="size-4" />
         <b className="font-semibold">Word</b>
-        <span className="hidden truncate text-white/90 sm:inline">Initech MSA, redline v3 &middot; Saved</span>
+        <span className="hidden truncate text-white/90 sm:inline">Meridian Health MSA, redline v3 &middot; Saved</span>
         <span className="mx-auto hidden w-[28%] items-center gap-1.5 rounded-[4px] bg-white/90 px-2 py-0.5 text-[11px] text-stone lg:flex">
           <Search className="size-3" /> Search (Alt + Q)
         </span>
@@ -115,8 +115,8 @@ export function DocumentsMockup() {
             <Cite>Contracting playbook v4 &middot; &sect;3.2</Cite>
           </Note>
           <Note label="Precedent" i={1}>
-            <p>Globex pushed back the same way in 2025 and settled at 2&times;. Hamilton Park negotiated it.</p>
-            <Cite>Globex MSA &sect;9.1 &middot; SharePoint</Cite>
+            <p>Arcadia Bank pushed back the same way in 2025 and settled at 2&times;. Hamilton Park negotiated it.</p>
+            <Cite>Arcadia Bank MSA &sect;9.1 &middot; SharePoint</Cite>
           </Note>
         </aside>
       </div>

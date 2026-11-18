@@ -49,7 +49,7 @@ export function MeetingsMockup() {
   return (
     <Shell
       className="bg-[#1A1A1A] text-white"
-      label="Mock-up: a Zoom meeting, the Q4 budget review, with four people and a live caption from Karthik Valluri: Globex wants 1.2 million dollars to renew, what did we pay last year? The Tesseract app panel answers 940 thousand dollars, and notes the contract caps price increases at 7 percent, about 1.01 million, citing the 2025 order form, shown to everyone on the call."
+      label="Mock-up: a Zoom meeting, the Q4 budget review, with four people and a live caption from Karthik Valluri: Brightwave wants 1.2 million dollars to renew, what did we pay last year? The Tesseract app panel answers 940 thousand dollars, and notes the contract caps price increases at 7 percent, about 1.01 million, citing the 2025 order form, shown to everyone on the call."
     >
       {/* top bar */}
       <div className="flex items-center gap-2 px-3 py-1.5 text-[11px] text-white/80">
@@ -73,7 +73,7 @@ export function MeetingsMockup() {
             </div>
           ))}
           <p {...reveal(0)} className="absolute inset-x-8 bottom-9 rounded-[4px] bg-black/75 px-3 py-1.5 text-center text-[11.5px]">
-            <b>Karthik Valluri:</b> Globex wants $1.2M to renew. What did we pay them last year?
+            <b>Karthik Valluri:</b> Brightwave wants $1.2M to renew. What did we pay them last year?
           </p>
         </div>
         {/* Zoom Apps panel */}
@@ -86,11 +86,11 @@ export function MeetingsMockup() {
             <span className="text-[10.5px] font-normal text-stone">Apps</span>
           </p>
           <p {...reveal(1)} className="justify-self-end rounded-[10px_10px_3px_10px] bg-paper-2 px-2.5 py-1.5 text-[11.5px] font-medium">
-            What did we pay Globex last year?
+            What did we pay Brightwave last year?
           </p>
           <div {...reveal(2)} className="grid gap-1 rounded-[4px] border border-line border-l-[3px] border-l-forest bg-white p-2.5 text-[11.5px]">
             <p className="font-semibold">$940k. The contract caps increases at 7%, so they can ask for about $1.01M, not $1.2M.</p>
-            <Cite>Globex order form 2025 &middot; Procurement</Cite>
+            <Cite>Brightwave order form 2025 &middot; Procurement</Cite>
           </div>
           <p className="mt-auto text-[10px] text-stone">Shared with everyone in the meeting</p>
         </aside>
