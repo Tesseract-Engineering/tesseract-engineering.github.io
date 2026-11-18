@@ -124,7 +124,7 @@ export function WorkspaceMockup() {
   return (
     <div
       role="img"
-      aria-label="Mock-up of the Tesseract workspace, open on Ask. An engineer planning a customer data export for enterprise accounts asks whether anyone has built one. Tesseract answers that Payments shipped an export service in March, owned by Priya Nair; that Security rejected direct database access in April; and that per-tenant encryption keys are a known gap. It cites Confluence, GitHub, Slack and Jira, notes two restricted Security documents, and drafts a Slack message, an access request and a coding-agent brief for approval."
+      aria-label="Mock-up of the Tesseract workspace, open on Ask. An engineer planning a customer data export for enterprise accounts asks whether anyone has built one. Tesseract answers that Payments shipped an export service in March, owned by Hamilton Park; that Security rejected direct database access in April; and that per-tenant encryption keys are a known gap. It cites Confluence, GitHub, Slack and Jira, notes two restricted Security documents, and drafts a Slack message, an access request and a coding-agent brief for approval."
       className="flex h-[820px] overflow-hidden rounded-[12px] bg-paper text-left text-[13.5px] leading-[1.6] text-ink shadow-[0_60px_120px_-40px_rgb(0_0_0/0.7)] ring-1 ring-white/10"
     >
       {/* sidebar */}
@@ -224,7 +224,7 @@ export function WorkspaceMockup() {
               <ol className="grid list-decimal gap-2 pl-5">
                 <li>
                   <b>Most of what you need exists.</b> It runs scheduled CSV and Parquet exports to a customer&rsquo;s own S3 bucket, and about 40
-                  enterprise accounts use it today. Priya Nair on Payments owns it.
+                  enterprise accounts use it today. Hamilton Park on Payments owns it.
                   <Ref n={1} />
                   <Ref n={2} />
                 </li>
@@ -251,10 +251,10 @@ export function WorkspaceMockup() {
               </p>
               <ul className="text-[12.5px]">
                 <Draft icon={<img src="/logos/apps/slack.svg" alt="" className="size-3.5" />}>
-                  Slack message to <b>Priya Nair</b>: a request for a 30-minute walkthrough
+                  Slack message to <b>Hamilton Park</b>: a request for a 30-minute walkthrough
                 </Draft>
                 <Draft icon={<Lock className="size-3.5 text-stone" />}>
-                  Access request to <b>Marcus Webb</b> for the 2 restricted Security documents
+                  Access request to <b>Dhruv Pendharkar</b> for the 2 restricted Security documents
                 </Draft>
                 <Draft icon={<Code2 className="size-3.5 text-stone" />}>
                   A brief for your coding agent to build on <span className="font-mono text-[11.5px]">payments/export-service</span>
