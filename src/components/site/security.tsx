@@ -9,8 +9,8 @@ import { Logo } from "./logo";
 import { ScaleToFit } from "./scale-to-fit";
 
 /*
-  "Your data stays in your VPC", as one picture: source logos send data read-only into a box
-  labelled Your VPC, where Tesseract builds the knowledge graph; one arrow tries to leave and stops
+  "Secure by design", as one picture: source logos send data read-only into a box
+  labelled Your cloud, where Tesseract builds the knowledge graph; one arrow tries to leave and stops
   at a closed gate. The flow plays once when the diagram scrolls into view (SVG animateMotion, all
   hung off one start trigger). With reduced motion it never starts and the finished diagram shows.
   Horizontal from 1024px up, vertical below; each layout is drawn in its own fixed coordinates.
@@ -24,7 +24,7 @@ const SOURCES = [
 ];
 
 const ALT =
-  "Data from Slack, Jira, GitHub and Google Drive flows read-only into your VPC, where Tesseract builds the knowledge graph. Nothing leaves the VPC.";
+  "Data from Slack, Jira, GitHub and Google Drive flows read-only into your own cloud, where Tesseract builds the knowledge graph. Nothing leaves it.";
 
 const GREEN = "var(--color-forest)";
 const GREY = "#8A877F"; // muted, still 3:1 against the paper background for the gate and arrow
@@ -60,7 +60,7 @@ function Core({ style }: { style: CSSProperties }) {
 function BoxLabel({ style }: { style: CSSProperties }) {
   return (
     <span style={style} className="text-[13px] font-semibold tracking-[0.12em] text-forest uppercase">
-      Your VPC
+      Your cloud
     </span>
   );
 }
