@@ -44,7 +44,7 @@ const ASKED = [
 ];
 
 const APPROVALS = [
-  { what: "Reply to Lena Park on IT-2291", detail: "VPN fix from IT-1876", where: "Jira Service Management" },
+  { what: "Reply to Ishan Sinha on IT-2291", detail: "VPN fix from IT-1876", where: "Jira Service Management" },
   { what: "Comment on the OIDC design doc", detail: "Flags the conflict with SBX-14", where: "Google Docs" },
   { what: "Link INC-12 to PLAT-218", detail: "Same root cause", where: "Jira" },
 ];

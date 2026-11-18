@@ -129,7 +129,7 @@ export function MessagesMockup() {
             </p>
           </div>
           <div className="grid flex-1 content-start gap-3 overflow-hidden px-4 py-2.5">
-            <Message i={0} avatar={<Initials name="Lena Park" className="rounded-lg bg-[#E8D9C9]" />} name="Lena Park" time="2:14 PM">
+            <Message i={0} avatar={<Initials name="Ishan Sinha" className="rounded-lg bg-[#E8D9C9]" />} name="Ishan Sinha" time="2:14 PM">
               <p>
                 <span className="rounded-[3px] bg-[#E8F5FA] px-0.5 text-[#1264A3]">@Tesseract</span> what&rsquo;s the torque spec for the M8 bolts
                 on the gearbox housing, and why did it change?

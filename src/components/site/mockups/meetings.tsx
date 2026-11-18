@@ -21,7 +21,7 @@ import { Cite, Shell, reveal } from "./window-frame";
 const PEOPLE = [
   { name: "Hamilton Park", tone: "bg-[#7C6A58]", speaking: true },
   { name: "Karthik Valluri", tone: "bg-[#5B6B5A]", muted: true },
-  { name: "Lena Park", tone: "bg-[#5E6475]", muted: true },
+  { name: "Ishan Sinha", tone: "bg-[#5E6475]", muted: true },
   { name: "Dhruv Pendharkar", tone: "bg-[#6E5A66]" },
 ];
 
