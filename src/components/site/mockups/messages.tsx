@@ -147,7 +147,7 @@ export function MessagesMockup() {
               </p>
               <blockquote className="border-l-[3px] border-[#DDDDDD] pl-2.5">
                 &ldquo;Reduce M8 housing bolt torque to 40 N&middot;m to prevent boss cracking.&rdquo;
-                <Cite>ECN-0412 &middot; PLM &middot; Diego Torres</Cite>
+                <Cite>ECN-0412 &middot; PLM &middot; Ishan Sinha</Cite>
               </blockquote>
               <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-stone">
                 <Lock aria-hidden className="size-3" strokeWidth={1.8} /> Supplier failure report: Procurement only. <Mini>Request access</Mini>

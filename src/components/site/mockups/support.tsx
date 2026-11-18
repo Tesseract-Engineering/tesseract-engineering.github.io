@@ -33,7 +33,7 @@ function Avatar({ name, tone }: { name: string; tone: string }) {
 
 export function SupportMockup() {
   return (
-    <Shell label="Mock-up: Jira Service Management. Request IT-2291, raised by software engineer Diego Torres: he starts on-call Monday and can't log in to production Grafana. Tesseract points out that Ishan Sinha hit the same error in October (IT-1876) and offers the fix that worked, adding Diego to the oncall-readonly group, with an Apply fix button for the IT agent.">
+    <Shell label="Mock-up: Jira Service Management. Request IT-2291, raised by software engineer Karthik Valluri: he starts on-call Monday and can't log in to production Grafana. Tesseract points out that Ishan Sinha hit the same error in October (IT-1876) and offers the fix that worked, adding Karthik to the oncall-readonly group, with an Apply fix button for the IT agent.">
       {/* Atlassian top bar */}
       <div className="flex items-center gap-3 border-b border-[#DCDFE4] px-2.5 py-1.5 text-[11.5px] text-[#44546F]">
         <Grip className="size-3.5" />
@@ -92,7 +92,7 @@ export function SupportMockup() {
                 <Link2 className="size-3" /> Link issue
               </span>
             </p>
-            <p className="mt-2.5 text-[11.5px] text-[#44546F]">Diego Torres (Software Engineer) raised this via Slack</p>
+            <p className="mt-2.5 text-[11.5px] text-[#44546F]">Karthik Valluri (Software Engineer) raised this via Slack</p>
             <p className="text-[12px]">I start on-call Monday but get &ldquo;403 Forbidden&rdquo; on production Grafana. What access do I need?</p>
             {/* Tesseract's suggestion: someone hit this before, here's the fix that worked */}
             <div className="mt-2.5 grid gap-2 rounded-[6px] border border-[#DCDFE4] border-l-[3px] border-l-forest bg-white p-2.5 text-[11.5px]">
@@ -106,12 +106,12 @@ export function SupportMockup() {
               </p>
               <div {...reveal(2)} className="grid gap-1 rounded-[4px] bg-paper-2 px-2.5 py-2">
                 <p className="label-mono text-[0.58rem] text-stone">Fix that worked</p>
-                <p>Add Diego to the oncall-readonly group in Okta. Grafana works about five minutes later.</p>
+                <p>Add Karthik to the oncall-readonly group in Okta. Grafana works about five minutes later.</p>
                 <p className="font-mono text-[10px] text-forest">IT-1876 &middot; Runbook: On-call access</p>
               </div>
               <p {...reveal(3)} className="flex gap-1.5">
                 <span className="rounded-[3px] bg-[#0C66E4] px-2.5 py-1 text-[11px] font-semibold text-white">Apply fix</span>
-                <span className="rounded-[3px] bg-[#F1F2F4] px-2.5 py-1 text-[11px] font-semibold text-[#44546F]">Reply to Diego</span>
+                <span className="rounded-[3px] bg-[#F1F2F4] px-2.5 py-1 text-[11px] font-semibold text-[#44546F]">Reply to Karthik</span>
               </p>
             </div>
           </div>
@@ -125,7 +125,7 @@ export function SupportMockup() {
               <Avatar name="Hamilton Park" tone="bg-[#E8D9C9]" /> Hamilton Park
             </Detail>
             <Detail label="Reporter">
-              <Avatar name="Diego Torres" tone="bg-[#C9D8E8]" /> Diego Torres
+              <Avatar name="Karthik Valluri" tone="bg-[#C9D8E8]" /> Karthik Valluri
             </Detail>
             <Detail label="Request type">Access request</Detail>
             <Detail label="Priority">
