@@ -16,7 +16,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Cite, Shell, reveal } from "./window-frame";
 
-/* Zoom: an investment committee call on an acquisition; Tesseract pulls past deal multiples into the Zoom Apps panel for everyone to see. */
+/* Zoom: a finance budget review; a supplier wants more to renew, and Tesseract shows what was paid last year and what the contract allows. */
 
 const PEOPLE = [
   { name: "Hamilton Park", tone: "bg-[#7C6A58]", speaking: true },
@@ -49,13 +49,13 @@ export function MeetingsMockup() {
   return (
     <Shell
       className="bg-[#1A1A1A] text-white"
-      label="Mock-up: a Zoom meeting, the Project Falcon investment committee, with four people and a live caption asking what was paid for comparable acquisitions; the Tesseract app panel answers 11.4 times EBITDA for Northwind in 2024 and 12.8 times for Globex Labs in 2025, so the seller's 14 times ask is above both, citing the deal memos, shown to everyone on the call."
+      label="Mock-up: a Zoom meeting, the Q4 budget review, with four people and a live caption: Globex wants 1.2 million dollars to renew, what did we pay last year? The Tesseract app panel answers 940 thousand dollars, and notes the contract caps price increases at 7 percent, about 1.01 million, citing the 2025 order form, shown to everyone on the call."
     >
       {/* top bar */}
       <div className="flex items-center gap-2 px-3 py-1.5 text-[11px] text-white/80">
         <ShieldCheck className="size-3.5 text-[#23D959]" strokeWidth={2} />
         <img draggable={false} src="/logos/apps/zoom.svg" alt="" className="h-2.5 w-auto brightness-0 invert" />
-        <span className="mx-auto">Project Falcon &middot; Investment committee</span>
+        <span className="mx-auto">Q4 budget review</span>
         <span className="flex items-center gap-1 rounded-[4px] bg-white/10 px-2 py-0.5">
           <LayoutGrid className="size-3" /> View
         </span>
@@ -73,7 +73,7 @@ export function MeetingsMockup() {
             </div>
           ))}
           <p {...reveal(0)} className="absolute inset-x-8 bottom-9 rounded-[4px] bg-black/75 px-3 py-1.5 text-center text-[11.5px]">
-            <b>Hamilton Park:</b> They&rsquo;re asking 14&times; EBITDA. What did we pay on our last deals?
+            <b>Hamilton Park:</b> Globex wants $1.2M to renew. What did we pay them last year?
           </p>
         </div>
         {/* Zoom Apps panel */}
@@ -86,11 +86,11 @@ export function MeetingsMockup() {
             <span className="text-[10.5px] font-normal text-stone">Apps</span>
           </p>
           <p {...reveal(1)} className="justify-self-end rounded-[10px_10px_3px_10px] bg-paper-2 px-2.5 py-1.5 text-[11.5px] font-medium">
-            What multiples did we pay on comparable acquisitions?
+            What did we pay Globex last year?
           </p>
           <div {...reveal(2)} className="grid gap-1 rounded-[4px] border border-line border-l-[3px] border-l-forest bg-white p-2.5 text-[11.5px]">
-            <p className="font-semibold">Northwind at 11.4&times; EBITDA (2024) and Globex Labs at 12.8&times; (2025). Falcon&rsquo;s 14&times; ask is above both.</p>
-            <Cite>Deal memos &middot; Corp Dev &middot; SharePoint</Cite>
+            <p className="font-semibold">$940k. The contract caps increases at 7%, so they can ask for about $1.01M, not $1.2M.</p>
+            <Cite>Globex order form 2025 &middot; Procurement</Cite>
           </div>
           <p className="mt-auto text-[10px] text-stone">Shared with everyone in the meeting</p>
         </aside>

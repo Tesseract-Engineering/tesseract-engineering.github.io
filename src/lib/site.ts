@@ -41,13 +41,13 @@ export const integrations = {
       id: "meetings",
       label: "Meetings",
       title: "Answers in the meeting, while it’s happening.",
-      text: "Deal teams ask mid-call in Zoom or Google Meet and get the numbers from past deals, with their sources, on screen for everyone.",
+      text: "Finance asks mid-call in Zoom or Google Meet and gets the numbers, from contracts and past spend, on screen for everyone.",
     },
     {
       id: "support",
       label: "IT support",
       title: "IT answers that know the history.",
-      text: "Matches engineers’ IT requests in Jira Service Management or ServiceNow to past tickets and runbooks, and drafts the fix for your IT team to approve.",
+      text: "When someone hits a problem a colleague already solved, Tesseract finds that ticket in Jira Service Management or ServiceNow and offers the fix that worked, one click for IT to apply.",
     },
   ],
 } as const;

@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 import { Shell, reveal } from "./window-frame";
 
 /*
-  Jira Service Management: a software engineer starting on-call can't get into production monitoring.
-  Tesseract matches an earlier request, finds the fix in the runbook, and drafts the reply and the
-  access change for the IT agent to approve.
+  Jira Service Management: a software engineer starting on-call can't get into production Grafana.
+  Tesseract recognises that a colleague hit the same error before and offers the fix that worked,
+  one click for the IT agent to apply.
 */
 
 function Detail({ label, children }: { label: string; children: ReactNode }) {
@@ -33,7 +33,7 @@ function Avatar({ name, tone }: { name: string; tone: string }) {
 
 export function SupportMockup() {
   return (
-    <Shell label="Mock-up: Jira Service Management. Request IT-2291, raised by software engineer Diego Torres: he starts on-call Monday and can't log in to production Grafana. Tesseract notes the same issue in IT-1876, cites the on-call access runbook, and drafts a reply adding him to the oncall-readonly group, ready for the IT agent to approve.">
+    <Shell label="Mock-up: Jira Service Management. Request IT-2291, raised by software engineer Diego Torres: he starts on-call Monday and can't log in to production Grafana. Tesseract points out that Ishan Sinha hit the same error in October (IT-1876) and offers the fix that worked, adding Diego to the oncall-readonly group, with an Apply fix button for the IT agent.">
       {/* Atlassian top bar */}
       <div className="flex items-center gap-3 border-b border-[#DCDFE4] px-2.5 py-1.5 text-[11.5px] text-[#44546F]">
         <Grip className="size-3.5" />
@@ -94,30 +94,25 @@ export function SupportMockup() {
             </p>
             <p className="mt-2.5 text-[11.5px] text-[#44546F]">Diego Torres (Software Engineer) raised this via Slack</p>
             <p className="text-[12px]">I start on-call Monday but get &ldquo;403 Forbidden&rdquo; on production Grafana. What access do I need?</p>
-            {/* reply box */}
-            <div className="mt-2.5 rounded-[4px] border border-[#DCDFE4]">
-              <p className="flex gap-3 border-b border-[#DCDFE4] px-2.5 pt-1.5 text-[11px] text-[#44546F]">
-                <span className="pb-1">Add internal note</span>
-                <span className="border-b-2 border-[#0C66E4] pb-1 font-semibold text-[#0C66E4]">Reply to customer</span>
+            {/* Tesseract's suggestion: someone hit this before, here's the fix that worked */}
+            <div className="mt-2.5 grid gap-2 rounded-[6px] border border-[#DCDFE4] border-l-[3px] border-l-forest bg-white p-2.5 text-[11.5px]">
+              <p {...reveal(0)} className="flex items-center gap-1.5">
+                <span className="grid size-4 place-items-center rounded-[3px] bg-ink text-[8.5px] text-white">T</span>
+                <b>Tesseract</b>
+                <span className="rounded-[3px] bg-forest-soft px-1.5 py-px text-[10.5px] font-medium text-forest">Seen before</span>
               </p>
-              <div className="grid gap-1.5 px-2.5 py-2 text-[11.5px]">
-                <p {...reveal(0)} className="flex items-center gap-1.5">
-                  <span className="grid size-4 place-items-center rounded-[3px] bg-ink text-[8.5px] text-white">T</span>
-                  <b>Drafted by Tesseract</b>
-                  <span className="rounded-[3px] bg-forest-soft px-1.5 py-px text-[10.5px] font-medium text-forest">Seen before: IT-1876</span>
-                </p>
-                <p {...reveal(1)}>
-                  Hi Diego, on-call engineers need the oncall-readonly group, and your manager approved it on Friday. Once this goes
-                  through you&rsquo;ll be added, and Grafana works about five minutes later.
-                </p>
-                <p {...reveal(2)} className="font-mono text-[10px] text-forest">
-                  IT-1876 &middot; Runbook: On-call access &middot; Okta
-                </p>
-                <p {...reveal(3)} className="flex gap-1.5 pt-0.5">
-                  <span className="rounded-[3px] bg-[#0C66E4] px-2.5 py-1 text-[11px] font-semibold text-white">Approve and send</span>
-                  <span className="rounded-[3px] bg-[#F1F2F4] px-2.5 py-1 text-[11px] font-semibold text-[#44546F]">Edit</span>
-                </p>
+              <p {...reveal(1)}>
+                <b>Ishan Sinha hit the same 403 in October</b> when he joined the on-call rotation.
+              </p>
+              <div {...reveal(2)} className="grid gap-1 rounded-[4px] bg-paper-2 px-2.5 py-2">
+                <p className="label-mono text-[0.58rem] text-stone">Fix that worked</p>
+                <p>Add Diego to the oncall-readonly group in Okta. Grafana works about five minutes later.</p>
+                <p className="font-mono text-[10px] text-forest">IT-1876 &middot; Runbook: On-call access</p>
               </div>
+              <p {...reveal(3)} className="flex gap-1.5">
+                <span className="rounded-[3px] bg-[#0C66E4] px-2.5 py-1 text-[11px] font-semibold text-white">Apply fix</span>
+                <span className="rounded-[3px] bg-[#F1F2F4] px-2.5 py-1 text-[11px] font-semibold text-[#44546F]">Reply to Diego</span>
+              </p>
             </div>
           </div>
           {/* details panel */}
