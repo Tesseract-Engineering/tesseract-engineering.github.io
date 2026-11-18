@@ -45,12 +45,11 @@ const RECENT = [
   "Summarize last week's customer escalations",
 ];
 
-function NavItem({ icon: Icon, label, active, indent }: { icon: LucideIcon; label: string; active?: boolean; indent?: boolean }) {
+function NavItem({ icon: Icon, label, active }: { icon: LucideIcon; label: string; active?: boolean }) {
   return (
     <li
       className={cn(
         "flex items-center gap-2.5 rounded-md px-2.5 py-[7px] text-[13px] text-stone-dark",
-        indent && "ml-3.5",
         active && "bg-white/[0.08] font-medium text-on-dark",
       )}
     >
@@ -130,9 +129,9 @@ export function WorkspaceMockup() {
         <ul className="grid gap-0.5">
           <NavItem icon={Workflow} label="Swarm" />
           <NavItem icon={Network} label="Knowledge graph" />
-          <NavItem icon={Plug} label="Sources" indent />
-          <NavItem icon={MessageSquare} label="Ask" indent active />
-          <NavItem icon={Hammer} label="Forge" indent />
+          <NavItem icon={Plug} label="Sources" />
+          <NavItem icon={MessageSquare} label="Ask" active />
+          <NavItem icon={Hammer} label="Forge" />
         </ul>
         <p className="mt-6 mb-1.5 flex items-center gap-1.5 px-2.5 text-[11px] text-stone-dark">
           <History className="size-3" /> Recent
