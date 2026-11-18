@@ -77,10 +77,10 @@ export type IntegrationId = (typeof integrations.tabs)[number]["id"];
 export const security = {
   title: "Secure by design.",
   items: [
-    { icon: "cloud", title: "Your cloud", text: "Your data never leaves it." },
-    { icon: "cpu", title: "Any model", text: "Anthropic, OpenAI or OpenRouter. No lock-in." },
-    { icon: "lock", title: "Your permissions", text: "Nobody sees more than they already could." },
-    { icon: "file", title: "Cited and approved", text: "Every claim sourced. Every action approved." },
+    { title: "Your cloud", text: "Tesseract runs in your environment. Your data never leaves it." },
+    { title: "Any model", text: "Anthropic, OpenAI or OpenRouter. No lock-in." },
+    { title: "Your permissions", text: "Nobody sees more than they already could." },
+    { title: "Cited and approved", text: "Every claim sourced. Every action approved." },
   ],
 } as const;
 
