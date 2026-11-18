@@ -14,11 +14,11 @@ export function AppBadge({ app, className, style }: { app: App; className?: stri
     <span
       style={style}
       className={cn(
-        "grid h-[60px] w-[150px] place-items-center rounded-box border border-line-2 bg-white shadow-[0_1px_2px_rgb(0_0_0/0.06)]",
+        "grid h-[60px] w-[150px] place-items-center rounded-box border border-line-2 bg-white shadow-[0_1px_2px_rgb(0_0_0/0.06)] select-none",
         className,
       )}
     >
-      <img src={app.logo} alt={app.name} className="object-contain" style={{ width: app.box[0], height: app.box[1] }} />
+      <img src={app.logo} alt={app.name} draggable={false} className="pointer-events-none object-contain" style={{ width: app.box[0], height: app.box[1] }} />
     </span>
   );
 }

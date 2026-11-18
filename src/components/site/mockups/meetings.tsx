@@ -54,7 +54,7 @@ export function MeetingsMockup() {
       {/* top bar */}
       <div className="flex items-center gap-2 px-3 py-1.5 text-[11px] text-white/80">
         <ShieldCheck className="size-3.5 text-[#23D959]" strokeWidth={2} />
-        <img src="/logos/apps/zoom.svg" alt="" className="h-2.5 w-auto brightness-0 invert" />
+        <img draggable={false} src="/logos/apps/zoom.svg" alt="" className="h-2.5 w-auto brightness-0 invert" />
         <span className="mx-auto">Project Falcon &middot; Investment committee</span>
         <span className="flex items-center gap-1 rounded-[4px] bg-white/10 px-2 py-0.5">
           <LayoutGrid className="size-3" /> View

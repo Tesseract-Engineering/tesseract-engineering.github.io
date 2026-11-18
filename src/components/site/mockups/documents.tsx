@@ -44,7 +44,7 @@ export function DocumentsMockup() {
       {/* title bar */}
       <div className="flex items-center gap-2.5 bg-[#185ABD] px-2.5 py-1.5 text-[12px] text-white">
         <Grip className="size-3.5" />
-        <img src="/logos/apps/word.svg" alt="" className="size-4" />
+        <img draggable={false} src="/logos/apps/word.svg" alt="" className="size-4" />
         <b className="font-semibold">Word</b>
         <span className="hidden truncate text-white/90 sm:inline">Initech MSA, redline v3 &middot; Saved</span>
         <span className="mx-auto hidden w-[28%] items-center gap-1.5 rounded-[4px] bg-white/90 px-2 py-0.5 text-[11px] text-stone lg:flex">

@@ -58,7 +58,7 @@ export function ProductShowcase() {
         <div className="absolute inset-0 -z-10">
           <GraphLines />
         </div>
-        <ScaleToFit width={1120} className="px-[6%] pt-[clamp(24px,5vw,72px)] pb-[clamp(24px,5vw,72px)]">
+        <ScaleToFit width={1120} className="select-none px-[6%] pt-[clamp(24px,5vw,72px)] pb-[clamp(24px,5vw,72px)]">
           {/* the ask bar floats over the top edge of the workspace */}
           <div className="relative z-10 -mb-8">
             <AskBar />

@@ -35,7 +35,7 @@ export function Shell({ label, className, children }: { label: string; className
     <div
       role="img"
       aria-label={label}
-      className={cn("flex h-[460px] flex-col overflow-hidden rounded-md bg-white text-left text-[0.8125rem] leading-normal text-ink", className)}
+      className={cn("flex h-[460px] flex-col overflow-hidden rounded-md bg-white select-none [&_img]:pointer-events-none text-left text-[0.8125rem] leading-normal text-ink", className)}
     >
       {children}
     </div>

@@ -37,7 +37,7 @@ export function SupportMockup() {
       {/* Atlassian top bar */}
       <div className="flex items-center gap-3 border-b border-[#DCDFE4] px-2.5 py-1.5 text-[11.5px] text-[#44546F]">
         <Grip className="size-3.5" />
-        <img src="/logos/apps/jira.svg" alt="" className="h-3.5 w-auto" />
+        <img draggable={false} src="/logos/apps/jira.svg" alt="" className="h-3.5 w-auto" />
         <span className="hidden items-center gap-3 md:flex">
           {["Your work", "Projects", "Filters", "Dashboards"].map((m) => (
             <span key={m} className="flex items-center gap-0.5 font-medium">
