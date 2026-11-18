@@ -101,7 +101,7 @@ export const team = {
 } as const;
 
 export const closing = {
-  title: "See Tesseract on your own stack.",
+  title: "Unlock what your company knows.",
 } as const;
 
 /** Request a demo: there's no form backend on a static site, so the buttons start an email. */
