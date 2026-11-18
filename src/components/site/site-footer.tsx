@@ -10,7 +10,7 @@ export function SiteFooter() {
         id="access"
         className="mx-auto flex max-w-[1336px] flex-col items-start gap-8 px-5 pt-[clamp(80px,10vw,144px)] pb-[clamp(64px,8vw,112px)] md:flex-row md:items-center md:justify-between"
       >
-        <h2 className="text-[clamp(2rem,0.9rem+3vw,3.6rem)] text-on-dark md:whitespace-nowrap">{closing.title}</h2>
+        <h2 className="text-[clamp(1.75rem,0.8rem+2.5vw,3rem)] text-on-dark md:whitespace-nowrap">{closing.title}</h2>
         <RequestDemoButton variant="inverted" className="flex-none" />
       </div>
       <div className="mx-auto max-w-[1336px] px-5">
