@@ -28,28 +28,24 @@ export const integrations = {
     {
       id: "messages",
       label: "Messages",
-      app: { name: "Slack", logo: "/logos/apps/slack.svg" },
       title: "Ask anything. Get a cited answer.",
       text: "Engineers ask in Slack or Teams and get answers cited from specs, change orders and past decisions, using only what they can access.",
     },
     {
       id: "documents",
       label: "Documents",
-      app: { name: "Microsoft Word", logo: "/logos/apps/word.svg" },
       title: "Review a contract against your playbook.",
       text: "Flags clauses that break your playbook and the precedents you agreed to before, right inside Word or Google Docs.",
     },
     {
       id: "meetings",
       label: "Meetings",
-      app: { name: "Zoom", logo: "/logos/apps/zoom.svg", wordmark: true },
       title: "Answers in the meeting, while it’s happening.",
       text: "Ask mid-call in Zoom or Google Meet and get the numbers, with their sources, on screen for everyone.",
     },
     {
       id: "support",
       label: "IT support",
-      app: { name: "Jira Service Management", logo: "/logos/apps/jira.svg", wordmark: true },
       title: "IT answers that know the history.",
       text: "Matches engineers’ IT requests in Jira Service Management or ServiceNow to past tickets and runbooks, and drafts the fix for your IT team to approve.",
     },

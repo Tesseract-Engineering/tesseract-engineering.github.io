@@ -13,7 +13,6 @@ function Core() {
     <div className="grid justify-items-center gap-2 rounded-box bg-ink px-6 py-5 text-on-dark shadow-[0_20px_50px_-20px_rgb(0_0_0/0.5)]">
       <Logo className="size-7" />
       <span className="text-[15px] font-semibold">Tesseract</span>
-      <span className="font-mono text-[10px] tracking-[0.14em] text-stone-dark uppercase">Your knowledge graph</span>
     </div>
   );
 }

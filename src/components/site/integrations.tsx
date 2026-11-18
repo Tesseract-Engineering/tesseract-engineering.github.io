@@ -5,7 +5,6 @@ import { useEffect, useRef, useState, type ComponentType } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { integrations, type IntegrationId } from "@/lib/site";
-import { AppBadge } from "./app-badge";
 import { Hub } from "./hub";
 import { DocumentsMockup } from "./mockups/documents";
 import { MeetingsMockup } from "./mockups/meetings";
@@ -133,8 +132,7 @@ export function Integrations() {
                 value={tab.id}
                 className="grid items-center gap-[clamp(28px,4vw,56px)] lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]"
               >
-                <div className="grid content-start justify-items-start gap-4">
-                  <AppBadge app={tab.app} />
+                <div className="grid content-start gap-4">
                   <h3 className="text-[clamp(1.6rem,1.1rem+1.4vw,2.3rem)]">{tab.title}</h3>
                   <p className="leading-[1.6] text-stone-dark">{tab.text}</p>
                 </div>
