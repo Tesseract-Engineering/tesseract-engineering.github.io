@@ -118,7 +118,7 @@
   }
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 64px; /* clear the fixed 60px top bar on in-page links */
+    scroll-padding-top: 76px; /* clear the fixed top bar (10px + 60px) on in-page links */
   }
   body {
     font-optical-sizing: auto; /* Inter's display cut at large sizes */
