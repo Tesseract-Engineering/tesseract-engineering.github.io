@@ -41,7 +41,7 @@ export const integrations = {
       id: "meetings",
       label: "Meetings",
       title: "Answers in the meeting, while it’s happening.",
-      text: "Ask mid-call in Zoom or Google Meet and get the numbers, with their sources, on screen for everyone.",
+      text: "Deal teams ask mid-call in Zoom or Google Meet and get the numbers from past deals, with their sources, on screen for everyone.",
     },
     {
       id: "support",

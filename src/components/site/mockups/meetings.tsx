@@ -16,7 +16,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Cite, Shell, reveal } from "./window-frame";
 
-/* Zoom: a finance forecast review; Tesseract explains a variance in the Zoom Apps panel for everyone to see. */
+/* Zoom: an investment committee call on an acquisition; Tesseract pulls past deal multiples into the Zoom Apps panel for everyone to see. */
 
 const PEOPLE = [
   { name: "Hamilton Park", tone: "bg-[#7C6A58]", speaking: true },
@@ -49,13 +49,13 @@ export function MeetingsMockup() {
   return (
     <Shell
       className="bg-[#1A1A1A] text-white"
-      label="Mock-up: a Zoom meeting, the Q3 forecast review, with four people and a live caption asking why cloud spend is over forecast; the Tesseract app panel explains that a one-time data migration added $212k and that spend is otherwise 2% under forecast, citing the variance memo, shown to everyone on the call."
+      label="Mock-up: a Zoom meeting, the Project Falcon investment committee, with four people and a live caption asking what was paid for comparable acquisitions; the Tesseract app panel answers 11.4 times EBITDA for Northwind in 2024 and 12.8 times for Globex Labs in 2025, so the seller's 14 times ask is above both, citing the deal memos, shown to everyone on the call."
     >
       {/* top bar */}
       <div className="flex items-center gap-2 px-3 py-1.5 text-[11px] text-white/80">
         <ShieldCheck className="size-3.5 text-[#23D959]" strokeWidth={2} />
         <img src="/logos/apps/zoom.svg" alt="" className="h-2.5 w-auto brightness-0 invert" />
-        <span className="mx-auto">Q3 forecast review</span>
+        <span className="mx-auto">Project Falcon &middot; Investment committee</span>
         <span className="flex items-center gap-1 rounded-[4px] bg-white/10 px-2 py-0.5">
           <LayoutGrid className="size-3" /> View
         </span>
@@ -73,7 +73,7 @@ export function MeetingsMockup() {
             </div>
           ))}
           <p {...reveal(0)} className="absolute inset-x-8 bottom-9 rounded-[4px] bg-black/75 px-3 py-1.5 text-center text-[11.5px]">
-            <b>Hamilton Park:</b> Why is cloud spend 18% over forecast this quarter?
+            <b>Hamilton Park:</b> They&rsquo;re asking 14&times; EBITDA. What did we pay on our last deals?
           </p>
         </div>
         {/* Zoom Apps panel */}
@@ -86,11 +86,11 @@ export function MeetingsMockup() {
             <span className="text-[10.5px] font-normal text-stone">Apps</span>
           </p>
           <p {...reveal(1)} className="justify-self-end rounded-[10px_10px_3px_10px] bg-paper-2 px-2.5 py-1.5 text-[11.5px] font-medium">
-            What drove the Q3 cloud overspend?
+            What multiples did we pay on comparable acquisitions?
           </p>
           <div {...reveal(2)} className="grid gap-1 rounded-[4px] border border-line border-l-[3px] border-l-forest bg-white p-2.5 text-[11.5px]">
-            <p className="font-semibold">A one-time data-centre migration in July added $212k. Without it, cloud spend is 2% under forecast.</p>
-            <Cite>Variance memo &middot; July close &middot; FP&amp;A</Cite>
+            <p className="font-semibold">Northwind at 11.4&times; EBITDA (2024) and Globex Labs at 12.8&times; (2025). Falcon&rsquo;s 14&times; ask is above both.</p>
+            <Cite>Deal memos &middot; Corp Dev &middot; SharePoint</Cite>
           </div>
           <p className="mt-auto text-[10px] text-stone">Shared with everyone in the meeting</p>
         </aside>
