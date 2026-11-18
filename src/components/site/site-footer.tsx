@@ -8,9 +8,9 @@ export function SiteFooter() {
     <footer className="bg-ink pb-[26px] text-[0.8125rem] text-stone-dark">
       <div
         id="access"
-        className="mx-auto flex max-w-[1336px] flex-col items-start gap-8 px-5 pt-[clamp(80px,10vw,144px)] pb-[clamp(64px,8vw,112px)] md:flex-row md:items-center md:justify-between"
+        className="mx-auto flex max-w-[1336px] flex-col items-start gap-8 px-5 pt-[clamp(56px,6vw,96px)] pb-[clamp(44px,5vw,72px)] md:flex-row md:items-center md:justify-between"
       >
-        <h2 className="text-[clamp(1.75rem,0.8rem+2.5vw,3rem)] text-on-dark md:whitespace-nowrap">{closing.title}</h2>
+        <h2 className="text-[clamp(1.5rem,0.75rem+1.9vw,2.5rem)] text-on-dark md:whitespace-nowrap">{closing.title}</h2>
         <RequestDemoButton variant="inverted" className="flex-none" />
       </div>
       <div className="mx-auto max-w-[1336px] px-5">
