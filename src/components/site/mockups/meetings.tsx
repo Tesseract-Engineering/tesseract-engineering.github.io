@@ -1,15 +1,27 @@
-import { LayoutGrid, MessageSquare, Mic, MonitorUp, PhoneOff, Users, Video } from "lucide-react";
+/* eslint-disable @next/next/no-img-element -- a small static SVG logo */
+import {
+  ChevronUp,
+  Circle,
+  LayoutGrid,
+  MessageSquare,
+  Mic,
+  MicOff,
+  MonitorUp,
+  ShieldCheck,
+  Smile,
+  Users,
+  Video,
+} from "lucide-react";
 
-import type { ToolId } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Cite, Shell, reveal } from "./window-frame";
 
-/* The same live call and the same cited answer, shown in Google Meet or in Zoom. */
+/* Zoom: a finance forecast review; Tesseract explains a variance in the Zoom Apps panel for everyone to see. */
 
 const PEOPLE = [
   { name: "Hamilton Park", tone: "bg-[#7C6A58]", speaking: true },
-  { name: "Karthik Valluri", tone: "bg-[#5B6B5A]" },
-  { name: "Lena Park", tone: "bg-[#5E6475]" },
+  { name: "Karthik Valluri", tone: "bg-[#5B6B5A]", muted: true },
+  { name: "Lena Park", tone: "bg-[#5E6475]", muted: true },
   { name: "Dhruv Pendharkar", tone: "bg-[#6E5A66]" },
 ];
 
@@ -20,106 +32,83 @@ function initials(name: string) {
     .join("");
 }
 
-function Tiles({ tile, ring }: { tile: string; ring: string }) {
+function Tool({ icon: Icon, label, caret, badge, className }: { icon: typeof Mic; label: string; caret?: boolean; badge?: string; className?: string }) {
   return (
-    <div className="relative grid min-h-0 flex-1 grid-cols-2 gap-1.5">
-      {PEOPLE.map((p) => (
-        <div key={p.name} className={cn("relative grid place-items-center rounded-lg", tile, p.speaking && ring)}>
-          <span className={cn("grid size-11 place-items-center rounded-full text-[13px] font-semibold text-white", p.tone)}>{initials(p.name)}</span>
-          <span className="absolute bottom-1.5 left-2 text-[10.5px] text-white/90">{p.name.split(" ")[0]}</span>
-        </div>
-      ))}
-      <p
-        {...reveal(0)}
-        className="absolute inset-x-6 bottom-8 rounded-md bg-black/70 px-3 py-1.5 text-center text-[11.5px] text-white"
-      >
-        <b>Hamilton:</b> Can we just raise the export limit for Initech this week?
-      </p>
-    </div>
+    <span className={cn("relative grid justify-items-center gap-0.5 text-[9.5px] text-white/85", className)}>
+      <span className="flex items-center gap-0.5">
+        <Icon className="size-[17px]" strokeWidth={1.8} />
+        {caret && <ChevronUp className="size-2.5 text-white/60" />}
+      </span>
+      {label}
+      {badge && <span className="absolute -top-1 left-1/2 ml-1 rounded-full bg-white/20 px-1 text-[8.5px]">{badge}</span>}
+    </span>
   );
 }
 
-function Panel({ className }: { className?: string }) {
-  return (
-    <aside className={cn("hidden w-[220px] flex-none flex-col gap-2.5 overflow-hidden p-3 sm:flex", className)}>
-      <p className="flex items-center justify-between text-[13px] font-semibold">
-        Tesseract
-        <span className="label-mono inline-flex items-center gap-1.5 text-[0.55rem] text-forest">
-          <i className="size-1.5 animate-pulse rounded-full bg-current" />
-          Listening
-        </span>
-      </p>
-      <p {...reveal(1)} className="justify-self-end rounded-[10px_10px_3px_10px] bg-paper-2 px-3 py-2 text-[12px] font-medium">
-        What happened last time we raised export limits?
-      </p>
-      <div {...reveal(2)} className="grid gap-1.5 rounded-md border border-line border-l-2 border-l-forest bg-white p-3 text-[12px]">
-        <p className="font-semibold">Raised for ACME in August, rolled back two days later: legacy-exporter ran out of memory on large tenants.</p>
-        <Cite>INC-12 &middot; postmortem</Cite>
-      </div>
-      <p className="text-[10.5px] text-stone">Shown to everyone on the call</p>
-    </aside>
-  );
-}
-
-function GoogleMeet() {
-  return (
-    <Shell
-      className="bg-[#202124] text-white"
-      label="Mock-up: a Google Meet call with four people, a live caption, and the Tesseract side panel answering a question with a cited postmortem."
-    >
-      <div className="flex min-h-0 flex-1 gap-2 p-2">
-        <Tiles tile="bg-[#3C4043]" ring="outline outline-2 outline-[#8AB4F8]" />
-        <Panel className="rounded-lg bg-white text-ink" />
-      </div>
-      <div className="flex items-center gap-2 px-4 pb-2.5 text-[12px] text-white/80">
-        <span className="hidden sm:inline">10:24 &nbsp;|&nbsp; Platform sync</span>
-        <span className="mx-auto flex gap-2 sm:mx-0 sm:ml-auto">
-          {[Mic, Video, MonitorUp, MessageSquare].map((Icon, i) => (
-            <span key={i} className="grid size-8 place-items-center rounded-full bg-[#3C4043]">
-              <Icon className="size-4" strokeWidth={1.8} />
-            </span>
-          ))}
-          <span className="grid h-8 w-12 place-items-center rounded-full bg-[#EA4335]">
-            <PhoneOff className="size-4" strokeWidth={1.8} />
-          </span>
-        </span>
-      </div>
-    </Shell>
-  );
-}
-
-function Zoom() {
-  const bar = [
-    { icon: Mic, label: "Mute" },
-    { icon: Video, label: "Stop Video" },
-    { icon: Users, label: "Participants" },
-    { icon: MessageSquare, label: "Chat" },
-    { icon: MonitorUp, label: "Share", green: true },
-    { icon: LayoutGrid, label: "Apps" },
-  ];
+export function MeetingsMockup() {
   return (
     <Shell
       className="bg-[#1A1A1A] text-white"
-      label="Mock-up: a Zoom meeting with four people, a live caption, and the Tesseract app panel answering a question with a cited postmortem."
+      label="Mock-up: a Zoom meeting, the Q3 forecast review, with four people and a live caption asking why cloud spend is over forecast; the Tesseract app panel explains that a one-time data migration added $212k and that spend is otherwise 2% under forecast, citing the variance memo, shown to everyone on the call."
     >
-      <p className="px-3 pt-2 text-center text-[11px] text-white/70">Platform sync</p>
-      <div className="flex min-h-0 flex-1 gap-2 p-2">
-        <Tiles tile="bg-[#2D2D2D]" ring="outline outline-2 outline-[#5AE85A]" />
-        <Panel className="rounded-md bg-white text-ink" />
+      {/* top bar */}
+      <div className="flex items-center gap-2 px-3 py-1.5 text-[11px] text-white/80">
+        <ShieldCheck className="size-3.5 text-[#23D959]" strokeWidth={2} />
+        <img src="/logos/apps/zoom.svg" alt="" className="h-2.5 w-auto brightness-0 invert" />
+        <span className="mx-auto">Q3 forecast review</span>
+        <span className="flex items-center gap-1 rounded-[4px] bg-white/10 px-2 py-0.5">
+          <LayoutGrid className="size-3" /> View
+        </span>
       </div>
-      <div className="flex items-end gap-4 bg-[#111] px-4 py-2 text-[9.5px] text-white/80">
-        {bar.map(({ icon: Icon, label, green }) => (
-          <span key={label} className={cn("hidden justify-items-center gap-0.5 sm:grid", (label === "Mute" || label === "Share") && "grid")}>
-            <Icon className={cn("size-4", green && "text-[#5AE85A]")} strokeWidth={1.8} />
-            {label}
-          </span>
-        ))}
-        <span className="ml-auto rounded-[5px] bg-[#E02828] px-3 py-1.5 text-[11px] font-semibold">End</span>
+      <div className="flex min-h-0 flex-1 gap-2 px-2">
+        {/* gallery */}
+        <div className="relative grid min-h-0 flex-1 grid-cols-2 gap-1">
+          {PEOPLE.map((p) => (
+            <div key={p.name} className={cn("relative grid place-items-center bg-[#242424]", p.speaking && "outline outline-[2.5px] outline-offset-[-2.5px] outline-[#23D959]")}>
+              <span className={cn("grid size-12 place-items-center rounded-full text-[14px] font-semibold", p.tone)}>{initials(p.name)}</span>
+              <span className="absolute bottom-1 left-1 flex items-center gap-1 rounded-[3px] bg-black/60 px-1.5 py-0.5 text-[10px]">
+                {p.muted && <MicOff className="size-2.5 text-[#E02828]" strokeWidth={2.2} />}
+                {p.name}
+              </span>
+            </div>
+          ))}
+          <p {...reveal(0)} className="absolute inset-x-8 bottom-9 rounded-[4px] bg-black/75 px-3 py-1.5 text-center text-[11.5px]">
+            <b>Hamilton Park:</b> Why is cloud spend 18% over forecast this quarter?
+          </p>
+        </div>
+        {/* Zoom Apps panel */}
+        <aside className="hidden w-[214px] flex-none flex-col gap-2.5 overflow-hidden rounded-[6px] bg-white p-2.5 text-ink sm:flex">
+          <p className="flex items-center justify-between border-b border-line pb-2 text-[12px] font-semibold">
+            <span className="flex items-center gap-1.5">
+              <span className="grid size-4 place-items-center rounded-[3px] bg-ink text-[9px] text-white">T</span>
+              Tesseract
+            </span>
+            <span className="text-[10.5px] font-normal text-stone">Apps</span>
+          </p>
+          <p {...reveal(1)} className="justify-self-end rounded-[10px_10px_3px_10px] bg-paper-2 px-2.5 py-1.5 text-[11.5px] font-medium">
+            What drove the Q3 cloud overspend?
+          </p>
+          <div {...reveal(2)} className="grid gap-1 rounded-[4px] border border-line border-l-[3px] border-l-forest bg-white p-2.5 text-[11.5px]">
+            <p className="font-semibold">A one-time data-centre migration in July added $212k. Without it, cloud spend is 2% under forecast.</p>
+            <Cite>Variance memo &middot; July close &middot; FP&amp;A</Cite>
+          </div>
+          <p className="mt-auto text-[10px] text-stone">Shared with everyone in the meeting</p>
+        </aside>
+      </div>
+      {/* toolbar */}
+      <div className="mt-2 flex items-end gap-4 bg-[#111] px-4 py-2">
+        <Tool icon={Mic} label="Mute" caret />
+        <Tool icon={Video} label="Stop Video" caret />
+        <span className="mx-auto flex items-end gap-4">
+          <Tool icon={Users} label="Participants" badge="4" className="hidden sm:grid" />
+          <Tool icon={MessageSquare} label="Chat" className="hidden sm:grid" />
+          <Tool icon={MonitorUp} label="Share" className="[&_svg]:text-[#23D959]" />
+          <Tool icon={Circle} label="Record" className="hidden md:grid" />
+          <Tool icon={Smile} label="Reactions" className="hidden md:grid" />
+          <Tool icon={LayoutGrid} label="Apps" />
+        </span>
+        <span className="rounded-[6px] bg-[#E02828] px-3 py-1.5 text-[11px] font-semibold">End</span>
       </div>
     </Shell>
   );
-}
-
-export function MeetingsMockup({ tool }: { tool: ToolId }) {
-  return tool === "zoom" ? <Zoom /> : <GoogleMeet />;
 }

@@ -26,35 +26,6 @@ export function Mini({ primary, children }: { primary?: boolean; children: React
   );
 }
 
-/** A white app window with a title bar, used for every mock-up. */
-export function WindowFrame({
-  title,
-  label,
-  bodyClassName,
-  children,
-}: {
-  title: string;
-  label: string;
-  bodyClassName?: string;
-  children: ReactNode;
-}) {
-  return (
-    <div role="img" aria-label={label} className="flex min-h-[300px] flex-col overflow-hidden rounded-md bg-white text-ink">
-      <div className="flex min-w-0 items-center gap-2.5 border-b border-line bg-paper-2 px-3.5 py-[11px] font-mono text-xs leading-[1.3] font-medium text-stone">
-        <span className="mr-1.5 flex gap-1.5">
-          <i className="size-2.5 rounded-full bg-line-2" />
-          <i className="size-2.5 rounded-full bg-line-2" />
-          <i className="size-2.5 rounded-full bg-line-2" />
-        </span>
-        <span className="truncate">{title}</span>
-      </div>
-      <div className={cn("grid min-w-0 flex-1 content-start gap-3.5 p-[clamp(16px,2.4vw,26px)] text-[0.9375rem] leading-normal", bodyClassName)}>
-        {children}
-      </div>
-    </div>
-  );
-}
-
 /**
  * The outer frame of an app-styled mock-up: a rounded window that clips the app's own chrome.
  * Each app draws its own bars and sidebars inside; this only sets the size and the accessible name.
@@ -64,7 +35,7 @@ export function Shell({ label, className, children }: { label: string; className
     <div
       role="img"
       aria-label={label}
-      className={cn("flex h-[400px] flex-col overflow-hidden rounded-md bg-white text-left text-[0.8125rem] leading-normal text-ink", className)}
+      className={cn("flex h-[460px] flex-col overflow-hidden rounded-md bg-white text-left text-[0.8125rem] leading-normal text-ink", className)}
     >
       {children}
     </div>

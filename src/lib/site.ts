@@ -28,36 +28,50 @@ export const integrations = {
     {
       id: "messages",
       label: "Messages",
-      tools: [{ id: "slack", name: "Slack" }, { id: "teams", name: "Teams" }],
+      app: { name: "Slack", logo: "/logos/apps/slack.svg" },
       title: "Ask anything. Get a cited answer.",
-      text: "Cited answers in any Slack or Teams channel or DM, using only what you can access.",
+      text: "Engineers ask in Slack or Teams and get answers cited from specs, change orders and past decisions, using only what they can access.",
     },
     {
       id: "documents",
       label: "Documents",
-      tools: [{ id: "gdocs", name: "Google Docs" }, { id: "word", name: "Word" }],
-      title: "Check a design doc before review.",
-      text: "Flags contradictions, past incidents and who to ask, right inside Google Docs or Word.",
+      app: { name: "Microsoft Word", logo: "/logos/apps/word.svg" },
+      title: "Review a contract against your playbook.",
+      text: "Flags clauses that break your playbook and the precedents you agreed to before, right inside Word or Google Docs.",
     },
     {
       id: "meetings",
       label: "Meetings",
-      tools: [{ id: "meet", name: "Google Meet" }, { id: "zoom", name: "Zoom" }],
-      title: "Context in the meeting, while it’s happening.",
-      text: "Ask mid-call in Google Meet or Zoom and get context on screen that everyone in the room can see.",
+      app: { name: "Zoom", logo: "/logos/apps/zoom.svg", wordmark: true },
+      title: "Answers in the meeting, while it’s happening.",
+      text: "Ask mid-call in Zoom or Google Meet and get the numbers, with their sources, on screen for everyone.",
     },
     {
       id: "support",
       label: "IT support",
-      tools: [{ id: "servicenow", name: "ServiceNow" }, { id: "jsm", name: "Jira" }],
+      app: { name: "Jira Service Management", logo: "/logos/apps/jira.svg", wordmark: true },
       title: "IT answers that know the history.",
-      text: "Answers employees’ IT questions in ServiceNow or Jira Service Management from past tickets and runbooks, and drafts fixes for your IT team to approve.",
+      text: "Matches engineers’ IT requests in Jira Service Management or ServiceNow to past tickets and runbooks, and drafts the fix for your IT team to approve.",
     },
   ],
 } as const;
 
+/**
+ * Every app Tesseract works in, for the hub diagram above the integrations. `wordmark` logos already
+ * spell the name, so they're shown without a text label. Logos are each company's trademark.
+ */
+export const apps = [
+  { name: "Slack", logo: "/logos/apps/slack.svg" },
+  { name: "Microsoft Teams", logo: "/logos/apps/teams.svg" },
+  { name: "Google Docs", logo: "/logos/apps/gdocs.svg" },
+  { name: "Microsoft Word", logo: "/logos/apps/word.svg" },
+  { name: "Google Meet", logo: "/logos/apps/meet.svg" },
+  { name: "Zoom", logo: "/logos/apps/zoom.svg", wordmark: true },
+  { name: "ServiceNow", logo: "/logos/apps/servicenow.svg", wordmark: true },
+  { name: "Jira Service Management", logo: "/logos/apps/jira.svg", wordmark: true },
+] as const;
+
 export type IntegrationId = (typeof integrations.tabs)[number]["id"];
-export type ToolId = (typeof integrations.tabs)[number]["tools"][number]["id"];
 
 export const security = {
   title: "Secure by design.",
