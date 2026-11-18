@@ -3,29 +3,22 @@ import type { CSSProperties } from "react";
 
 import { cn } from "@/lib/utils";
 
-type App = { name: string; logo: string; wordmark?: boolean; height?: number };
+type App = { name: string; logo: string; box: readonly [number, number] };
 
 /**
- * An app's logo on a small white chip. Icon logos get the app's name beside them; wordmark logos
- * (Zoom, ServiceNow, Jira) already spell it, so they stand alone with the name as alt text.
+ * A tool's logo alone in a white tile. Every tile is the same size; the logo is scaled to fit its
+ * own box inside it (object-contain), so nothing overflows and wordmarks and icons line up.
  */
 export function AppBadge({ app, className, style }: { app: App; className?: string; style?: CSSProperties }) {
   return (
     <span
       style={style}
       className={cn(
-        "inline-flex h-10 items-center gap-2 rounded-btn border border-line-2 bg-white px-3 py-2 text-[13px] font-medium whitespace-nowrap text-ink shadow-[0_1px_2px_rgb(0_0_0/0.06)]",
+        "grid h-[60px] w-[150px] place-items-center rounded-box border border-line-2 bg-white shadow-[0_1px_2px_rgb(0_0_0/0.06)]",
         className,
       )}
     >
-      {app.wordmark ? (
-        <img src={app.logo} alt={app.name} className="w-auto" style={{ height: app.height ?? 17 }} />
-      ) : (
-        <>
-          <img src={app.logo} alt="" className="size-5" />
-          {app.name}
-        </>
-      )}
+      <img src={app.logo} alt={app.name} className="object-contain" style={{ width: app.box[0], height: app.box[1] }} />
     </span>
   );
 }

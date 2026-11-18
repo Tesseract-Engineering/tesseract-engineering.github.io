@@ -54,21 +54,22 @@ export const integrations = {
 
 /**
  * The tools Tesseract works across, for the hub diagram above the integrations: the Microsoft and
- * Google suites as a whole, plus the tools most companies run on. Each shows its icon and name; Zoom
- * has no icon available, so it shows its wordmark. Jira, Zendesk and ServiceNow icons are cut from
- * their logo files. Logos are each company's trademark, from Wikimedia Commons.
+ * Google suites as a whole, plus the tools most companies run on. Each is shown as its logo alone,
+ * centred in a same-size tile; `box` is the [width, height] the logo is fitted into, so wide
+ * wordmarks and square icons carry similar weight. Logos are each company's trademark, from
+ * Wikimedia Commons.
  */
 export const apps = [
-  { name: "Slack", logo: "/logos/apps/slack.svg" },
-  { name: "Microsoft 365", logo: "/logos/apps/microsoft-365.svg" },
-  { name: "Google Workspace", logo: "/logos/apps/google-g.svg" },
-  { name: "Zoom", logo: "/logos/apps/zoom.svg", wordmark: true },
-  { name: "GitHub", logo: "/logos/apps/github.svg" },
-  { name: "Jira", logo: "/logos/apps/jira-icon.svg" },
-  { name: "Confluence", logo: "/logos/apps/confluence.svg" },
-  { name: "Salesforce", logo: "/logos/apps/salesforce.svg" },
-  { name: "Zendesk", logo: "/logos/apps/zendesk-icon.svg" },
-  { name: "ServiceNow", logo: "/logos/apps/servicenow-icon.svg" },
+  { name: "Slack", logo: "/logos/apps/slack.svg", box: [34, 34] },
+  { name: "Microsoft 365", logo: "/logos/apps/microsoft-365.svg", box: [34, 34] },
+  { name: "Google Workspace", logo: "/logos/apps/google-workspace.svg", box: [118, 22] },
+  { name: "Zoom", logo: "/logos/apps/zoom.svg", box: [80, 20] },
+  { name: "GitHub", logo: "/logos/apps/github.svg", box: [34, 34] },
+  { name: "Jira", logo: "/logos/apps/jira.svg", box: [80, 30] },
+  { name: "Confluence", logo: "/logos/apps/confluence.svg", box: [34, 34] },
+  { name: "Salesforce", logo: "/logos/apps/salesforce.svg", box: [60, 42] },
+  { name: "Zendesk", logo: "/logos/apps/zendesk.svg", box: [58, 42] },
+  { name: "ServiceNow", logo: "/logos/apps/servicenow.svg", box: [110, 18] },
 ] as const;
 
 export type IntegrationId = (typeof integrations.tabs)[number]["id"];

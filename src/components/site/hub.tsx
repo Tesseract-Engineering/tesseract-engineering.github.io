@@ -57,7 +57,7 @@ export function Hub() {
         <Core />
         <div className="grid w-full grid-cols-2 gap-2">
           {apps.map((app) => (
-            <AppBadge key={app.name} app={app} className="justify-center" />
+            <AppBadge key={app.name} app={app} className="w-full" />
           ))}
         </div>
       </div>
