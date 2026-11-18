@@ -9,7 +9,7 @@ import { RequestDemoButton } from "./request-demo";
 export function SiteFooter({ call = true }: { call?: boolean }) {
   return (
     <footer
-      className={`bg-ink pb-[26px] text-[0.8125rem] text-stone-dark ${call ? "" : "pt-[26px]"}`}
+      className={`bg-ink text-[0.8125rem] text-stone-dark ${call ? "pb-[26px]" : "py-9"}`}
     >
       {call && (
         <div
