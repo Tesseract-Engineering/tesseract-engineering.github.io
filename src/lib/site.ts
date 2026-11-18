@@ -75,11 +75,15 @@ export const apps = [
 export type IntegrationId = (typeof integrations.tabs)[number]["id"];
 
 export const security = {
-  title: "Your data stays in your VPC.",
-  lede: "Tesseract builds your knowledge graph inside your own cloud. Your data is collected and stored there, and nothing is copied to us.",
-  // Once models can run inside the customer's VPC, the lede can become:
-  // "Tesseract builds your knowledge graph inside your own cloud. Nothing leaves it." (not yet)
-  footnote: "Read-only access. Every record keeps its original permissions.",
+  title: "Your data stays in your cloud.",
+  // The questions a security reviewer asks, each answered in a line. Confirm "Nowhere." and
+  // "nothing is copied to us" with the team before launch.
+  questions: [
+    { q: "Where does our data go?", a: "Nowhere. Tesseract collects and stores it inside your own cloud, and nothing is copied to us." },
+    { q: "Who can see what?", a: "The same people as today. Access is read-only, and every record keeps its original permissions." },
+    { q: "Which AI model does it use?", a: "Your choice: Anthropic, OpenAI or OpenRouter. Switch any time." },
+    { q: "Can it act on its own?", a: "No. Every answer is cited, and every action waits for a person to approve it." },
+  ],
 } as const;
 
 export const team = {
