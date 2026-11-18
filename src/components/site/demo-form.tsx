@@ -9,7 +9,7 @@ import { contact } from "@/lib/site";
 // Personal inboxes: the form asks for a work email instead.
 const PERSONAL = ["gmail.com", "googlemail.com", "yahoo.com", "hotmail.com", "outlook.com", "live.com", "msn.com", "icloud.com", "me.com", "aol.com", "proton.me", "protonmail.com"];
 
-type Fields = { firstName: string; lastName: string; company: string; email: string; size: string; phone: string; notes: string };
+type Fields = { firstName: string; lastName: string; company: string; email: string; size: string; phone: string };
 
 const input =
   "h-11 w-full rounded-btn border border-line-2 bg-white px-3 text-[15px] text-ink outline-none transition-colors placeholder:text-stone/70 focus:border-forest focus:ring-2 focus:ring-forest/20 aria-invalid:border-[#B42318]";
@@ -76,7 +76,6 @@ export function DemoForm() {
       `Work email: ${data.email}`,
       `Company size: ${data.size}`,
       data.phone && `Phone: ${data.phone}`,
-      data.notes && `\nWhat we'd like to see:\n${data.notes}`,
     ]
       .filter(Boolean)
       .join("\n");
@@ -144,9 +143,6 @@ export function DemoForm() {
           <input id="phone" name="phone" type="tel" autoComplete="tel" className={input} />
         </Field>
       </div>
-      <Field label="What would you like to see?" htmlFor="notes" optional>
-        <textarea id="notes" name="notes" rows={3} className={`${input} h-auto py-2.5`} />
-      </Field>
       {state === "failed" && (
         <p role="alert" className="text-[14px] text-[#B42318]">
           Something went wrong sending your request. Please email us at{" "}

@@ -119,7 +119,6 @@ export const contact = {
   formEndpoint: "",
   page: {
     title: "Book a Tesseract demo",
-    lede: "Tell us a little about your team and we’ll walk you through Tesseract on the tools you already use.",
   },
   companySizes: ["1–50", "51–200", "201–1,000", "1,001–5,000", "5,000+"],
 } as const;
