@@ -33,7 +33,7 @@ function Avatar({ name, tone }: { name: string; tone: string }) {
 
 export function SupportMockup() {
   return (
-    <Shell label="Mock-up: Jira Service Management. Request IT-2291, raised by software engineer Karthik Valluri: he starts on-call Monday and can't log in to production Grafana. Tesseract points out that Ishan Sinha hit the same error in October (IT-1876) and offers the fix that worked, adding Karthik to the oncall-readonly group, with an Apply fix button for the IT agent.">
+    <Shell label="Mock-up: Jira Service Management. Request IT-2291, raised by engineering manager Karthik Valluri: he starts on-call Monday and can't log in to production Grafana. Tesseract points out that Ishan Sinha hit the same error in October (IT-1876) and offers the fix that worked, adding Karthik to the oncall-readonly group, with an Apply fix button for the IT agent.">
       {/* Atlassian top bar */}
       <div className="flex items-center gap-3 border-b border-[#DCDFE4] px-2.5 py-1.5 text-[11.5px] text-[#44546F]">
         <Grip className="size-3.5" />
@@ -92,7 +92,7 @@ export function SupportMockup() {
                 <Link2 className="size-3" /> Link issue
               </span>
             </p>
-            <p className="mt-2.5 text-[11.5px] text-[#44546F]">Karthik Valluri (Software Engineer) raised this via Slack</p>
+            <p className="mt-2.5 text-[11.5px] text-[#44546F]">Karthik Valluri (Engineering Manager) raised this via Slack</p>
             <p className="text-[12px]">I start on-call Monday but get &ldquo;403 Forbidden&rdquo; on production Grafana. What access do I need?</p>
             {/* Tesseract's suggestion: someone hit this before, here's the fix that worked */}
             <div className="mt-2.5 grid gap-2 rounded-[6px] border border-[#DCDFE4] border-l-[3px] border-l-forest bg-white p-2.5 text-[11.5px]">
