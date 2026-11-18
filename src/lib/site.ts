@@ -75,11 +75,11 @@ export const apps = [
 export type IntegrationId = (typeof integrations.tabs)[number]["id"];
 
 export const security = {
-  title: "Secure by design.",
-  // "Runs in your cloud" and "Nothing leaves your environment" are claims to confirm with the team before launch.
-  lede: "Runs in your cloud. Shows each person only what they’re already allowed to see.",
-  boundary: "Nothing leaves your environment",
-  traceTitle: "See what’s behind an answer",
+  title: "Your data stays in your VPC.",
+  lede: "Tesseract builds your knowledge graph inside your own cloud. Your data is collected and stored there, and nothing is copied to us.",
+  // Once models can run inside the customer's VPC, the lede can become:
+  // "Tesseract builds your knowledge graph inside your own cloud. Nothing leaves it." (not yet)
+  footnote: "Read-only access. Every record keeps its original permissions.",
 } as const;
 
 export const team = {
