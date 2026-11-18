@@ -3,6 +3,14 @@
 @import "shadcn/tailwind.css";
 
 /*
+  shadcn components carry dark-mode styles (dark:...). This site is light only, so `dark:` applies
+  only inside an element with the .dark class, which nothing uses. Without this line Tailwind falls
+  back to the system setting, and on a Mac in Dark Mode those styles turned the selected
+  integration tab's text black on the black block.
+*/
+@custom-variant dark (&:is(.dark *));
+
+/*
   Tesseract design tokens. Editorial and quiet: warm paper, near-black ink, flat grey boxes with
   small corners, black blocks for contrast, and one accent (forest green) used sparingly for
   citations, highlights and markers. Light theme only.
