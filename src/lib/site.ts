@@ -106,20 +106,20 @@ export const closing = {
   title: "Unlock what your company already knows.",
 } as const;
 
-/** Request a demo: there's no form backend on a static site, so the buttons start an email. */
+/**
+ * Book a demo. The buttons go to /book-a-demo/, a short form. There's no server on a static site,
+ * so submissions go to a form service: paste its endpoint into `formEndpoint` (for example a
+ * Formspree URL, https://formspree.io/f/xxxxxxx). Until one is set, submitting opens the visitor's
+ * email app with their details filled in, addressed to `email`.
+ */
 export const contact = {
   cta: "Request a demo",
+  href: "/book-a-demo/",
   email: "ishan.tesseract@gmail.com",
-  subject: "Tesseract demo request",
-  body: "Hi Tesseract team,\n\nWe'd like to see a demo. Here are a few times that work for us:\n\n",
-  dialogTitle: "Request a demo",
-  dialogText: "Email us and we’ll find a time that works.",
-} as const;
-
-const q = encodeURIComponent;
-
-export const contactLinks = {
-  mailto: `mailto:${contact.email}?subject=${q(contact.subject)}&body=${q(contact.body)}`,
-  gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${q(contact.email)}&su=${q(contact.subject)}&body=${q(contact.body)}`,
-  outlook: `https://outlook.office.com/mail/deeplink/compose?to=${q(contact.email)}&subject=${q(contact.subject)}&body=${q(contact.body)}`,
+  formEndpoint: "",
+  page: {
+    title: "Book a Tesseract demo",
+    lede: "Tell us a little about your team and we’ll walk you through Tesseract on the tools you already use.",
+  },
+  companySizes: ["1–50", "51–200", "201–1,000", "1,001–5,000", "5,000+"],
 } as const;

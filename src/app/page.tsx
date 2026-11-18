@@ -1,7 +1,6 @@
 import { Hero } from "@/components/site/hero";
 import { Integrations } from "@/components/site/integrations";
 import { ProductShowcase } from "@/components/site/product-showcase";
-import { RequestDemoProvider } from "@/components/site/request-demo";
 import { Security } from "@/components/site/security";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteNav } from "@/components/site/site-nav";
@@ -9,7 +8,7 @@ import { Team } from "@/components/site/team";
 
 export default function Home() {
   return (
-    <RequestDemoProvider>
+    <>
       <SiteNav />
       <main id="top">
         <Hero />
@@ -23,6 +22,6 @@ export default function Home() {
         </section>
       </main>
       <SiteFooter />
-    </RequestDemoProvider>
+    </>
   );
 }
