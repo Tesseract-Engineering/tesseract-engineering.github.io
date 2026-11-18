@@ -75,7 +75,7 @@ export const apps = [
 export type IntegrationId = (typeof integrations.tabs)[number]["id"];
 
 export const security = {
-  title: "Your data stays in your cloud.",
+  title: "Your cloud. Your data. Your permissions.",
   // The questions a security reviewer asks, each answered in a line. Confirm "Nowhere." and
   // "nothing is copied to us" with the team before launch.
   questions: [
