@@ -46,8 +46,8 @@ export function DocumentsMockup() {
         <Grip className="size-3.5" />
         <img draggable={false} src="/logos/apps/word.svg" alt="" className="size-4" />
         <b className="font-semibold">Word</b>
-        <span className="hidden truncate text-white/90 sm:inline">Meridian Health MSA, redline v3 &middot; Saved</span>
-        <span className="mx-auto hidden w-[28%] items-center gap-1.5 rounded-[4px] bg-white/90 px-2 py-0.5 text-[11px] text-stone lg:flex">
+        <span className="truncate text-white/90 inline">Meridian Health MSA, redline v3 &middot; Saved</span>
+        <span className="mx-auto w-[28%] items-center gap-1.5 rounded-[4px] bg-white/90 px-2 py-0.5 text-[11px] text-stone flex">
           <Search className="size-3" /> Search (Alt + Q)
         </span>
         <span className="ml-auto grid size-5 place-items-center rounded-full bg-[#E8D9C9] text-[9px] font-semibold text-ink">KV</span>
@@ -59,10 +59,10 @@ export function DocumentsMockup() {
             {m}
           </span>
         ))}
-        <span className="ml-auto mb-1.5 hidden items-center gap-1 rounded-[4px] border border-line-2 px-2 py-0.5 sm:flex">
+        <span className="ml-auto mb-1.5 items-center gap-1 rounded-[4px] border border-line-2 px-2 py-0.5 flex">
           <MessageSquare className="size-3" /> Comments
         </span>
-        <span className="mb-1.5 hidden rounded-[4px] bg-[#185ABD] px-2.5 py-0.5 font-semibold text-white sm:inline">Share</span>
+        <span className="mb-1.5 rounded-[4px] bg-[#185ABD] px-2.5 py-0.5 font-semibold text-white inline">Share</span>
       </div>
       {/* ribbon commands */}
       <div className="flex items-center gap-2 border-b border-line bg-[#FAF9F8] px-3 py-1.5 text-[11px] text-[#424242]">
@@ -81,7 +81,7 @@ export function DocumentsMockup() {
         <List className="size-3.5" />
         <ListOrdered className="size-3.5" />
         <AlignLeft className="size-3.5" />
-        <Box className="ml-1 hidden md:flex">Track Changes: On</Box>
+        <Box className="ml-1 flex">Track Changes: On</Box>
       </div>
       {/* page and task pane */}
       <div className="flex min-h-0 flex-1 bg-[#F0F0F0]">
@@ -103,7 +103,7 @@ export function DocumentsMockup() {
             <span className="block h-1.5 w-4/5 rounded bg-paper-2" />
           </div>
         </div>
-        <aside className="hidden w-[214px] flex-none flex-col gap-2 overflow-hidden border-l border-line-2 bg-white p-2.5 sm:flex">
+        <aside className="w-[214px] flex-none flex-col gap-2 overflow-hidden border-l border-line-2 bg-white p-2.5 flex">
           <p className="flex items-center gap-1.5 border-b border-line pb-2 text-[12.5px] font-semibold">
             <TesseractMark size={16} />
             Tesseract
@@ -124,7 +124,7 @@ export function DocumentsMockup() {
       <div className="flex items-center gap-3 border-t border-line bg-[#F3F2F1] px-3 py-1 text-[10.5px] text-[#605E5C]">
         <span>Page 2 of 6</span>
         <span>1,284 words</span>
-        <span className="hidden sm:inline">English (U.S.)</span>
+        <span className="inline">English (U.S.)</span>
         <span className="ml-auto flex items-center gap-1.5">
           &minus; <i className="h-[3px] w-16 rounded bg-[#C8C6C4]" /> + <span className="ml-1">100%</span>
         </span>

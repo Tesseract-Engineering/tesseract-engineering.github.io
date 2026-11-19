@@ -10,6 +10,8 @@ import { DocumentsMockup } from "./mockups/documents";
 import { MeetingsMockup } from "./mockups/meetings";
 import { MessagesMockup } from "./mockups/messages";
 import { SupportMockup } from "./mockups/support";
+import { MOCKUP_WIDTH } from "./mockups/window-frame";
+import { ScaleToFit } from "./scale-to-fit";
 
 const MOCKUPS: Record<IntegrationId, ComponentType> = {
   messages: MessagesMockup,
@@ -150,7 +152,10 @@ export function Integrations() {
                       <h3 className="text-[clamp(1.6rem,1.1rem+1.4vw,2.3rem)]">{tab.title}</h3>
                       <p className="leading-[1.6] text-on-dark/80">{tab.text}</p>
                     </div>
-                    <Mockup />
+                    {/* laid out at laptop width and scaled down to fit, so phones get the same layout */}
+                    <ScaleToFit width={MOCKUP_WIDTH} className="min-w-0">
+                      <Mockup />
+                    </ScaleToFit>
                   </div>
                 </TabsContent>
               );

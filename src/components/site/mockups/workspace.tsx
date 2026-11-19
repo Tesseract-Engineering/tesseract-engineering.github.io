@@ -78,11 +78,11 @@ function Ref({ n }: { n: number }) {
 
 function SourceChip({ s }: { s: Source }) {
   return (
-    <span className="flex items-center gap-2 rounded-md border border-line bg-white py-1 pr-2.5 pl-1 text-[11.5px]">
-      <span className="grid size-[16px] place-items-center rounded-[4px] bg-forest-soft text-[9.5px] font-semibold text-forest">{s.n}</span>
-      <img src={s.logo} alt="" className="size-3.5" />
+    <span className="flex items-center gap-1.5 rounded-md border border-line bg-white py-1 pr-2.5 pl-1 text-[11.5px] leading-none whitespace-nowrap">
+      <span className="grid size-[16px] flex-none place-items-center rounded-[4px] bg-forest-soft text-[9.5px] font-semibold text-forest">{s.n}</span>
+      <img src={s.logo} alt="" className="size-3.5 flex-none" />
       <span className="font-medium">{s.title}</span>
-      <span className="text-stone">{s.where}</span>
+      <span className="ml-0.5 text-stone">{s.where}</span>
     </span>
   );
 }
@@ -115,7 +115,7 @@ function Draft({ icon, children }: { icon: ReactNode; children: ReactNode }) {
   return (
     <li className="flex items-center gap-2.5 border-t border-line py-2 first:border-t-0 first:pt-0">
       <span className="grid size-6 flex-none place-items-center rounded-md border border-line bg-white">{icon}</span>
-      <span>{children}</span>
+      <span className="min-w-0">{children}</span>
     </li>
   );
 }
@@ -176,10 +176,10 @@ export function WorkspaceMockup() {
         </ul>
         {/* the knowledge graph, live */}
         <div className="mt-auto mb-3 grid gap-2 rounded-lg border border-white/10 bg-white/[0.03] p-2.5 text-[11.5px]">
-          <p className="flex items-center justify-between">
-            <span className="font-medium text-on-dark">Knowledge graph</span>
-            <span className="flex items-center gap-1.5 text-[10.5px] text-forest-light">
-              <i className="size-1.5 animate-pulse rounded-full bg-forest-light" /> Live
+          <p className="flex items-center justify-between gap-2">
+            <span className="min-w-0 truncate font-medium text-on-dark">Knowledge graph</span>
+            <span className="flex flex-none items-center gap-1.5 text-[10.5px] whitespace-nowrap text-forest-light">
+              <i className="size-1.5 flex-none animate-pulse rounded-full bg-forest-light" /> Live
             </span>
           </p>
           <p className="text-stone-dark">48,210 entities &middot; 12 sources</p>
@@ -246,7 +246,7 @@ export function WorkspaceMockup() {
 
             {/* drafts for approval */}
             <div className="ml-[38px] rounded-[10px] border border-line-2 bg-white p-3.5">
-              <p className="mb-2 text-[12.5px] font-semibold">
+              <p className="mb-2 text-[12.5px] leading-snug font-semibold">
                 Drafts ready for your approval <span className="font-normal text-stone">&middot; nothing is sent until you approve</span>
               </p>
               <ul className="text-[12.5px]">

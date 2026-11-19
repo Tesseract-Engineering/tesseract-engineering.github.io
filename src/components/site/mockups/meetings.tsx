@@ -77,7 +77,7 @@ export function MeetingsMockup() {
           </p>
         </div>
         {/* Zoom Apps panel */}
-        <aside className="hidden w-[214px] flex-none flex-col gap-2.5 overflow-hidden rounded-[6px] bg-white p-2.5 text-ink sm:flex">
+        <aside className="w-[214px] flex-none flex-col gap-2.5 overflow-hidden rounded-[6px] bg-white p-2.5 text-ink flex">
           <p className="flex items-center justify-between border-b border-line pb-2 text-[12px] font-semibold">
             <span className="flex items-center gap-1.5">
               <TesseractMark size={16} />
@@ -100,11 +100,11 @@ export function MeetingsMockup() {
         <Tool icon={Mic} label="Mute" caret />
         <Tool icon={Video} label="Stop Video" caret />
         <span className="mx-auto flex items-end gap-4">
-          <Tool icon={Users} label="Participants" badge="4" className="hidden sm:grid" />
-          <Tool icon={MessageSquare} label="Chat" className="hidden sm:grid" />
+          <Tool icon={Users} label="Participants" badge="4" className="grid" />
+          <Tool icon={MessageSquare} label="Chat" className="grid" />
           <Tool icon={MonitorUp} label="Share" className="[&_svg]:text-[#23D959]" />
-          <Tool icon={Circle} label="Record" className="hidden md:grid" />
-          <Tool icon={Smile} label="Reactions" className="hidden md:grid" />
+          <Tool icon={Circle} label="Record" className="grid" />
+          <Tool icon={Smile} label="Reactions" className="grid" />
           <Tool icon={LayoutGrid} label="Apps" />
         </span>
         <span className="rounded-[6px] bg-[#E02828] px-3 py-1.5 text-[11px] font-semibold">End</span>

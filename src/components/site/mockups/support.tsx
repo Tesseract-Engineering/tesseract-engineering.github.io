@@ -38,7 +38,7 @@ export function SupportMockup() {
       <div className="flex items-center gap-3 border-b border-[#DCDFE4] px-2.5 py-1.5 text-[11.5px] text-[#44546F]">
         <Grip className="size-3.5" />
         <img draggable={false} src="/logos/apps/jira.svg" alt="" className="h-3.5 w-auto" />
-        <span className="hidden items-center gap-3 md:flex">
+        <span className="items-center gap-3 flex">
           {["Your work", "Projects", "Filters", "Dashboards"].map((m) => (
             <span key={m} className="flex items-center gap-0.5 font-medium">
               {m} <ChevronDown className="size-3" />
@@ -48,7 +48,7 @@ export function SupportMockup() {
         <span className="flex items-center gap-1 rounded-[3px] bg-[#0C66E4] px-2 py-0.5 font-semibold text-white">
           <Plus className="size-3" /> Create
         </span>
-        <span className="ml-auto hidden w-[24%] items-center gap-1.5 rounded-[3px] border border-[#DCDFE4] px-2 py-0.5 text-[#626F86] sm:flex">
+        <span className="ml-auto w-[24%] items-center gap-1.5 rounded-[3px] border border-[#DCDFE4] px-2 py-0.5 text-[#626F86] flex">
           <Search className="size-3" /> Search
         </span>
         <Bell className="size-3.5" />
@@ -56,7 +56,7 @@ export function SupportMockup() {
       </div>
       <div className="flex min-h-0 flex-1">
         {/* project sidebar */}
-        <aside className="hidden w-[150px] flex-none flex-col gap-0.5 border-r border-[#DCDFE4] bg-[#F7F8F9] px-2 py-2.5 text-[11.5px] text-[#44546F] sm:flex">
+        <aside className="w-[150px] flex-none flex-col gap-0.5 border-r border-[#DCDFE4] bg-[#F7F8F9] px-2 py-2.5 text-[11.5px] text-[#44546F] flex">
           <p className="mb-2 flex items-center gap-2 px-1">
             <span className="grid size-6 place-items-center rounded-[4px] bg-[#1F845A] text-[10px] font-bold text-white">IT</span>
             <span className="leading-tight">
@@ -116,7 +116,7 @@ export function SupportMockup() {
             </div>
           </div>
           {/* details panel */}
-          <aside className="hidden w-[212px] flex-none flex-col gap-2 border-l border-[#DCDFE4] px-2.5 py-2.5 text-[#172B4D] lg:flex">
+          <aside className="w-[212px] flex-none flex-col gap-2 border-l border-[#DCDFE4] px-2.5 py-2.5 text-[#172B4D] flex">
             <span className="flex w-fit items-center gap-1 rounded-[3px] bg-[#0C66E4] px-2 py-1 text-[11px] font-semibold text-white">
               In Progress <ChevronDown className="size-3" />
             </span>

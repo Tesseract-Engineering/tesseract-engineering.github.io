@@ -27,6 +27,9 @@ export function Mini({ primary, children }: { primary?: boolean; children: React
   );
 }
 
+/** The width the app mock-ups are laid out at: their column's width beside the copy on a large laptop. */
+export const MOCKUP_WIDTH = 780;
+
 /**
  * The outer frame of an app-styled mock-up: a rounded window that clips the app's own chrome.
  * Each app draws its own bars and sidebars inside; this only sets the size and the accessible name.
@@ -36,9 +39,9 @@ export function Shell({ label, className, children }: { label: string; className
     <div
       role="img"
       aria-label={label}
-      // The height follows the width the mock-up gets, so text that wraps more on narrow screens
-      // still fits: tall on phones, shorter beside the copy on desktop (measured, not guessed).
-      className={cn("flex h-[660px] min-[480px]:h-[560px] sm:h-[590px] md:h-[530px] lg:h-[590px] xl:h-[490px] 2xl:h-[470px] flex-col overflow-hidden rounded-md bg-white select-none [&_img]:pointer-events-none text-left text-[0.8125rem] leading-normal text-ink", className)}
+      // Drawn at one fixed size (MOCKUP_WIDTH wide) and scaled to fit by <ScaleToFit>, so phones see
+      // the same laptop layout, smaller, with every sidebar and panel in place.
+      className={cn("flex h-[490px] flex-col overflow-hidden rounded-md bg-white select-none [&_img]:pointer-events-none text-left text-[0.8125rem] leading-normal text-ink", className)}
     >
       {children}
     </div>

@@ -82,7 +82,7 @@ export function MessagesMockup() {
       </div>
       <div className="flex min-h-0 flex-1 bg-[#350D36]">
         {/* workspace rail */}
-        <nav className="hidden w-[58px] flex-none flex-col items-center gap-3 pt-2.5 sm:flex">
+        <nav className="w-[58px] flex-none flex-col items-center gap-3 pt-2.5 flex">
           <span className="grid size-8 place-items-center rounded-lg bg-white text-[13px] font-bold text-[#350D36]">N</span>
           <RailItem icon={Home} label="Home" on />
           <RailItem icon={MessagesSquare} label="DMs" />
@@ -90,7 +90,7 @@ export function MessagesMockup() {
           <RailItem icon={MoreHorizontal} label="More" />
         </nav>
         {/* channel sidebar */}
-        <aside className="hidden w-[168px] flex-none flex-col gap-px rounded-tl-lg bg-[#4A154B] px-2 py-2.5 text-[12.5px] text-white/75 sm:flex">
+        <aside className="w-[168px] flex-none flex-col gap-px rounded-tl-lg bg-[#4A154B] px-2 py-2.5 text-[12.5px] text-white/75 flex">
           <p className="flex items-center gap-1 px-2 pb-2 text-[14.5px] font-bold text-white">
             Northwind <ChevronDown className="size-3.5" />
           </p>
@@ -110,7 +110,7 @@ export function MessagesMockup() {
           </p>
         </aside>
         {/* channel */}
-        <div className="flex min-w-0 flex-1 flex-col overflow-hidden bg-white sm:rounded-tl-none">
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden bg-white rounded-tl-none">
           <div className="border-b border-line px-4 pt-2">
             <p className="flex items-center gap-1 text-[15px] font-bold">
               # drivetrain <ChevronDown className="size-3.5" />

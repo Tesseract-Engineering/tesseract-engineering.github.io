@@ -29,7 +29,7 @@ export const integrations = {
       id: "messages",
       label: "Messages",
       title: "Ask anything. Get a cited answer.",
-      text: "Engineers ask in Slack or Teams and get answers cited from specs, change orders and past decisions, using only what they can access.",
+      text: "Engineers ask in Slack or Teams and get answers cited from specs, change orders and past decisions.",
     },
     {
       id: "documents",
