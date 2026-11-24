@@ -30,14 +30,18 @@ function Field({ label, htmlFor, optional, error, children }: { label: string; h
   );
 }
 
+/** Formspree's JSON reply to a rejected submission: one entry per problem, `field` set when it's one input's. */
+type FormspreeErrors = { errors?: { field?: string; message: string }[] };
+
 /**
- * The book-a-demo form. With a form service endpoint configured (contact.formEndpoint), it posts
- * the details there and shows a thank-you. Without one, it opens the visitor's email app with their
- * details filled in, so no request is lost.
+ * The free AI audit request form. It posts the details to Formspree (contact.formEndpoint) as JSON
+ * and shows a thank-you; Formspree emails the request to the team. Formspree's own errors are shown
+ * against the email field, or above the button.
  */
 export function DemoForm() {
-  const [state, setState] = useState<"idle" | "sending" | "sent" | "emailed" | "failed">("idle");
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "failed">("idle");
   const [emailError, setEmailError] = useState<string>();
+  const [formError, setFormError] = useState<string>();
   const [firstName, setFirstName] = useState("");
 
   async function submit(e: FormEvent<HTMLFormElement>) {
@@ -54,44 +58,41 @@ export function DemoForm() {
     setEmailError(undefined);
     setFirstName(data.firstName);
 
-    if (contact.formEndpoint) {
-      setState("sending");
-      try {
-        const res = await fetch(contact.formEndpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ ...data, _subject: `Demo request: ${data.company}` }),
-        });
-        setState(res.ok ? "sent" : "failed");
-      } catch {
-        setState("failed");
+    setFormError(undefined);
+    setState("sending");
+    try {
+      const res = await fetch(contact.formEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        // _subject sets the email's subject line; _gotcha is the hidden spam trap (bots fill it in).
+        body: JSON.stringify({ ...data, _subject: `AI audit request: ${data.company}` }),
+      });
+      if (res.ok) {
+        setState("sent");
+        return;
       }
-      return;
+      const { errors = [] } = (await res.json().catch(() => ({}))) as FormspreeErrors;
+      const sentence = (message: string) => message.replace(/\.$/, "");
+      const forEmail = errors.find((err) => err.field === "email");
+      if (forEmail) {
+        setEmailError(`Please check your email: it ${sentence(forEmail.message)}.`);
+        form.querySelector<HTMLInputElement>("#email")?.focus();
+        setState("idle");
+        return;
+      }
+      setFormError(errors.map((err) => sentence(err.message)).join(". ") || undefined);
+      setState("failed");
+    } catch {
+      setState("failed");
     }
-
-    // No form service yet: hand the details to the visitor's email app.
-    const body = [
-      `Name: ${data.firstName} ${data.lastName}`,
-      `Company: ${data.company}`,
-      `Work email: ${data.email}`,
-      data.phone && `Phone: ${data.phone}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(`Demo request: ${data.company}`)}&body=${encodeURIComponent(body)}`;
-    setState("emailed");
   }
 
-  if (state === "sent" || state === "emailed") {
+  if (state === "sent") {
     return (
       <div role="status" className="grid justify-items-start gap-3 rounded-box border border-line bg-white p-7">
         <CheckCircle2 className="size-8 text-forest" strokeWidth={1.6} />
         <h2 className="text-[1.5rem]">Thanks{firstName ? `, ${firstName}` : ""}.</h2>
-        <p className="text-stone">
-          {state === "sent"
-            ? "We’ve got your request and will email you to find a time."
-            : `Your email app should have opened with your details. Send it to ${contact.email} and we’ll find a time.`}
-        </p>
+        <p className="text-stone">We’ve got your request and will email you to find a time.</p>
       </div>
     );
   }
@@ -125,9 +126,11 @@ export function DemoForm() {
       <Field label="Phone number" htmlFor="phone" optional>
         <input id="phone" name="phone" type="tel" autoComplete="tel" className={input} />
       </Field>
+      {/* spam trap: hidden from people and screen readers; Formspree drops any submission that fills it */}
+      <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
       {state === "failed" && (
         <p role="alert" className="text-[14px] text-[#B42318]">
-          Something went wrong sending your request. Please email us at{" "}
+          {formError ? `${formError}. ` : "Something went wrong sending your request. "}Please try again, or email us at{" "}
           <a href={`mailto:${contact.email}`} className="underline">
             {contact.email}
           </a>

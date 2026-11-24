@@ -96,3 +96,16 @@ test("404 page explains the error and links to the sitemap and llms.txt", () => 
   assert.match(html, /href="\/llms.txt"/);
   assert.match(html, /<meta name="robots" content="noindex"/);
 });
+
+test("AI audit form posts to Formspree, with its spam trap and required fields", () => {
+  const html = read("book-a-demo/index.html");
+  const inputs = [...html.matchAll(/<input\b[^>]*>/g)].map((m) => m[0]);
+  const named = (name) => inputs.find((tag) => tag.includes(`name="${name}"`));
+  for (const name of ["firstName", "lastName", "company", "email"]) assert.match(named(name) ?? "", /\brequired\b/, name);
+  assert.doesNotMatch(named("phone"), /\brequired\b/);
+  const trap = named("_gotcha");
+  assert.ok(trap, "no _gotcha spam trap");
+  for (const attr of [/tabindex="-1"/i, /autoComplete="off"/i, /aria-hidden="true"/, /class="hidden"/]) assert.match(trap, attr);
+  const chunks = [...html.matchAll(/src="(\/_next\/static\/[^"]+\.js)"/g)].map((m) => read(m[1].slice(1)));
+  assert.ok(chunks.some((js) => js.includes("https://formspree.io/f/xrpqrjzy")), "endpoint not in the page's scripts");
+});

@@ -4,7 +4,7 @@ import { RequestDemoButton } from "./request-demo";
 
 /**
  * A dark block on the marbled forest backdrop (as the product stage and the integrations block): the
- * closing line on the left and Request a demo on the right, then the footer line.
+ * closing line on the left and the call to action on the right, then the footer line.
  */
 export function SiteFooter() {
   return (

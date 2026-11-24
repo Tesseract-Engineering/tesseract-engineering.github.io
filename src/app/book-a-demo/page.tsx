@@ -5,12 +5,12 @@ import { SiteNav } from "@/components/site/site-nav";
 import { contact } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Book a demo · Tesseract",
-  description: "Book a demo of Tesseract.",
+  title: `${contact.page.title} · Tesseract`,
+  description: "Request a free AI audit from Tesseract.",
   alternates: { canonical: contact.href },
 };
 
-/** Book a demo: a short, centred form with no footer, after brex.com/book-a-demo. */
+/** Get a free AI audit: a short, centred form with no footer, after brex.com/book-a-demo. */
 export default function BookADemo() {
   return (
     <>

@@ -2,7 +2,8 @@ import { team } from "@/lib/site";
 
 /**
  * A logo bar: a small mono label over one even row of the companies' logos in muted grey, the way
- * Vercel, Glean and Brex show them. Four across on wider screens, two by two on phones.
+ * Vercel, Glean and Brex show them. One row on wider screens; two across on phones, with an odd one
+ * out centred on its own line.
  */
 export function Team() {
   return (
@@ -12,7 +13,7 @@ export function Team() {
       </h2>
       <ul className="mt-9 grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-10 text-stone md:flex md:justify-between md:px-6">
         {team.companies.map((c) => (
-          <li key={c.name}>
+          <li key={c.name} className="last:odd:col-span-2">
             {/* the logo file is a stencil: its transparent shape is filled with the text colour */}
             <span
               role="img"

@@ -96,14 +96,16 @@ export const team = {
   /*
     Logos are drawn in ink from each file's transparent shape, so the set matches. `ratio` is the
     file's width ÷ height; `height` (px) sizes each mark so the row has an even visual weight.
-    Sources: Amazon and Applied Materials press kits (Applied's white lines made transparent so it works as a stencil), BAIR's site, and the Tesla wordmark from Wikimedia
-    Commons (public-domain text logo). The trademarks belong to their owners.
+    Sources: Amazon and Applied Materials press kits (Applied's white lines made transparent so it works as a stencil), BAIR's site, the Tesla wordmark from Wikimedia
+    Commons (public-domain text logo), and OpenMind's share image at openmind.com/og-image.png (cropped
+    to the logo, its white background made transparent). The trademarks belong to their owners.
   */
   companies: [
     { name: "Amazon", logo: "/logos/amazon.png", ratio: 6110 / 2047, height: 30 },
     { name: "Tesla", logo: "/logos/tesla.svg", ratio: 1236 / 161, height: 15 },
     { name: "Applied Materials", logo: "/logos/applied-materials.png", ratio: 1475 / 461, height: 34 },
     { name: "Berkeley AI Research", logo: "/logos/bair.png", ratio: 1050 / 561, height: 46 },
+    { name: "OpenMind", logo: "/logos/openmind.png", ratio: 858 / 160, height: 21 },
   ],
 } as const;
 
@@ -112,17 +114,17 @@ export const closing = {
 } as const;
 
 /**
- * Book a demo. The buttons go to /book-a-demo/, a short form. There's no server on a static site,
- * so submissions go to a form service: paste its endpoint into `formEndpoint` (for example a
- * Formspree URL, https://formspree.io/f/xxxxxxx). Until one is set, submitting opens the visitor's
- * email app with their details filled in, addressed to `email`.
+ * Get a free AI audit. The buttons go to /book-a-demo/ (the URL kept from when it booked demos), a
+ * short form. There's no server on a static site, so submissions go to Formspree ("AI audit
+ * requests" form, project "website"), which emails them to the account's inbox. `email` is shown
+ * to visitors if sending fails.
  */
 export const contact = {
-  cta: "Request a demo",
+  cta: "Get a free AI audit",
   href: "/book-a-demo/",
   email: "ishan.tesseract@gmail.com",
-  formEndpoint: "",
+  formEndpoint: "https://formspree.io/f/xrpqrjzy",
   page: {
-    title: "Book a Tesseract demo",
+    title: "Get a free AI audit",
   },
 } as const;

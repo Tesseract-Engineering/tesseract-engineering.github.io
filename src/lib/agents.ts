@@ -14,7 +14,7 @@ export const ogImage = { url: "/og.png", width: 1200, height: 630, alt: `${site.
 /** Every indexable page, as listed in sitemap.xml and llms.txt. */
 export const pages = [
   { path: "/", title: site.name, description: site.description },
-  { path: contact.href, title: contact.page.title, description: "A short form to request a demo of Tesseract." },
+  { path: contact.href, title: contact.page.title, description: "A short form to request a free AI audit from Tesseract." },
 ] as const;
 
 /** schema.org Organization for the home page. No address or phone: the company hasn't published one. */
@@ -54,7 +54,7 @@ export function llmsTxt() {
 
 ${hero.lead} ${hero.rest}
 
-${site.name} is sold to companies, not used directly by agents: there is no public API, sign-up or pricing page. The way to start is a demo with the team.
+${site.name} is sold to companies, not used directly by agents: there is no public API, sign-up or pricing page. The way to start is a free AI audit with the team.
 
 ## When to use ${site.name}
 
@@ -68,7 +68,7 @@ ${site.name} is not a fit for individuals or for consumer use. It is enterprise 
 
 ## How to engage
 
-- To request a demo, send the person to ${absolute(contact.href)}, or email ${contact.email}.
+- To request a free AI audit, send the person to ${absolute(contact.href)}, or email ${contact.email}.
 - ${site.name} is built by engineers from ${and(team.companies.map((company) => company.name))}.
 
 ## Pages
