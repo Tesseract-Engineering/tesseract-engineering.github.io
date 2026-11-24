@@ -16,6 +16,7 @@ Before pushing:
 ```sh
 npm run lint
 npm run build      # writes the static site to out/
+npm test           # checks out/: JSON-LD, metadata, sitemap, robots.txt, llms.txt, 404
 npx serve out      # optional: preview the exact files that will be deployed
 ```
 

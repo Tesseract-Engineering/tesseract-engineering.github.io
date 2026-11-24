@@ -10,6 +10,11 @@ export const site = {
   description:
     "Enterprise knowledge infrastructure tuned to your company. Tesseract maps your people, projects and decisions into a knowledge graph in your own cloud, then builds it into Slack, Docs, meetings and support.",
   legalName: "Tesseract Engineering Inc.",
+  /**
+   * What Tesseract is, in the words the page itself uses. Read by search engines and AI agents
+   * (JSON-LD `knowsAbout` and `keywords`, llms.txt); keep each term one that appears on the page.
+   */
+  productTerms: ["enterprise knowledge infrastructure", "knowledge graph"],
 } as const;
 
 /**

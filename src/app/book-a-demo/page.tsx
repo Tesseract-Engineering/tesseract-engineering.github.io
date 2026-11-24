@@ -7,6 +7,7 @@ import { contact } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Book a demo · Tesseract",
   description: "Book a demo of Tesseract.",
+  alternates: { canonical: contact.href },
 };
 
 /** Book a demo: a short, centred form with no footer, after brex.com/book-a-demo. */

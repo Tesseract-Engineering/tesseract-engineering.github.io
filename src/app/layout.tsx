@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 
+import { ogImage } from "@/lib/agents";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.name,
     description: site.description,
+    images: [ogImage],
   },
   twitter: {
     card: "summary",
